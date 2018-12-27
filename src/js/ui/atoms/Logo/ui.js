@@ -1,13 +1,16 @@
 import React from 'react';
 import * as T from 'prop-types';
+import { Link } from 'react-router-dom';
 import bemHelper from 'utils/bem-helper';
 import './style.scss';
 
-const cn = bemHelper('logo')
+const cn = bemHelper('logo');
 
 const Logo = ({ mix, logo }) => (
   <div {...cn('', '', mix)}>
-    <img src={logo} alt="GTUBE" />
+    <Link to="/">
+      <img src={logo} alt="GTUBE" />
+    </Link>
   </div>
 );
 
