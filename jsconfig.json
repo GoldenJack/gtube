@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+      "target": "es2017",
+      "allowSyntheticDefaultImports": false,
+      "baseUrl": "./",
+      "paths": {
+        "atoms/*": ["src/js/ui/atoms/*"],
+        "molecules/*": ["src/js/ui/molecules/*"],
+        "organisms/*": ["src/js/ui/organisms/*"],
+        "features/*": ["src/js/features/*"],
+        "utils/*": ["src/js/utils/*"],
+        "img/*": ["src/assets/img/*"],
+        "templates/*": ["src/js/ui/templates/*"] 
+      }
+    },
+    "exclude": ["node_modules", "dist"]
+}

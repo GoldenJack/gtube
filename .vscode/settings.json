@@ -1,0 +1,7 @@
+{
+    "autoimport.filesToScan": "src/**/*",
+    "css.lint.duplicateProperties": "warning",
+    "css.lint.compatibleVendorPrefixes": "warning",
+    "css.lint.boxModel": "warning",
+    "editor.wordWrap": "on",
+}
