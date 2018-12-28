@@ -1,0 +1,25 @@
+.docket {
+
+  &__title {
+    margin-bottom: 40px;
+  }
+
+  &__list {
+    display: flex;
+    flex-flow: column;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 25px;
+    &:nth-last-child(1) {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__icon {
+    margin-right: 14px;
+  }
+}

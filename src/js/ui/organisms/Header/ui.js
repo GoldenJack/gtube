@@ -10,15 +10,23 @@ import Search from 'molecules/Search';
 
 const cn = bemHelper('header');
 
-const Header = () => (
-  <div {...cn()}>
-    <Icon mix={cn('icon-menu').className} icon="img/menu.svg" />
+const Header = ({ mix }) => (
+  <div {...cn('', '', mix)}>
+    <Icon mix={cn('icon-menu').className} icon="img/icons/menu.svg" />
     <Logo />
     <Search mix={cn('search').className} />
-    <Icon mix={cn('icon-upload').className} icon="img/upload.svg" />
-    <Icon mix={cn('icon-notification').className} icon="img/notification.svg" />
+    <Icon mix={cn('icon-upload').className} icon="img/icons/upload.svg" />
+    <Icon mix={cn('icon-notification').className} icon="img/icons/notification.svg" />
     <Avatar mix={cn('avatar').className} />
   </div>
 );
+
+Header.propTypes = {
+  mix: Text.string
+};
+
+Header.defaultProps = {
+  mix: ''
+};
 
 export default Header;

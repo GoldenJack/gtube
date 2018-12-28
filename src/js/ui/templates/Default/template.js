@@ -4,13 +4,19 @@ import bemHelper from 'utils/bem-helper';
 import './style.scss';
 
 import Header from 'organisms/Header';
+import Sidebar from 'organisms/Sidebar';
 
 const cn = bemHelper('default-template');
 
 const Default = ({ children }) => (
   <div {...cn()}>
-    <Header />
-    {children}
+    <Header mix={cn('header').className} />
+    <div {...cn('wrap')}>
+      <Sidebar />
+      <div {...cn('content')}>
+        {children}
+      </div>
+    </div>
   </div>
 );
 
