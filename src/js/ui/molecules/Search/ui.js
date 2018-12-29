@@ -10,7 +10,7 @@ const cn = bemHelper('search');
 
 const Search = ({ mix }) => (
   <div {...cn('', '', mix)}>
-    <Icon mix={cn('icon').className} icon="img/search.svg" />
+    <Icon mix={cn('icon').className} icon="img/icons/search.svg" />
     <Input type="text" mix={cn('search').className} />
   </div>
 );

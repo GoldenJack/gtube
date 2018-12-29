@@ -1,5 +1,5 @@
 import React from 'react';
-// import * as T from 'prop-types';
+import * as T from 'prop-types';
 import bemHelper from 'utils/bem-helper';
 import './style.scss';
 
@@ -22,7 +22,7 @@ const Header = ({ mix }) => (
 );
 
 Header.propTypes = {
-  mix: Text.string
+  mix: T.string
 };
 
 Header.defaultProps = {

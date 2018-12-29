@@ -21,7 +21,7 @@ Logo.propTypes = {
 
 Logo.defaultProps = {
   mix: '',
-  logo: 'img/logo.svg'
+  logo: 'img/logo.png'
 };
 
 export default Logo;
