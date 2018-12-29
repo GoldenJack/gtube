@@ -6,13 +6,14 @@ import './style.scss';
 import Logo from 'atoms/Logo';
 import Icon from 'atoms/Icon';
 import Avatar from 'atoms/Avatar';
+import Burger from 'atoms/Burger';
 import Search from 'molecules/Search';
 
 const cn = bemHelper('header');
 
-const Header = ({ mix }) => (
+const Header = ({ mix, toggleShow }) => (
   <div {...cn('', '', mix)}>
-    <Icon mix={cn('icon-menu').className} icon="img/icons/menu.svg" />
+    <Burger mix={cn('icon-menu').className} toggleShow={toggleShow} />
     <Logo />
     <Search mix={cn('search').className} />
     <Icon mix={cn('icon-upload').className} icon="img/icons/upload.svg" />
@@ -22,7 +23,8 @@ const Header = ({ mix }) => (
 );
 
 Header.propTypes = {
-  mix: T.string
+  mix: T.string,
+  toggleShow: T.func.isRequired
 };
 
 Header.defaultProps = {

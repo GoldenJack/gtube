@@ -37,6 +37,15 @@ module.exports = {
             options: {
               sourceMap: true
             }
+          },
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              // Or array of paths
+              resources: [
+                './src/assets/scss/modules/_vars.scss'
+              ]
+            },
           }]
         })
       },

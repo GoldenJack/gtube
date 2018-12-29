@@ -9,19 +9,17 @@ import Docket from 'molecules/Docket';
 const cn = bemHelper('sidebar');
 
 class Sidebar extends Component {
-  state = {
-    show: true
-  }
-
   componentDidMount() {
 
   }
 
   render() {
-    const { show } = this.state;
+    const { showMenu } = this.props;
     const { main, library } = routes;
+    const toggleClass = showMenu ? 'visible' : 'hidden';
+
     return (
-      <div {...cn('', show)}>
+      <div {...cn('', toggleClass)}>
         <Docket
           title={main.title}
           list={main.menu}
@@ -34,5 +32,9 @@ class Sidebar extends Component {
     );
   }
 }
+
+Sidebar.propTypes = {
+  showMenu: T.bool.isRequired
+};
 
 export default Sidebar;
