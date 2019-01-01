@@ -25,7 +25,8 @@ const Default = ({ children, showMenu, ...props }) => {
 }
 
 Default.propTypes = {
-  children: T.object.isRequired
+  children: T.object.isRequired,
+  showMenu: T.bool.isRequired
 };
 
 export default withMenu(Default);

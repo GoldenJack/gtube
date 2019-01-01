@@ -1,7 +1,13 @@
 .avatar {
+  border-radius: 50%;
+  overflow: hidden;
 
   &--medium {
     width: 40px;
     height: 40px;
+  }
+
+  &__image {
+    width: 100%;
   }
 }

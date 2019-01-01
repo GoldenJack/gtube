@@ -63,3 +63,4 @@ typings/
 # public 
 public/
 server/config.js
+src/js/config

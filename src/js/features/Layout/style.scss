@@ -1,0 +1,28 @@
+.default-template {
+  position: relative;
+  height: 100vh;
+
+  &__header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  &__wrap {
+    min-height: 100vh;
+    margin-top: 60px;
+  }
+  
+  &__content {
+    height: 100%;
+    padding: 40px;
+
+    &--full-width {
+      -webkit-animation: full-content .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+          animation: full-content .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+    &--with-menu {
+      -webkit-animation: content-with-menu .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+          animation: content-with-menu .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+  }
+}

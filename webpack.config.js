@@ -105,8 +105,12 @@ module.exports = {
       utils: path.resolve(__dirname, 'src/js/utils'),
       store: path.resolve(__dirname, 'src/js/store'),
       img: path.resolve(__dirname, 'src/assets/img'),
-      HOC: path.resolve(__dirname, 'src/js/HOC')
+      HOC: path.resolve(__dirname, 'src/js/HOC'),
+      config: path.resolve(__dirname, 'src/js/config')
     }
   },
-  devtool: 'source-map'
+  devtool: 'source-map',
+  devServer: {
+    overlay: true
+  }
 };

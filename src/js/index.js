@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Default from 'templates/Default';
+import Layout from 'features/Layout';
 import Home from 'features/Home';
 
 import { store } from './store/configureStore';
@@ -11,9 +11,9 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <Switch>
-        <Default>
+        <Layout>
           <Route exact path="/" component={Home} />
-        </Default>
+        </Layout>
       </Switch>
     </BrowserRouter>
   </Provider>,

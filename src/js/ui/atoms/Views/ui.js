@@ -16,7 +16,6 @@ const Preview = ({ mix, countViews }) => (
 
 Preview.propTypes = {
   mix: T.string,
-  image: T.string.isRequired,
   countViews: T.string
 };
 

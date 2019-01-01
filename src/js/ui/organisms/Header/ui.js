@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import * as T from 'prop-types';
 import bemHelper from 'utils/bem-helper';
 import './style.scss';
@@ -7,28 +7,43 @@ import Logo from 'atoms/Logo';
 import Icon from 'atoms/Icon';
 import Avatar from 'atoms/Avatar';
 import Burger from 'atoms/Burger';
+import Button from 'atoms/Button';
 import Search from 'molecules/Search';
 
 const cn = bemHelper('header');
 
-const Header = ({ mix, toggleShow }) => (
+const Header = ({
+  mix,
+  toggleShow,
+  signIn,
+  userInfo
+}) => (
   <div {...cn('', '', mix)}>
     <Burger mix={cn('icon-menu').className} toggleShow={toggleShow} />
     <Logo />
     <Search mix={cn('search').className} />
     <Icon mix={cn('icon-upload').className} icon="img/icons/upload.svg" />
     <Icon mix={cn('icon-notification').className} icon="img/icons/notification.svg" />
-    <Avatar mix={cn('avatar').className} />
+    <Fragment>
+      {userInfo ? (
+        <Avatar mix={cn('avatar').className} avatar={userInfo.avatar} />
+      ) : (
+        <Button text="Sign in" effect={signIn} />
+      )}
+    </Fragment>
   </div>
 );
 
 Header.propTypes = {
   mix: T.string,
-  toggleShow: T.func.isRequired
+  toggleShow: T.func.isRequired,
+  signIn: T.func.isRequired,
+  userInfo: T.object
 };
 
 Header.defaultProps = {
-  mix: ''
+  mix: '',
+  userInfo: null
 };
 
 export default Header;

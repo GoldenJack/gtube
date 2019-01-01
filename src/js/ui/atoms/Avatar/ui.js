@@ -1,23 +1,22 @@
 import React, { Fragment } from 'react';
 import * as T from 'prop-types';
 import bemHelper from 'utils/bem-helper';
+import './style.scss';
 
 const cn = bemHelper('avatar');
 
 const Avatar = ({ avatar, mix, size }) => (
-  <Fragment>
-    {avatar ? (
-      <img
-        {...cn('', size, mix)}
-        src={avatar}
-        alt="/"
-      />
-    ) : null}
-  </Fragment>
+  <div {...cn('', size, mix)}>
+    <img
+      {...cn('image')}
+      src={avatar}
+      alt="/"
+    />
+  </div>
 );
 
 Avatar.propTypes = {
-  avatar: T.string,
+  avatar: T.string.isRequired,
   mix: T.string,
   size: T.oneOf([
     'tiny',
@@ -29,7 +28,6 @@ Avatar.propTypes = {
 };
 
 Avatar.defaultProps = {
-  avatar: 'img/no-avatar.png',
   mix: '',
   size: 'medium'
 };

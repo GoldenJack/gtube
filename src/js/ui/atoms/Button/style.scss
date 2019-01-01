@@ -1,0 +1,14 @@
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  padding: 9px 15px;
+  color:  #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+
+  &--pink {
+    background: $bpink;
+  }
+}
