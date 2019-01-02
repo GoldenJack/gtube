@@ -7,21 +7,21 @@ import Icon from 'atoms/Icon';
 
 const cn = bemHelper('views');
 
-const Preview = ({ mix, countViews }) => (
+const Preview = ({ mix, viewCount }) => (
   <div {...cn('', '', mix)}>
     <Icon mix={cn('icon').className} icon="img/icons/views.svg" />
-    <p>{countViews}</p>
+    <p>{viewCount}</p>
   </div>
 );
 
 Preview.propTypes = {
   mix: T.string,
-  countViews: T.string
+  viewCount: T.string
 };
 
 Preview.defaultProps = {
   mix: '',
-  countViews: '0'
+  viewCount: '0'
 };
 
 export default Preview;

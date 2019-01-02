@@ -13,6 +13,11 @@
     box-shadow: 0px 8px 20px 5px rgba(0, 0, 0, 0.2)
   }
 
+  &__preview {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
   &__description {
     padding: 25px 20px;
   }
@@ -49,7 +54,7 @@
     font-weight: 400;
   }
 
-  &__date-created {
+  &__date-published {
     color: $main;
     font-size: 12px;
     font-weight: 400;

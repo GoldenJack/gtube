@@ -14,25 +14,49 @@ class VideoItem extends Component {
 
   }
 
+  // calcDate = () => {
+  //   const { video: { snippet: { publishedAt } } } = this.props;
+  //   const dateNow = new Date();
+
+  //   console.log(publishedAt)
+  // }
+
   render() {
-    const { mix } = this.props;
+    const {
+      mix,
+      video: {
+        // id,
+        snippet: {
+          title,
+          thumbnails,
+          channelTitle
+        },
+        statistics: {
+          viewCount
+        }
+      }
+    } = this.props;
+
+    const previewImage = thumbnails.medium.url;
+    // const datePublished = this.calcDate();
+
     return (
       <div {...cn('', '', mix)}>
-        <Preview mix={cn('preview').className} image="img/demo/demo.png" />
+        <Preview mix={cn('preview').className} image={previewImage} />
         <div {...cn('description')}>
           <Link
             to="/123"
             mix={cn('video-link').className}
-            text="Ванпанчмен - Сайтама vs Геноса (Полный Бой)"
+            text={title}
           />
           <Link
             to="/123"
             mix={cn('author-link').className}
-            text="boyceavenve"
+            text={channelTitle}
           />
           <div {...cn('description-wrap')}>
-            <Views mix={cn('views').className} />
-            <p {...cn('date-created')}>2 days ago</p>
+            <Views viewCount={viewCount} mix={cn('views').className} />
+            {/* <p {...cn('date-published')}>2 days ago</p> */}
           </div>
         </div>
       </div>
@@ -41,7 +65,9 @@ class VideoItem extends Component {
 }
 
 VideoItem.propTypes = {
-  mix: T.string
+  mix: T.string,
+  id: T.string.isRequired,
+  video: T.object.isRequired,
 };
 
 VideoItem.defaultProps = {

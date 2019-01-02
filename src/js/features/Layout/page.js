@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import * as T from 'prop-types';
-import withMenu from 'HOC/withMenu';
 import './style.scss';
 
 import Default from 'templates/Default';
@@ -22,12 +21,11 @@ class Layout extends Component {
 Layout.propTypes = {
   googleApi: T.object,
   initGoogleApi: T.func.isRequired,
-  children: T.object.isRequired,
-  showMenu: T.bool.isRequired
+  children: T.array.isRequired
 };
 
 Layout.defaultProps = {
   googleApi: null
 };
 
-export default withMenu(Layout);
+export default Layout;

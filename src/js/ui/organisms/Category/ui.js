@@ -7,10 +7,10 @@ import VideoItem from 'molecules/VideoItem';
 
 const cn = bemHelper('category');
 
-const renderVideos = videos => {
-  return videos.map(num => {
+const _renderVideos = videos => {
+  return videos.map(video => {
     return (
-      <VideoItem key={num} mix={cn('video-item').className} />
+      <VideoItem key={video.id} video={video} mix={cn('video-item').className} />
     );
   });
 };
@@ -21,7 +21,7 @@ const Category = ({ mix, title, description, videos }) => (
     {description && <h6 {...cn('description')}>{ description }</h6>}
     <div {...cn('content')}>
       {videos.length > 0
-        ? renderVideos(videos)
+        ? _renderVideos(videos)
         : (
           <p {...cn('not-found')}>Video not found </p>
         )
