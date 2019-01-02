@@ -8,6 +8,11 @@ import Category from 'organisms/Category';
 const cn = bemHelper('home');
 
 class Home extends Component {
+  componentDidMount() {
+    const { getVideoGategories, readyAuth, accessToken } = this.props;
+    readyAuth && getVideoGategories(accessToken);
+  }
+
   componentDidUpdate(prevProps) {
     const { getVideoGategories, readyAuth, accessToken } = this.props;
     if (readyAuth && readyAuth !== prevProps.readyAuth) {

@@ -8,6 +8,11 @@ import Category from 'organisms/Category';
 const cn = bemHelper('home');
 
 class Trending extends Component {
+  componentDidMount() {
+    const { getTrendingVideos, readyAuth, accessToken } = this.props;
+    readyAuth && getTrendingVideos(accessToken);
+  }
+
   componentDidUpdate(prevProps) {
     const { getTrendingVideos, readyAuth, accessToken } = this.props;
     if (readyAuth && readyAuth !== prevProps.readyAuth) {
