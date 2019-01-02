@@ -1,14 +1,32 @@
 import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
+import { bindActionCreators } from 'redux';
+import {
+  getVideoGategories
+} from './redux-store/home';
 import Page from './page';
 
 const mapStateToProps = (state) => {
   const {
-    accessToken
+    accessToken,
+    readyAuth
   } = state.Auth;
+  const {
+    categories,
+    readyCategory
+  } = state.Home;
   return {
-    accessToken
+    accessToken,
+    readyAuth,
+    categories,
+    readyCategory
   };
 };
 
-export default connect(mapStateToProps, null)(Page);
+const mapDispatchToProps = dispatch => {
+  const actions = bindActionCreators({
+    getVideoGategories
+  }, dispatch);
+  return { ...actions };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Page);

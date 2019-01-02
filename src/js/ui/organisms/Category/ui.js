@@ -20,10 +20,10 @@ const Category = ({ mix, title, description, videos }) => (
     <h4 {...cn('title')}>{ title }</h4>
     {description && <h6 {...cn('description')}>{ description }</h6>}
     <div {...cn('content')}>
-      {videos
+      {videos.length > 0
         ? renderVideos(videos)
         : (
-          <p>Video not found </p>
+          <p {...cn('not-found')}>Video not found </p>
         )
       }
     </div>
@@ -33,13 +33,14 @@ const Category = ({ mix, title, description, videos }) => (
 Category.propTypes = {
   mix: T.string,
   title: T.string.isRequired,
-  videos: T.array.isRequired,
+  videos: T.array,
   description: T.string
 };
 
 Category.defaultProps = {
   mix: '',
-  description: ''
+  description: '',
+  videos: []
 };
 
 export default Category;

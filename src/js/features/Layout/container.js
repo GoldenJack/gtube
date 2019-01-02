@@ -12,14 +12,16 @@ const mapStateToProps = (state) => {
     googleApiError,
     accessToken,
     userInfo,
-    authError
+    authError,
+    readyAuth
   } = state.Auth;
   return {
     googleApi,
     googleApiError,
     accessToken,
     userInfo,
-    authError
+    authError,
+    readyAuth
   };
 };
 

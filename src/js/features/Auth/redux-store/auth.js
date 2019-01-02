@@ -11,7 +11,8 @@ const initialState = {
   googleApiError: null,
   accessToken: null,
   userInfo: null,
-  authError: null
+  authError: null,
+  readyAuth: false
 };
 
 export default (authorization = initialState, { type, data }) => {
@@ -24,7 +25,7 @@ export default (authorization = initialState, { type, data }) => {
     case SIGNIN + SUCCESS: {
       const { userInfo, accessToken } = data;
       return {
-        ...authorization, userInfo, accessToken
+        ...authorization, userInfo, accessToken, readyAuth: true
       };
     }
     case SIGNIN + FAIL: {
