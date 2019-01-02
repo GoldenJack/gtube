@@ -4,6 +4,7 @@ import bemHelper from 'utils/bem-helper';
 import './style.scss';
 
 import Category from 'organisms/Category';
+import WithPreloader from 'molecules/WithPreloader';
 
 const cn = bemHelper('home');
 
@@ -37,7 +38,9 @@ class Home extends Component {
 
     return (
       <div {...cn()}>
-        {readyCategory && this._renderCategories()}
+        <WithPreloader readyContent={readyCategory}>
+          { readyCategory && this._renderCategories() }
+        </WithPreloader>
       </div>
     );
   }

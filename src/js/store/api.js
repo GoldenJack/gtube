@@ -5,10 +5,9 @@ const depoint = 'https://www.googleapis.com/youtube/v3';
 
 export const api = {
   trending: {
-    getList: accessToken => {
+    getList: () => {
       return request
-        .get(`${depoint}/videos?part=snippet,statistics&chart=mostPopular&regionCode=RU&key=${API_KEY}`)
-        .set('Authorization', `Bearer ${accessToken}`)
+        .get(`${depoint}/videos?part=snippet,statistics&maxResults=50&chart=mostPopular&regionCode=RU&key=${API_KEY}`)
         .then(res => res)
         .catch(err => err);
     }
@@ -23,7 +22,7 @@ export const api = {
     }
   },
   videoCategories: {
-    getList: (accessToken) => {
+    getList: accessToken => {
       return request
         .get(`${depoint}/videoCategories?part=snippet&regionCode=RU&key=${API_KEY}`)
         .set('Authorization', `Bearer ${accessToken}`)

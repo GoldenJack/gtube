@@ -7,16 +7,14 @@ import Page from './page';
 
 const mapStateToProps = (state) => {
   const {
-    accessToken,
-    readyAuth
-  } = state.Auth;
-  const {
-    trending
+    trending,
+    readyTrending,
+    error
   } = state.Trending;
   return {
-    accessToken,
-    readyAuth,
-    trending
+    trending,
+    readyTrending,
+    error
   };
 };
 

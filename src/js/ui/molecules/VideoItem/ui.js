@@ -24,8 +24,9 @@ class VideoItem extends Component {
   render() {
     const {
       mix,
+      type,
       video: {
-        // id,
+        id,
         snippet: {
           title,
           thumbnails,
