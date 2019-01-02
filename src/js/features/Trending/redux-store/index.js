@@ -29,6 +29,6 @@ export const getTrendingVideos = accessToken => async dispatch => {
     })
     .catch(res => {
       const err = res.error;
-      dispatch({ type: GET + TRENDING + SUCCESS, data: err, readyCategory: false });
+      dispatch({ type: GET + TRENDING + FAIL, data: err, readyTrending: false });
     });
 };

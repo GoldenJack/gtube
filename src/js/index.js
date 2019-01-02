@@ -7,6 +7,7 @@ import Layout from 'features/Layout';
 
 import Home from 'features/Home';
 import Trending from 'features/Trending';
+import Video from 'features/Video';
 
 import { store } from './store/configureStore';
 
@@ -17,6 +18,8 @@ ReactDOM.render(
         <Layout>
           <Route exact path="/" component={Home} />
           <Route path="/trending" component={Trending} />
+
+          <Route path="/watch/:videoId" component={Video} />
         </Layout>
       </Switch>
     </HashRouter>

@@ -4,6 +4,14 @@ import { API_KEY } from 'config';
 const depoint = 'https://www.googleapis.com/youtube/v3';
 
 export const api = {
+  video: {
+    getVideo: videoId => {
+      return request
+        .get(`${depoint}/videos?part=snippet,contentDetails,statistics&id=${videoId}&key=${API_KEY}`)
+        .then(res => res)
+        .catch(err => err);
+    }
+  },
   trending: {
     getList: () => {
       return request
@@ -13,19 +21,19 @@ export const api = {
     }
   },
   channels: {
-    getList: accessToken => {
+    getList: () => {
       request
         .get(`${depoint}/channels?part=contentDetails&mine=true&key=${API_KEY}`)
-        .set('Authorization', `Bearer ${accessToken}`)
+        // .set('Authorization', `Bearer ${accessToken}`)
         .then(res => res)
         .catch(err => err);
     }
   },
   videoCategories: {
-    getList: accessToken => {
+    getList: () => {
       return request
         .get(`${depoint}/videoCategories?part=snippet&regionCode=RU&key=${API_KEY}`)
-        .set('Authorization', `Bearer ${accessToken}`)
+        // .set('Authorization', `Bearer ${accessToken}`)
         .then(res => res)
         .catch(err => err);
     }

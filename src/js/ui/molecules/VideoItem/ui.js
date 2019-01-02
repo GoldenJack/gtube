@@ -14,17 +14,9 @@ class VideoItem extends Component {
 
   }
 
-  // calcDate = () => {
-  //   const { video: { snippet: { publishedAt } } } = this.props;
-  //   const dateNow = new Date();
-
-  //   console.log(publishedAt)
-  // }
-
   render() {
     const {
       mix,
-      type,
       video: {
         id,
         snippet: {
@@ -46,7 +38,7 @@ class VideoItem extends Component {
         <Preview mix={cn('preview').className} image={previewImage} />
         <div {...cn('description')}>
           <Link
-            to="/123"
+            to={`/watch/${id}`}
             mix={cn('video-link').className}
             text={title}
           />
@@ -67,7 +59,6 @@ class VideoItem extends Component {
 
 VideoItem.propTypes = {
   mix: T.string,
-  id: T.string.isRequired,
   video: T.object.isRequired,
 };
 
