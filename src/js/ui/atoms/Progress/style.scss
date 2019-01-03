@@ -1,0 +1,15 @@
+.progress {
+  &__bar {
+    position: absolute;
+    top: -10px;
+    left: 0;
+    height: 10px;
+    width: 100%;
+    background: $main;
+  }
+
+  &__line {
+    background: $bpink;
+    height: 100%;
+  }
+}
