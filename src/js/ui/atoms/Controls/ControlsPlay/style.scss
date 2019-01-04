@@ -1,0 +1,15 @@
+.controls-play {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  
+  &__wrap {
+    display: flex;
+    align-items: center;
+  }
+
+  img {
+    width: 36px;
+    height: 36px;
+  }
+}

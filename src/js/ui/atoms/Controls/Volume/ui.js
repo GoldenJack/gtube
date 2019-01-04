@@ -23,7 +23,9 @@ class Volume extends Component {
   render() {
     const { volume } = this.state;
     return (
-      <input type="range" value={volume} onChange={this.changeVolume} />
+      <div {...cn()}>
+        <input type="range" value={volume} onChange={this.changeVolume} />
+      </div>
     );
   }
 }

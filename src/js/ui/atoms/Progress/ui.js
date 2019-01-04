@@ -14,31 +14,46 @@ class Progress extends Component {
     clearTimeout(this.progress);
   }
 
-  getProgressBar = () => {
-    const { calcProgress } = this.props;
+  getProgress = () => {
+    const { getProgress } = this.props;
     this.progress = setTimeout(() => {
       this.setState({
-        progress: calcProgress()
+        progress: getProgress()
       });
     }, 100);
   }
 
+  setProgress = (e) => {
+    const { setProgress, duration } = this.props;
+    const dataClick = e.pageX;
+    const widthWindow = window.innerWidth - 11;
+
+    const progressClick = (dataClick / widthWindow) * 100;
+    const progress = (duration / 100) * progressClick;
+
+    setProgress(progress);
+    this.setState({
+      progress: progressClick
+    });
+  }
 
   render() {
     const { progress } = this.state;
-    const { play } = this.props;
+    const { play, pause } = this.props;
 
     const progressWidth = {
       width: `${progress}%`
     };
 
     if (play) {
-      this.getProgressBar();
+      this.getProgress();
+    } else if (pause) {
+      clearTimeout(this.progress);
     }
 
     return (
       <div {...cn()}>
-        <div {...cn('bar')}>
+        <div {...cn('bar')} onClick={this.setProgress} role="none">
           <div {...cn('line')} style={progressWidth} />
         </div>
       </div>
@@ -48,7 +63,10 @@ class Progress extends Component {
 Progress.propTypes = {
   mix: T.string,
   play: T.bool.isRequired,
-  calcProgress: T.func.isRequired
+  pause: T.bool.isRequired,
+  duration: T.number.isRequired,
+  getProgress: T.func.isRequired,
+  setProgress: T.func.isRequired
 };
 
 Progress.defaultProps = {

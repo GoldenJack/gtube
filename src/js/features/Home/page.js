@@ -42,7 +42,6 @@ class Home extends Component {
 Home.propTypes = {
   getVideoGategories: T.func.isRequired,
   accessToken: T.string,
-  readyAuth: T.bool.isRequired,
   readyCategory: T.bool.isRequired,
   categories: T.object
 };
