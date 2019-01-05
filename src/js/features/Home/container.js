@@ -6,18 +6,18 @@ import {
 import Page from './page';
 
 const mapStateToProps = (state) => {
-  // const {
-  //   accessToken,
-  //   readyAuth
-  // } = state.Auth;
+  const {
+    accessToken,
+    readyAuth
+  } = state.Auth;
   const {
     categories,
     readyCategory,
     error
   } = state.Home;
   return {
-    // accessToken,
-    // readyAuth,
+    accessToken,
+    readyAuth,
     categories,
     readyCategory,
     error

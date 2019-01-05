@@ -21,8 +21,8 @@ export default (trending = initialState, { type, data }) => {
   }
 };
 
-export const getTrendingVideos = accessToken => async dispatch => {
-  await api.trending.getList(accessToken)
+export const getTrendingVideos = () => async dispatch => {
+  await api.videos.getTrendingVideos()
     .then(res => {
       const data = JSON.parse(res.text);
       dispatch({ type: GET + TRENDING + SUCCESS, data });

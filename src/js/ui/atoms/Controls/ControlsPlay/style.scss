@@ -11,5 +11,10 @@
   img {
     width: 36px;
     height: 36px;
+    cursor: pointer;
+    &:hover {
+      -webkit-animation: pulsate-bck 0.5s ease-in-out infinite both;
+              animation: pulsate-bck 0.5s ease-in-out infinite both;
+    }
   }
 }

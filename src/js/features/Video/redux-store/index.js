@@ -22,7 +22,7 @@ export default (videoStore = initialState, { type, data }) => {
 };
 
 export const getVideo = videoId => async dispatch => {
-  await api.video.getVideo(videoId)
+  await api.videos.getVideo(videoId)
     .then(res => {
       const data = JSON.parse(res.text);
       dispatch({ type: GET + VIDEO + SUCCESS, data });
