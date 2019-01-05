@@ -1,10 +1,10 @@
-# Golden Gallery
+# GTUBE
 
-### Запуск проекта
+### Start project
 
 1. `npm install`
-2. `npm run dev` - для старта локального сервера
-3. `npm run build` - для сборки проекта
+2. `npm run dev` - for start project
+3. `npm run build` - for build project
 
 ### Архитектура проекта
 

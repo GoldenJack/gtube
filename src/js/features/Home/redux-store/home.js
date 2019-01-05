@@ -22,7 +22,7 @@ export default (home = initialState, { type, data }) => {
 };
 
 export const getVideoGategories = () => async dispatch => {
-  await api.channels.getItem()
+  await api.videoCategories.getList()
     .then(res => {
       const data = JSON.parse(res.text);
       dispatch({ type: GET + CATEGORIES + SUCCESS, data });

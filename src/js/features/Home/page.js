@@ -16,14 +16,14 @@ class Home extends Component {
 
   _renderCategories = () => {
     const { categories } = this.props;
-    // return categories.items.map(({ id, snippet: { title } }) => (
-    //   <Category
-    //     key={id}
-    //     title={title}
-    //     // description="Original Music Videos featuring music written and produced by Name Namevich"
-    //     // videos={[1, 2, 3, 4, 5]}
-    //   />
-    // ));
+    return categories.items.map(({ id, snippet: { title } }) => (
+      <Category
+        key={id}
+        title={title}
+        // description="Original Music Videos featuring music written and produced by Name Namevich"
+        // videos={[1, 2, 3, 4, 5]}
+      />
+    ));
   }
 
   render() {

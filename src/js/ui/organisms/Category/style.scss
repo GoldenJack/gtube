@@ -22,4 +22,11 @@
     margin-left: -7px;
     margin-right: -7px;
   }
+
+  &__not-found {
+    margin-left: 7px;
+    margin-right: 7px;
+    margin-bottom: 40px;
+    color: $bpink;
+  }
 }
