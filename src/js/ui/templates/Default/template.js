@@ -9,24 +9,34 @@ import Sidebar from 'organisms/Sidebar';
 
 const cn = bemHelper('default-template');
 
-const Default = ({ children, showMenu, ...props }) => {
-  const toggleClass = showMenu ? 'with-menu' : 'full-width';
+const Default = ({ children, showMenu, isMobile, toggleShow, ...props }) => {
+  const toggleClass = showMenu && !isMobile ? 'with-menu' : 'full-width';
+  const toggleClassOverlay = showMenu ? 'open' : 'close';
   return (
     <div {...cn()}>
-      <Header mix={cn('header').className} {...props} />
+      <Header mix={cn('header').className} toggleShow={toggleShow} {...props} />
       <div {...cn('wrap')}>
-        <Sidebar showMenu={showMenu} {...props} />
+        {isMobile && (
+          <div
+            {...cn('overlay', toggleClassOverlay)}
+            role="none"
+            onClick={toggleShow}
+          />
+        )}
+        <Sidebar showMenu={showMenu} isMobile={isMobile} {...props} />
         <div {...cn('content', toggleClass)}>
           {children}
         </div>
       </div>
     </div>
   );
-}
+};
 
 Default.propTypes = {
   children: T.array.isRequired,
-  showMenu: T.bool.isRequired
+  showMenu: T.bool.isRequired,
+  isMobile: T.bool.isRequired,
+  toggleShow: T.func.isRequired
 };
 
 export default withMenu(Default);

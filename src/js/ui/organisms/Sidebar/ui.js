@@ -34,7 +34,8 @@ class Sidebar extends Component {
 }
 
 Sidebar.propTypes = {
-  showMenu: T.bool.isRequired
+  showMenu: T.bool.isRequired,
+  isMobile: T.bool.isRequired
 };
 
 export default Sidebar;
