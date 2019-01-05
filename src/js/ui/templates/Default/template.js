@@ -24,7 +24,7 @@ const Default = ({ children, showMenu, isMobile, toggleShow, ...props }) => {
           />
         )}
         <Sidebar showMenu={showMenu} isMobile={isMobile} {...props} />
-        <div {...cn('content', toggleClass)}>
+        <div {...cn('content', `${!isMobile && toggleClass}`)}>
           {children}
         </div>
       </div>

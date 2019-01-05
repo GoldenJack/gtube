@@ -17,6 +17,7 @@ class VideoItem extends Component {
   render() {
     const {
       mix,
+      shape,
       video: {
         id,
         snippet: {
@@ -31,25 +32,26 @@ class VideoItem extends Component {
     } = this.props;
 
     const previewImage = thumbnails.medium.url;
-    // const datePublished = this.calcDate();
 
     return (
-      <div {...cn('', '', mix)}>
-        <Preview mix={cn('preview').className} image={previewImage} />
-        <div {...cn('description')}>
-          <Link
-            to={`/watch/${id}`}
-            mix={cn('video-link').className}
-            text={title}
-          />
-          <Link
-            to="/123"
-            mix={cn('author-link').className}
-            text={channelTitle}
-          />
-          <div {...cn('description-wrap')}>
-            <Views viewCount={viewCount} mix={cn('views').className} />
-            {/* <p {...cn('date-published')}>2 days ago</p> */}
+      <div {...cn('', shape, mix)}>
+        <div {...cn('wrap')}>
+          <Preview mix={cn('preview').className} image={previewImage} />
+          <div {...cn('description')}>
+            <Link
+              to={`/watch/${id}`}
+              mix={cn('video-link').className}
+              text={title}
+            />
+            <Link
+              to="/123"
+              mix={cn('author-link').className}
+              text={channelTitle}
+            />
+            <div {...cn('description-wrap')}>
+              <Views viewCount={viewCount} mix={cn('views').className} />
+              {/* <p {...cn('date-published')}>2 days ago</p> */}
+            </div>
           </div>
         </div>
       </div>
@@ -60,10 +62,15 @@ class VideoItem extends Component {
 VideoItem.propTypes = {
   mix: T.string,
   video: T.object.isRequired,
+  shape: T.oneOf([
+    'full',
+    'standart'
+  ])
 };
 
 VideoItem.defaultProps = {
-  mix: ''
+  mix: '',
+  shape: 'standart'
 };
 
 export default VideoItem;
