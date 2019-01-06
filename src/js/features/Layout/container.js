@@ -2,7 +2,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
   initGoogleApi,
-  signIn
+  signIn,
+  logout
 } from 'features/Auth/redux-store/auth';
 import {
   changeSearch,
@@ -40,7 +41,8 @@ const mapDispatchToProps = dispatch => {
     initGoogleApi,
     signIn,
     changeSearch,
-    getSearch
+    getSearch,
+    logout
   }, dispatch);
   return { ...actions };
 };

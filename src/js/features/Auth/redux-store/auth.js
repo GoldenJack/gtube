@@ -35,7 +35,7 @@ export default (authorization = initialState, { type, data }) => {
     }
 
     case LOGOUT + SUCCESS: {
-      return { ...initialState };
+      return { ...authorization, accessToken: null, userInfo: null, readyAuth: false };
     }
     default:
       return authorization;
@@ -96,4 +96,9 @@ export const signIn = () => (dispatch, getState) => {
 
       dispatch({ type: SIGNIN + SUCCESS, data: { userInfo, accessToken } });
     });
+};
+
+export const logout = () => dispatch => {
+  localStorage.clear();
+  dispatch({ type: LOGOUT + SUCCESS });
 };

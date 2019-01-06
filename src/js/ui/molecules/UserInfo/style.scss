@@ -1,0 +1,28 @@
+.user-info {
+  position: absolute;
+  top: calc(100% + 24px);
+  right: 40px;
+  width: 200px;
+  padding: 24px;
+  background: #fff;
+  box-shadow: 0px 3px 12px 3px rgba(0, 0, 0, 0.08);
+
+  &--close {
+    -webkit-animation: slit-out-horizontal 0.5s ease-in both;
+	          animation: slit-out-horizontal 0.5s ease-in both;
+  }
+
+  &--open {
+    -webkit-animation: slit-in-vertical 0.5s ease-out both;
+	          animation: slit-in-vertical 0.5s ease-out both;
+  }
+
+  &__description {
+    border-bottom: 1px solid $main;
+    margin-bottom: 24px;
+  }
+
+  &__fullname {
+    margin-bottom: 12px;
+  }
+}

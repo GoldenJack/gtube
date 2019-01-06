@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import * as T from 'prop-types';
 import { routes } from 'constants/routes';
 import bemHelper from 'utils/bem-helper';
@@ -14,20 +14,35 @@ class Sidebar extends Component {
   }
 
   render() {
-    const { showMenu } = this.props;
-    const { main, library } = routes;
+    const { showMenu, readyAuth } = this.props;
+    const { auth, guest } = routes;
     const toggleClass = showMenu ? 'visible' : 'hidden';
 
     return (
       <div {...cn('', toggleClass)}>
-        <Docket
-          title={main.title}
-          list={main.menu}
-        />
-        <Docket
-          title={library.title}
-          list={library.menu}
-        />
+        {readyAuth ? (
+          <Fragment>
+            <Docket
+              title={auth.main.title}
+              list={auth.main.menu}
+            />
+            <Docket
+              title={auth.library.title}
+              list={auth.library.menu}
+            />
+          </Fragment>
+        ) : (
+          <Fragment>
+            <Docket
+              title={guest.main.title}
+              list={guest.main.menu}
+            />
+            <Docket
+              title={guest.library.title}
+              list={guest.library.menu}
+            />
+          </Fragment>
+        )}
       </div>
     );
   }

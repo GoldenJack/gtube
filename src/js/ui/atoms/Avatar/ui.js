@@ -5,8 +5,8 @@ import './style.scss';
 
 const cn = bemHelper('avatar');
 
-const Avatar = ({ avatar, mix, size }) => (
-  <div {...cn('', size, mix)}>
+const Avatar = ({ avatar, mix, size, effect }) => (
+  <div {...cn('', size, mix)} role="none" onClick={effect}>
     <img
       {...cn('image')}
       src={avatar}
@@ -18,18 +18,20 @@ const Avatar = ({ avatar, mix, size }) => (
 Avatar.propTypes = {
   avatar: T.string.isRequired,
   mix: T.string,
+  effect: T.func,
   size: T.oneOf([
     'tiny',
     'small',
     'medium',
     'large',
     'extra-large'
-  ])
+  ]),
 };
 
 Avatar.defaultProps = {
   mix: '',
-  size: 'medium'
+  size: 'medium',
+  effect: null
 };
 
 export default Avatar;
