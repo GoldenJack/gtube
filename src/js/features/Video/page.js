@@ -51,10 +51,14 @@ class Video extends Component {
 }
 
 Video.propTypes = {
-  video: T.any.isRequired,
+  video: T.any,
   videoId: T.string.isRequired,
   readyVideo: T.bool.isRequired,
   getVideo: T.func.isRequired
+};
+
+Video.defaultProps = {
+  video: false
 };
 
 export default Video;

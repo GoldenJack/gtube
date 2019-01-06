@@ -4,36 +4,37 @@ import bemHelper from 'utils/bem-helper';
 
 import WithPreloader from 'molecules/WithPreloader';
 import Category from 'organisms/Category';
+import VideoItem from 'molecules/VideoItem';
 
 const cn = bemHelper('search-page');
 
 class SearchPage extends Component {
-  componentDidMount() {
-    // const {
-    //   accessToken,
-    //   readyAuth,
-    //   readyLiked,
-    //   getLikedVideos
-    // } = this.props;
-    // readyAuth && !readyLiked && getLikedVideos(accessToken);
+  sortResults = category => {
+    const { searchResult } = this.props;
+
+    const result = searchResult.items.filter(({ id: { kind } }) => {
+      return kind.split('#')[1] === category;
+    });
+
+    return result;
   }
 
-  componentDidUpdate(prevProps) {
-    // const {
-    //   accessToken,
-    //   readyAuth,
-    //   readyLiked,
-    //   getLikedVideos
-    // } = this.props;
-
-    // if (prevProps.readyAuth !== readyAuth && prevProps.readyLiked !== !readyLiked) {
-    //   readyAuth && !readyLiked && getLikedVideos(accessToken);
-    // }
-  }
+  _renderVideos = videos => {
+    return videos.map(video => {
+      return (
+        <VideoItem
+          mix={cn('video-item').className}
+          key={video.id}
+          video={video}
+        />
+      );
+    });
+  };
 
   _renderContent = () => {
     const { searchResult } = this.props;
     if (searchResult) {
+      const videos = this.sortResults('video');
       const {
         items,
         pageInfo: {
@@ -44,9 +45,9 @@ class SearchPage extends Component {
         <Category
           title={`По вашему запросу найдено: ${totalResults} видеозаписей`}
           description={`В целях производительности отображено: ${items.length}`}
-          videos={items}
-          withoutStat
-        />
+        >
+          {this._renderVideos(videos)}
+        </Category>
       );
     } else {
       return (
@@ -71,7 +72,13 @@ class SearchPage extends Component {
 }
 
 SearchPage.propTypes = {
-  searchResult: T.any.isRequired
+  searchQuery: T.string.isRequired,
+  searchResult: T.any,
+  searchReady: T.bool.isRequired
+};
+
+SearchPage.defaultProps = {
+  searchResult: false
 };
 
 export default SearchPage;

@@ -5,7 +5,7 @@ import './style.scss';
 
 import Preview from 'atoms/Preview';
 import Link from 'atoms/Link';
-import Views from 'atoms/Views';
+// import Views from 'atoms/Views';
 
 const cn = bemHelper('video-item');
 
@@ -18,7 +18,6 @@ class VideoItem extends Component {
     const {
       mix,
       shape,
-      withoutStat,
       video: {
         id,
         snippet: {
@@ -47,9 +46,9 @@ class VideoItem extends Component {
               text={channelTitle}
             />
             <div {...cn('description-wrap')}>
-              {!withoutStat && (
-                <Views viewCount={this.props.video.statistics.viewCount} mix={cn('views').className} />
-              )}
+              {/* {viewCount && (
+                <Views viewCount={viewCount} mix={cn('views').className} />
+              )} */}
               {/* <p {...cn('date-published')}>2 days ago</p> */}
             </div>
           </div>

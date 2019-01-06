@@ -53,7 +53,7 @@ Default.propTypes = {
   showMenu: T.bool.isRequired,
   isMobile: T.bool.isRequired,
   toggleShow: T.func.isRequired,
-  searchQuery: T.func.isRequired,
+  searchQuery: T.string.isRequired,
   changeSearch: T.func.isRequired,
   getSearch: T.func.isRequired
 };
