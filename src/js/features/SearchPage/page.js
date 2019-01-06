@@ -19,6 +19,16 @@ class SearchPage extends Component {
     return result;
   }
 
+  sortVideos = videos => {
+    const result = videos.map(item => {
+      return {
+        ...item,
+        id: item.id.videoId
+      };
+    });
+    return result;
+  }
+
   _renderVideos = videos => {
     return videos.map(video => {
       return (
@@ -34,7 +44,7 @@ class SearchPage extends Component {
   _renderContent = () => {
     const { searchResult } = this.props;
     if (searchResult) {
-      const videos = this.sortResults('video');
+      const videos = this.sortVideos(this.sortResults('video'));
       const {
         items,
         pageInfo: {
