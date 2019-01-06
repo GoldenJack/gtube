@@ -18,6 +18,7 @@ class VideoItem extends Component {
     const {
       mix,
       shape,
+      withoutStat,
       video: {
         id,
         snippet: {
@@ -25,9 +26,6 @@ class VideoItem extends Component {
           thumbnails,
           channelTitle
         },
-        statistics: {
-          viewCount
-        }
       }
     } = this.props;
 
@@ -49,7 +47,9 @@ class VideoItem extends Component {
               text={channelTitle}
             />
             <div {...cn('description-wrap')}>
-              <Views viewCount={viewCount} mix={cn('views').className} />
+              {!withoutStat && (
+                <Views viewCount={this.props.video.statistics.viewCount} mix={cn('views').className} />
+              )}
               {/* <p {...cn('date-published')}>2 days ago</p> */}
             </div>
           </div>

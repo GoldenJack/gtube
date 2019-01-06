@@ -20,6 +20,14 @@ export const api = {
         .catch(err => err);
     }
   },
+  search: {
+    getList: query => {
+      return request
+        .get(`${depoint}/search?part=snippet&maxResults=10&q=${query}&key=${API_KEY}`)
+        .then(res => res)
+        .catch(err => err);
+    }
+  },
   videos: {
     getVideo: videoId => {
       return request

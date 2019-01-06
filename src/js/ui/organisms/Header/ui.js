@@ -16,12 +16,20 @@ const Header = ({
   mix,
   toggleShow,
   signIn,
-  userInfo
+  userInfo,
+  getSearch,
+  searchQuery,
+  changeSearch
 }) => (
   <div {...cn('', '', mix)}>
     <Burger mix={cn('icon-menu').className} toggleShow={toggleShow} />
     <Logo />
-    <Search mix={cn('search').className} />
+    <Search
+      mix={cn('search').className}
+      changeSearch={changeSearch}
+      getSearch={getSearch}
+      searchQuery={searchQuery}
+    />
     <Icon mix={cn('icon-upload').className} icon="img/icons/upload.svg" />
     <Icon mix={cn('icon-notification').className} icon="img/icons/notification.svg" />
     <Fragment>
@@ -38,7 +46,10 @@ Header.propTypes = {
   mix: T.string,
   toggleShow: T.func.isRequired,
   signIn: T.func.isRequired,
-  userInfo: T.object
+  userInfo: T.object,
+  getSearch: T.func.isRequired,
+  searchQuery: T.string.isRequired,
+  changeSearch: T.func.isRequired
 };
 
 Header.defaultProps = {

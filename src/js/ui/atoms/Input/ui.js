@@ -6,26 +6,27 @@ import './style.scss';
 const cn = bemHelper('input');
 
 class Input extends Component {
-  state = {
-    value: ''
+  handleChange = e => {
+    const { onFieldChange } = this.props;
+    onFieldChange(e.currentTarget.value);
   }
 
-  handleChange = e => {
-    this.setState({
-      value: e.currentTarget.value
-    });
+  handleEnter = e => {
+    const { onEnter } = this.props;
+    const that = e.currentTarget;
+    e.keyCode === 13 && onEnter(that.value);
   }
 
   render() {
-    const { type, mix } = this.props;
-    const { value } = this.state;
-
+    const { type, mix, onFocus, value } = this.props;
     return (
       <input
         {...cn('', '', mix)}
         type={type}
         value={value}
         onChange={this.handleChange}
+        onFocus={onFocus}
+        onKeyDown={this.handleEnter}
         placeholder="Search..."
       />
     );
@@ -34,11 +35,17 @@ class Input extends Component {
 
 Input.propTypes = {
   mix: T.string,
-  type: T.string.isRequired
+  type: T.string.isRequired,
+  onFocus: T.func,
+  onEnter: T.func,
+  value: T.string.isRequired,
+  onFieldChange: T.func.isRequired
 };
 
 Input.defaultProps = {
-  mix: ''
+  mix: '',
+  onFocus: null,
+  onEnter: null
 };
 
 export default Input;

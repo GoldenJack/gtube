@@ -10,6 +10,8 @@ import Trending from 'features/Trending';
 import Video from 'features/Video';
 import Liked from 'features/Liked';
 
+import SearchPage from 'features/SearchPage';
+
 import { store } from './store/configureStore';
 
 ReactDOM.render(
@@ -22,6 +24,8 @@ ReactDOM.render(
           <Route path="/liked" component={Liked} />
 
           <Route path="/watch/:videoId" component={Video} />
+
+          <Route path="/search" component={SearchPage} />
         </Layout>
       </Switch>
     </HashRouter>
