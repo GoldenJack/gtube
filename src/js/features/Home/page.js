@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as T from 'prop-types';
 import bemHelper from 'utils/bem-helper';
+import { sortVideos } from 'utils/helper';
 import './style.scss';
 
 import Category from 'organisms/Category';
@@ -10,29 +11,31 @@ const cn = bemHelper('home');
 
 class Home extends Component {
   componentDidMount() {
-    const { getVideoGategories, readyCategory, readyAuth, accessToken } = this.props;
-    !readyCategory && getVideoGategories();
+    const { getHomeData, readyHome } = this.props;
+    !readyHome && getHomeData();
   }
 
-  _renderCategories = () => {
-    const { categories } = this.props;
-    return categories.items.map(({ id, snippet: { title } }) => (
-      <Category
-        key={id}
-        title={title}
-        // description="Original Music Videos featuring music written and produced by Name Namevich"
-        // videos={[1, 2, 3, 4, 5]}
-      />
-    ));
+  _renderContent = () => {
+    const { home } = this.props;
+    return home.map(({ titleTopic, topic: { items } }) => {
+      const videos = sortVideos(items);
+      return (
+        <Category
+          key={titleTopic}
+          title={titleTopic}
+          description={titleTopic}
+          videos={videos}
+        />
+      );
+    });
   }
 
   render() {
-    const { readyCategory } = this.props;
-
+    const { readyHome } = this.props;
     return (
       <div {...cn()}>
-        <WithPreloader readyContent={readyCategory}>
-          { readyCategory && this._renderCategories() }
+        <WithPreloader readyContent={readyHome}>
+          { readyHome && this._renderContent() }
         </WithPreloader>
       </div>
     );
@@ -40,15 +43,13 @@ class Home extends Component {
 }
 
 Home.propTypes = {
-  getVideoGategories: T.func.isRequired,
-  accessToken: T.string,
-  readyCategory: T.bool.isRequired,
-  categories: T.object
+  getHomeData: T.func.isRequired,
+  readyHome: T.bool.isRequired,
+  home: T.any
 };
 
 Home.defaultProps = {
-  accessToken: '',
-  categories: {}
+  home: null
 };
 
 export default Home;

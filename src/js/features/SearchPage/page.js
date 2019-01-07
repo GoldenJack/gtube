@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as T from 'prop-types';
 import bemHelper from 'utils/bem-helper';
+import { sortVideos } from 'utils/helper';
 
 import WithPreloader from 'molecules/WithPreloader';
 import Category from 'organisms/Category';
@@ -19,16 +20,6 @@ class SearchPage extends Component {
     return result;
   }
 
-  sortVideos = videos => {
-    const result = videos.map(item => {
-      return {
-        ...item,
-        id: item.id.videoId
-      };
-    });
-    return result;
-  }
-
   _renderVideos = videos => {
     return videos.map(video => {
       return (
@@ -44,7 +35,7 @@ class SearchPage extends Component {
   _renderContent = () => {
     const { searchResult } = this.props;
     if (searchResult) {
-      const videos = this.sortVideos(this.sortResults('video'));
+      const videos = sortVideos(this.sortResults('video'));
       const {
         items,
         pageInfo: {

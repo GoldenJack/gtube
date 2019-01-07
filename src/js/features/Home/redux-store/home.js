@@ -1,19 +1,21 @@
-import { GET, SUCCESS, FAIL } from 'constants/common';
+import { SUCCESS, FAIL } from 'constants/common';
 import { api } from 'store/api';
+import { topic } from 'constants/topic';
+import { getRandomTopic } from 'utils/helper';
 
-const CATEGORIES = 'CATEGORIES';
+const HOME = 'HOME';
 
 const initialState = {
-  categories: {},
-  readyCategory: false,
+  home: null,
+  readyHome: false,
   error: null
 };
 
 export default (home = initialState, { type, data }) => {
   switch (type) {
-    case GET + CATEGORIES + SUCCESS:
-      return { ...home, categories: data, readyCategory: true };
-    case GET + CATEGORIES + FAIL:
+    case HOME + SUCCESS:
+      return { ...home, home: data, readyHome: true };
+    case HOME + FAIL:
       return { ...home, error: data };
 
     default:
@@ -21,14 +23,20 @@ export default (home = initialState, { type, data }) => {
   }
 };
 
-export const getVideoGategories = () => async dispatch => {
-  await api.videoCategories.getList()
-    .then(res => {
-      const data = JSON.parse(res.text);
-      dispatch({ type: GET + CATEGORIES + SUCCESS, data });
+export const getHomeData = () => async dispatch => {
+  const randomTopic = getRandomTopic(topic);
+  Promise.all(randomTopic.map(({ topicId, title }) => api.search.getTopic(topicId, title)))
+    .then(response => {
+      const data = response.map(({ res, titleTopic }) => {
+        return {
+          topic: JSON.parse(res.text),
+          titleTopic
+        };
+      });
+      dispatch({ type: HOME + SUCCESS, data });
     })
-    .catch(res => {
-      const err = res.error;
-      dispatch({ type: GET + CATEGORIES + SUCCESS, data: err, readyCategory: false });
+    .catch(response => {
+      const err = response.error;
+      dispatch({ type: HOME + SUCCESS, data: err });
     });
 };

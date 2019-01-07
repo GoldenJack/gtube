@@ -26,6 +26,17 @@ export const api = {
         .get(`${depoint}/search?part=snippet&maxResults=25&q=${query}&key=${API_KEY}`)
         .then(res => res)
         .catch(err => err);
+    },
+    getTopic: (topicId, title) => {
+      return request
+        .get(`${depoint}/search?part=snippet&maxResults=10&order=date&topicId=${topicId}&q=&key=${API_KEY}`)
+        .then(res => {
+          return {
+            res,
+            titleTopic: title
+          };
+        })
+        .catch(err => err);
     }
   },
   videos: {
