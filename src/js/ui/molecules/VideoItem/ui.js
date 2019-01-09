@@ -63,7 +63,8 @@ VideoItem.propTypes = {
   video: T.object.isRequired,
   shape: T.oneOf([
     'full',
-    'standart'
+    'standart',
+    'slider'
   ])
 };
 
