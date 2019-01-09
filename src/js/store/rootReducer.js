@@ -5,12 +5,14 @@ import Trending from 'features/Trending/redux-store';
 import Liked from 'features/Liked/redux-store';
 import Video from 'features/Video/redux-store';
 import Search from 'features/SearchPage/redux-store';
+import Subscriptions from 'features/Subscriptions/redux-store';
 
 export default combineReducers({
   Auth,
   Home,
   Trending,
   Liked,
+  Subscriptions,
   Video,
   Search
 });

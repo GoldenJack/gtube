@@ -5,10 +5,10 @@ const depoint = 'https://www.googleapis.com/youtube/v3';
 
 export const api = {
   channels: {
-    getList: () => {
-      request
+    getUserChannel: accessToken => {
+      return request
         .get(`${depoint}/channels?part=contentDetails&mine=true&key=${API_KEY}`)
-        // .set('Authorization', `Bearer ${accessToken}`)
+        .set('Authorization', `Bearer ${accessToken}`)
         .then(res => res)
         .catch(err => err);
     },
@@ -16,6 +16,15 @@ export const api = {
       return request
         .get(`${depoint}/channels?part=snippet%2CcontentDetails%2Cstatistics&id=UCBR8-60-B28hp2BmDPdntcQ&key=${API_KEY}`)
         // .set('Authorization', `Bearer ${accessToken}`)
+        .then(res => res)
+        .catch(err => err);
+    }
+  },
+  subscriptions: {
+    getUserSubscriptions: (accessToken, channelId) => {
+      return request
+        .get(`${depoint}/subscriptions?part=snippet,contentDetails&channelId=${channelId}&key=${API_KEY}`)
+        .set('Authorization', `Bearer ${accessToken}`)
         .then(res => res)
         .catch(err => err);
     }

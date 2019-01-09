@@ -8,7 +8,9 @@ import Layout from 'features/Layout';
 import Home from 'features/Home';
 import Trending from 'features/Trending';
 import Video from 'features/Video';
+
 import Liked from 'features/Liked';
+import Subscriptions from 'features/Subscriptions';
 
 import SearchPage from 'features/SearchPage';
 
@@ -21,11 +23,12 @@ ReactDOM.render(
         <Layout>
           <Route exact path="/" component={Home} />
           <Route path="/trending" component={Trending} />
+          <Route path="/search" component={SearchPage} />
+
           <Route path="/liked" component={Liked} />
+          <Route path="/subscriptions" component={Subscriptions} />
 
           <Route path="/watch/:videoId" component={Video} />
-
-          <Route path="/search" component={SearchPage} />
         </Layout>
       </Switch>
     </HashRouter>

@@ -1,6 +1,7 @@
 import { SUCCESS, FAIL } from 'constants/common';
 import { parseJwt } from 'utils/parseJwt';
 import { API_INIT } from 'config';
+import { api } from 'store/api';
 
 const SIGNIN = 'SIGNIN';
 const LOGOUT = 'LOGOUT';
@@ -82,19 +83,38 @@ export const signIn = () => (dispatch, getState) => {
       const tokenGoogle = googleUser.getAuthResponse().id_token;
       const accessToken = googleUser.getAuthResponse().access_token;
       const profile = googleUser.getBasicProfile();
-      const userInfo = {
-        id: parseJwt(tokenGoogle).id,
-        avatar: profile.getImageUrl(),
-        email: profile.getEmail(),
-        familyName: profile.getFamilyName(),
-        firstName: profile.getGivenName(),
-        fullName: profile.getName(),
-      };
+      api.channels.getUserChannel(accessToken)
+        .then(res => {
+          const data = JSON.parse(res.text);
+          const {
+            id,
+            contentDetails: {
+              relatedPlaylists
+            }
+          } = data.items[0];
+          const userInfo = {
+            id: parseJwt(tokenGoogle).id,
+            channelId: id,
+            relatedPlaylists,
+            avatar: profile.getImageUrl(),
+            email: profile.getEmail(),
+            familyName: profile.getFamilyName(),
+            firstName: profile.getGivenName(),
+            fullName: profile.getName(),
+          };
 
-      localStorage.setItem('accessToken', accessToken);
-      localStorage.setItem('userInfo', JSON.stringify(userInfo));
+          localStorage.setItem('accessToken', accessToken);
+          localStorage.setItem('userInfo', JSON.stringify(userInfo));
 
-      dispatch({ type: SIGNIN + SUCCESS, data: { userInfo, accessToken } });
+          dispatch({ type: SIGNIN + SUCCESS, data: { userInfo, accessToken } });
+        })
+        .catch(res => {
+          const err = JSON.parse(res.error);
+          dispatch({ type: SIGNIN + FAIL, data: err });
+        });
+    })
+    .catch(err => {
+      dispatch({ type: SIGNIN + FAIL, data: err });
     });
 };
 
