@@ -16,7 +16,8 @@
   }
 
   &__search {
-    margin: auto;
+    margin-left: 40px;
+    margin-right: auto;
   }
 
   &__icon-upload {
@@ -24,7 +25,22 @@
     margin-right: 65px;
   }
 
-  &__icon-notification {
+  &__notification {
     margin-right: 40px;
+  }
+
+  @media screen and (max-width: 575px) {
+    padding-left: 15px;
+    padding-right: 15px;
+
+    &__search {
+      margin-left: auto;
+      margin-right: 0;
+      padding-bottom: 4px;
+    }
+
+    &__notification {
+      margin-right: 16px;
+    }
   }
 }

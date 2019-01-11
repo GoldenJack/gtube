@@ -15,4 +15,10 @@
     background: #fff;
     z-index: 9999;
   }
+
+  &__icon-full {
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+  }
 }

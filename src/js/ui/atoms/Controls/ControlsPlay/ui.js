@@ -18,11 +18,11 @@ class ControlsPlay extends Component {
       <div {...cn()}>
         {!play ? (
           <div {...cn('wrap', 'played')}>
-            <Icon icon="img/icon/play.svg" effect={playVideo} />
+            <Icon icon="img/player/play.svg" effect={playVideo} />
           </div>
         ) : (
           <div {...cn('wrap', 'paused')}>
-            <Icon icon="img/icon/pause.svg" effect={pauseVideo} />
+            <Icon icon="img/player/pause.svg" effect={pauseVideo} />
           </div>
         )}
       </div>

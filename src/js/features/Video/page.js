@@ -9,9 +9,11 @@ import Player from 'organisms/Player';
 const cn = bemHelper('video');
 
 class Video extends Component {
+  wrapper = React.createRef();
+
   componentDidMount() {
-    const { getVideo, readyVideo, videoId } = this.props;
-    !readyVideo && getVideo(videoId);
+    const { getVideo, videoId } = this.props;
+    getVideo(videoId);
   }
 
   _renderVideoInfo = () => {
@@ -35,12 +37,16 @@ class Video extends Component {
       videoId,
       readyVideo
     } = this.props;
+    const { current } = this.wrapper;
+
     return (
-      <div {...cn()}>
+      <div {...cn()} ref={this.wrapper}>
         <WithPreloader readyContent={readyVideo}>
           <div {...cn('content')}>
             <div {...cn('player')}>
-              <Player videoId={videoId} />
+              {current && (
+                <Player videoId={videoId} width={current.clientWidth} />
+              )}
             </div>
             {this._renderVideoInfo()}
           </div>

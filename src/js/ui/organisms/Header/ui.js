@@ -55,10 +55,9 @@ class Header extends Component {
           searchQuery={searchQuery}
         />
         {readyAuth && (
-          <Fragment>
-            <Icon mix={cn('icon-upload').className} icon="img/icons/upload.svg" />
+          <div {...cn('notification')}>
             <Icon mix={cn('icon-notification').className} icon="img/icons/notification.svg" />
-          </Fragment>
+          </div>
         )}
         <Fragment>
           {readyAuth ? (

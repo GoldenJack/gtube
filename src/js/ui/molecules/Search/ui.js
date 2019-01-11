@@ -9,20 +9,38 @@ import Input from 'atoms/Input';
 const cn = bemHelper('search');
 
 class Search extends Component {
+  state = {
+    mobileSearchShow: false
+  }
+
   searchFocus = () => {
     // TODO: FIXED THAT
     // const { history } = this.props;
     window.location.href = '#/search';
   }
 
+  toggleShowSearch = () => {
+    const { mobileSearchShow } = this.state;
+    this.setState({
+      mobileSearchShow: !mobileSearchShow
+    });
+  }
+
   render() {
     const { mix, changeSearch, searchQuery, getSearch } = this.props;
+    const { mobileSearchShow } = this.state;
+    const toggleClass = !mobileSearchShow ? 'close' : 'open';
+
     return (
-      <div {...cn('', '', mix)}>
-        <Icon mix={cn('icon').className} icon="img/icons/search.svg" />
+      <div {...cn('', toggleClass, mix)}>
+        <Icon
+          mix={cn('icon').className}
+          icon="img/icons/search.svg"
+          effect={this.toggleShowSearch}
+        />
         <Input
           type="text"
-          mix={cn('search').className}
+          mix={cn('input').className}
           value={searchQuery}
           onFieldChange={changeSearch}
           onEnter={getSearch}
