@@ -4,7 +4,7 @@ import { api } from 'store/api';
 const LIKED = 'LIKED';
 
 const initialState = {
-  videosLiked: null,
+  videosLiked: {},
   readyLiked: false,
   error: null
 };

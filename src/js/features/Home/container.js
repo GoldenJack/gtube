@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
   getHomeData
-} from './redux-store/home';
+} from './redux-store';
 import Page from './page';
 
 const mapStateToProps = (state) => {

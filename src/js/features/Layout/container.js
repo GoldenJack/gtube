@@ -4,7 +4,7 @@ import {
   initGoogleApi,
   signIn,
   logout
-} from 'features/Auth/redux-store/auth';
+} from 'features/Auth/redux-store';
 import {
   changeSearch,
   getSearch

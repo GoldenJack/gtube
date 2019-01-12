@@ -5,7 +5,6 @@ import { sortVideos } from 'utils/helper';
 import './style.scss';
 
 import Category from 'organisms/Category';
-// import Slider from 'organisms/Slider';
 import WithPreloader from 'molecules/WithPreloader';
 
 const cn = bemHelper('home');
@@ -27,14 +26,6 @@ class Home extends Component {
           description={titleTopic}
           videos={videos}
         />
-
-        // <Slider
-        //   key={titleTopic}
-        //   typeSlider="videos"
-        //   title={titleTopic}
-        //   description={titleTopic}
-        //   videos={videos}
-        // />
       );
     });
   }
@@ -44,7 +35,7 @@ class Home extends Component {
     return (
       <div {...cn()}>
         <WithPreloader readyContent={readyHome}>
-          { readyHome && this._renderContent() }
+          {readyHome && this._renderContent() }
         </WithPreloader>
       </div>
     );

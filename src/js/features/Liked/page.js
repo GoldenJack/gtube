@@ -28,29 +28,21 @@ class Video extends Component {
     }
   }
 
-  _renderContent = () => {
-    const { videosLiked } = this.props;
-    if (videosLiked) {
-      const { items } = videosLiked;
-      return (
-        <Category
-          title="Liked"
-          description="Liked u videos"
-          videos={items}
-        />
-      );
-    } else {
-      return (
-        <p>Loading a videos</p>
-      );
-    }
-  }
-
   render() {
-    const { readyLiked } = this.props;
+    const {
+      readyLiked,
+      videosLiked: { items = false }
+    } = this.props;
+
     return (
       <WithPreloader readyContent={readyLiked}>
-        {this._renderContent()}
+        {items && (
+          <Category
+            title="Liked"
+            description="Liked u videos"
+            videos={items}
+          />
+        )}
       </WithPreloader>
     );
   }
