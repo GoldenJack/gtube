@@ -24,7 +24,7 @@ class Video extends Component {
     } = this.props;
 
     if (prevProps.readyAuth !== readyAuth && prevProps.readyLiked !== !readyLiked) {
-      readyAuth && !readyLiked && getLikedVideos(accessToken);
+      getLikedVideos(accessToken);
     }
   }
 

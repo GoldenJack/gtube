@@ -6,7 +6,7 @@ const TRENDING = 'TRENDING';
 const initialState = {
   trending: {},
   readyTrending: false,
-  error: null
+  error: false
 };
 
 export default (trending = initialState, { type, data }) => {

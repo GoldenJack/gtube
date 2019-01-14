@@ -32,10 +32,7 @@ class Trending extends Component {
 Trending.propTypes = {
   readyTrending: T.bool.isRequired,
   getTrendingVideos: T.func.isRequired,
-  trending: T.oneOfType([
-    T.object,
-    T.array
-  ]).isRequired
+  trending: T.object.isRequired
 };
 
 export default Trending;

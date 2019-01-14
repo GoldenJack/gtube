@@ -9,10 +9,12 @@ class Subscriptions extends Component {
       accessToken,
       getSubscriptions,
       readySub,
-      userInfo,
+      userInfo: {
+        channelId = false
+      },
       readyAuth
     } = this.props;
-    !readySub && readyAuth && getSubscriptions(accessToken);
+    !readySub && readyAuth && getSubscriptions(accessToken, channelId);
   }
 
   componentDidUpdate(prevProps) {
@@ -21,7 +23,7 @@ class Subscriptions extends Component {
       getSubscriptions,
       readySub,
       userInfo: {
-        channelId
+        channelId = false
       },
       readyAuth
     } = this.props;
@@ -31,8 +33,8 @@ class Subscriptions extends Component {
   }
 
   _renderSubs = () => {
-    const { subscriptions } = this.props;
-    if (subscriptions) {
+    const { readySub } = this.props;
+    if (readySub) {
       const { subscriptions: { items } } = this.props;
       return items.map(({
         snippet: {
@@ -65,11 +67,13 @@ Subscriptions.propTypes = {
   subscriptions: T.object,
   accessToken: T.string.isRequired,
   getSubscriptions: T.func.isRequired,
-  readySub: T.bool.isRequired
+  readySub: T.bool.isRequired,
+  userInfo: T.object.isRequired,
+  readyAuth: T.bool.isRequired
 };
 
 Subscriptions.defaultProps = {
-  subscriptions: false
+  subscriptions: {}
 };
 
 export default Subscriptions;

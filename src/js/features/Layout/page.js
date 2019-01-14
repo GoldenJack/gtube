@@ -10,6 +10,13 @@ class Layout extends Component {
     !googleApi && initGoogleApi();
   }
 
+  componentDidUpdate(prevProps) {
+    const { googleApi, initGoogleApi } = this.props;
+    if (prevProps.googleApi !== googleApi) {
+      initGoogleApi();
+    }
+  }
+
   render() {
     const { ...props } = this.props;
     return (

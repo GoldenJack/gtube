@@ -6,7 +6,7 @@ const LIKED = 'LIKED';
 const initialState = {
   videosLiked: {},
   readyLiked: false,
-  error: null
+  error: false
 };
 
 export default (likedStore = initialState, { type, data }) => {
@@ -27,8 +27,7 @@ export const getLikedVideos = accessToken => async dispatch => {
       const data = JSON.parse(res.text);
       dispatch({ type: GET + LIKED + SUCCESS, data });
     })
-    .catch(res => {
-      const err = res.error;
+    .catch(err => {
       dispatch({ type: GET + LIKED + FAIL, data: err });
     });
 };

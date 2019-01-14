@@ -7,6 +7,7 @@ import Icon from 'atoms/Icon';
 import Volume from 'atoms/Controls/Volume';
 import Progress from 'atoms/Progress';
 import ControlsPlay from 'atoms/Controls/ControlsPlay';
+import Link from 'react-router-dom';
 
 const cn = bemHelper('player');
 const { YT } = window;
@@ -134,6 +135,9 @@ class Player extends Component {
             playVideo={this.onPlayVideo}
             pauseVideo={this.onPauseVideo}
           />
+          {/* <div {...cn('video-data')}>
+            <Link to
+          </div> */}
           <Volume setVolume={this.onSetVolume} />
           <Icon
             icon="img/player/full.svg"

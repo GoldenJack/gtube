@@ -11,7 +11,7 @@ const initialState = {
   googleApi: null,
   googleApiError: null,
   accessToken: null,
-  userInfo: null,
+  userInfo: {},
   authError: null,
   readyAuth: false
 };

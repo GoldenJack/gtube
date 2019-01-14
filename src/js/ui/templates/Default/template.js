@@ -6,6 +6,7 @@ import './style.scss';
 
 import Header from 'organisms/Header';
 import Sidebar from 'organisms/Sidebar';
+// import ErrorBoundary from 'organisms/ErrorBoundary';
 
 const cn = bemHelper('default-template');
 

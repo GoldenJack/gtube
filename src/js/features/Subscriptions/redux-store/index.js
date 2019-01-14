@@ -1,20 +1,22 @@
-import { GET, SUCCESS, FAIL } from 'constants/common';
+import { GET, START, SUCCESS, FAIL } from 'constants/common';
 import { api } from 'store/api';
 
 const SUBSCRIPTIONS = 'SUBSCRIPTIONS';
 
 const initialState = {
-  subscriptions: null,
+  subscriptions: {},
   readySub: false,
-  error: null
+  error: false
 };
 
 export default (subStore = initialState, { type, data }) => {
   switch (type) {
+    case GET + SUBSCRIPTIONS + START:
+      return { ...initialState };
     case GET + SUBSCRIPTIONS + SUCCESS:
       return { ...subStore, subscriptions: data, readySub: true };
     case GET + SUBSCRIPTIONS + FAIL:
-      return { ...subStore };
+      return { ...subStore, error: data };
 
     default:
       return subStore;
