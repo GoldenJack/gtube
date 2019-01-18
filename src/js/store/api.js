@@ -17,12 +17,12 @@ export const api = {
         .then(res => res)
         .catch(err => err);
     },
-    getItem: () => {
+    getItem: channelId => {
       return request
         .get(`${depoint}/channels`)
         .query({
           part: 'snippet,contentDetails,statistics',
-          id: 'UCBR8-60-B28hp2BmDPdntc',
+          id: channelId,
           key: API_KEY
         })
         .then(res => res)

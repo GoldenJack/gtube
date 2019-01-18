@@ -8,6 +8,7 @@ import Layout from 'features/Layout';
 import Home from 'features/Home';
 import Trending from 'features/Trending';
 import Video from 'features/Video';
+import Channel from 'features/Channel';
 
 import Liked from 'features/Liked';
 import Subscriptions from 'features/Subscriptions';
@@ -29,6 +30,7 @@ ReactDOM.render(
           <Route path="/subscriptions" component={Subscriptions} />
 
           <Route path="/watch/:videoId" component={Video} />
+          <Route path="/channel/:channelId" component={Channel} />
         </Layout>
       </Switch>
     </HashRouter>
