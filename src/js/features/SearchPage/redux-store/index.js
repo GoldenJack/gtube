@@ -2,7 +2,7 @@ import { GET, SUCCESS, FAIL, START } from 'constants/common';
 import { api } from 'store/api';
 
 const SEARCH = 'SEARCH';
-const CHANGE = 'CHANGE';
+const CHANGE = 'CHANGE_';
 
 const initialState = {
   searchQuery: '',
@@ -13,7 +13,7 @@ const initialState = {
 
 export default (searchStore = initialState, { type, data }) => {
   switch (type) {
-    case CHANGE + SEARCH + SUCCESS:
+    case CHANGE + SEARCH:
       return { ...searchStore, searchQuery: data };
 
     case GET + SEARCH + START:
@@ -31,12 +31,8 @@ export default (searchStore = initialState, { type, data }) => {
   }
 };
 
-export const changeSearch = searchQuery => dispatch => {
-  dispatch({ type: GET + SEARCH + START });
-  dispatch({ type: CHANGE + SEARCH + SUCCESS, data: searchQuery });
-};
-
-export const getSearch = searchQuery => (dispatch) => {
+export const getSearchList = searchQuery => dispatch => {
+  dispatch({ type: CHANGE + SEARCH, data: searchQuery });
   api.search.getList(searchQuery)
     .then(res => {
       const data = JSON.parse(res.text);

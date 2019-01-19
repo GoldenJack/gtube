@@ -37,9 +37,8 @@ class Header extends Component {
       toggleShow,
       signIn,
       userInfo,
-      getSearch,
       searchQuery,
-      changeSearch,
+      getSearchList,
       readyAuth
     } = this.props;
     const { showUserInfo } = this.state;
@@ -50,8 +49,7 @@ class Header extends Component {
         <Logo />
         <Search
           mix={cn('search').className}
-          changeSearch={changeSearch}
-          getSearch={getSearch}
+          getSearchList={getSearchList}
           searchQuery={searchQuery}
         />
         {readyAuth && (
@@ -74,7 +72,7 @@ class Header extends Component {
           )}
         </Fragment>
       </div>
-    )
+    );
   }
 }
 
@@ -83,10 +81,9 @@ Header.propTypes = {
   toggleShow: T.func.isRequired,
   signIn: T.func.isRequired,
   userInfo: T.object,
-  getSearch: T.func.isRequired,
   logout: T.func.isRequired,
   searchQuery: T.string.isRequired,
-  changeSearch: T.func.isRequired,
+  getSearchList: T.func.isRequired,
   readyAuth: T.bool.isRequired
 };
 

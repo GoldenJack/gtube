@@ -27,7 +27,7 @@ class Search extends Component {
   }
 
   render() {
-    const { mix, changeSearch, searchQuery, getSearch } = this.props;
+    const { mix, getSearchList, searchQuery } = this.props;
     const { mobileSearchShow } = this.state;
     const toggleClass = !mobileSearchShow ? 'close' : 'open';
 
@@ -42,20 +42,18 @@ class Search extends Component {
           type="text"
           mix={cn('input').className}
           value={searchQuery}
-          onFieldChange={changeSearch}
-          onEnter={getSearch}
+          onFieldChange={getSearchList}
           onFocus={this.searchFocus}
         />
       </div>
-    )
+    );
   }
 }
 
 Search.propTypes = {
   mix: T.string,
   searchQuery: T.string.isRequired,
-  changeSearch: T.func.isRequired,
-  getSearch: T.func.isRequired
+  getSearchList: T.func.isRequired
 };
 
 Search.defaultProps = {

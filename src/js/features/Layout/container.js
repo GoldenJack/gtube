@@ -6,8 +6,7 @@ import {
   logout
 } from 'features/Auth/redux-store';
 import {
-  changeSearch,
-  getSearch
+  getSearchList
 } from 'features/SearchPage/redux-store';
 import Page from './page';
 
@@ -40,8 +39,7 @@ const mapDispatchToProps = dispatch => {
   const actions = bindActionCreators({
     initGoogleApi,
     signIn,
-    changeSearch,
-    getSearch,
+    getSearchList,
     logout
   }, dispatch);
   return { ...actions };

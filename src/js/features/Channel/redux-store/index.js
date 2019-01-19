@@ -26,7 +26,6 @@ export const getChannel = channelId => async dispatch => {
     dispatch({ type: GET + CHANNEL + START })
     const res = await api.channels.getItem(channelId);
     dispatch({ type: GET + CHANNEL + SUCCESS, data: res });
-    console.log(res)
   } catch (err) {
     console.log(err)
   }

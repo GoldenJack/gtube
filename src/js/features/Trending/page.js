@@ -5,7 +5,7 @@ import bemHelper from 'utils/bem-helper';
 import WithPreloader from 'molecules/WithPreloader';
 import Category from 'organisms/Category';
 
-const cn = bemHelper('home');
+const cn = bemHelper('trending');
 
 class Trending extends Component {
   componentDidMount() {

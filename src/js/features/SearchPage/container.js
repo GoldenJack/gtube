@@ -1,8 +1,4 @@
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import {
-  getSearch
-} from './redux-store';
 import Page from './page';
 
 const mapStateToProps = (state) => {
@@ -11,14 +7,7 @@ const mapStateToProps = (state) => {
   } = state.Search;
   return {
     ...props
-  }
+  };
 };
 
-const mapDispatchToProps = dispatch => {
-  const actions = bindActionCreators({
-    getSearch
-  }, dispatch);
-  return { ...actions };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Page);
+export default connect(mapStateToProps, null)(Page);

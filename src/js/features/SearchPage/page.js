@@ -58,12 +58,9 @@ class SearchPage extends Component {
   }
 
   render() {
-    const { searchQuery, searchReady } = this.props;
+    const { searchReady } = this.props;
     return (
       <div {...cn()}>
-        <div {...cn('info')}>
-          <h3 {...cn('title-query')}>Мы ищем: {searchQuery}</h3>
-        </div>
         <WithPreloader readyContent={searchReady}>
           {this._renderContent()}
         </WithPreloader>

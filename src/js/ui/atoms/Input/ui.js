@@ -14,7 +14,9 @@ class Input extends Component {
   handleEnter = e => {
     const { onEnter } = this.props;
     const that = e.currentTarget;
-    e.keyCode === 13 && onEnter(that.value);
+    e.keyCode === 13 && onEnter
+      ? onEnter(that.value)
+      : false;
   }
 
   render() {
