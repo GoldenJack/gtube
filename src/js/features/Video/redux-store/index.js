@@ -4,7 +4,7 @@ import { api } from 'store/api';
 const VIDEO = 'VIDEO';
 
 const initialState = {
-  video: null,
+  video: {},
   readyVideo: false,
   error: null
 };

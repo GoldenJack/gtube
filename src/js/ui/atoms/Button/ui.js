@@ -12,16 +12,16 @@ const Button = ({ mix, type, effect, text }) => (
 );
 
 Button.propTypes = {
+  mix: T.string,
   text: T.string.isRequired,
   type: T.string,
-  effect: T.func,
-  mix: T.string
+  effect: T.func
 };
 
 Button.defaultProps = {
+  mix: '',
   effect: null,
-  type: 'pink',
-  mix: ''
+  type: 'pink'
 };
 
 export default Button;

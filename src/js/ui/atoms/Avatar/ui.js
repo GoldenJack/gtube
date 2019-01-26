@@ -16,8 +16,8 @@ const Avatar = ({ avatar, mix, size, effect }) => (
 );
 
 Avatar.propTypes = {
-  avatar: T.string.isRequired,
   mix: T.string,
+  avatar: T.string,
   effect: T.func,
   size: T.oneOf([
     'tiny',
@@ -30,6 +30,7 @@ Avatar.propTypes = {
 
 Avatar.defaultProps = {
   mix: '',
+  avatar: 'img/no-avatar.png',
   size: 'medium',
   effect: null
 };

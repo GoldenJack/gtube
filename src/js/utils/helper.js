@@ -2,6 +2,10 @@ const getRandomProperty = obj => {
   return Math.floor(Math.random() * obj.length);
 };
 
+export const getCountView = number => {
+  return number && number.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1,');
+};
+
 
 /**
  * special functions for all project

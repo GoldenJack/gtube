@@ -6,6 +6,8 @@ import './style.scss';
 import WithPreloader from 'molecules/WithPreloader';
 import Player from 'organisms/Player';
 
+import Details from './ui/Details';
+
 const cn = bemHelper('video');
 
 class Video extends Component {
@@ -16,20 +18,36 @@ class Video extends Component {
     getVideo(videoId);
   }
 
-  _renderVideoInfo = () => {
-    const { video } = this.props;
-    if (video !== null) {
-      const { snippet: { title } } = video.items[0];
-      return (
-        <div {...cn('info')}>
-          <h4 {...cn('title')}>{title}</h4>
-        </div>
-      );
-    } else {
-      return (
-        <p>Информация загружается</p>
-      );
+  getVideoInfo = () => {
+    const { video, readyVideo } = this.props;
+    if (readyVideo) {
+      const {
+        snippet: {
+          title,
+          description,
+          channelId,
+          channelTitle
+        },
+        statistics: {
+          viewCount,
+          likeCount,
+          dislikeCount,
+          favoriteCount,
+          commentCount
+        } } = video.items[0];
+      return {
+        name: title,
+        description,
+        viewCount,
+        likeCount,
+        dislikeCount,
+        favoriteCount,
+        commentCount,
+        channelId,
+        channelTitle
+      };
     }
+    return false;
   }
 
   render() {
@@ -38,7 +56,7 @@ class Video extends Component {
       readyVideo
     } = this.props;
     const { current } = this.wrapper;
-
+    const videoInfo = this.getVideoInfo();
     return (
       <div {...cn()} ref={this.wrapper}>
         <WithPreloader readyContent={readyVideo}>
@@ -48,7 +66,12 @@ class Video extends Component {
                 <Player videoId={videoId} width={current.clientWidth} />
               )}
             </div>
-            {this._renderVideoInfo()}
+            {videoInfo && (
+              <Details
+                mix={cn('details').className}
+                videoInfo={videoInfo}
+              />
+            )}
           </div>
         </WithPreloader>
       </div>

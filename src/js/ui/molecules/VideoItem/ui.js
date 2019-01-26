@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as T from 'prop-types';
+import { getCountView } from 'utils/helper';
 import bemHelper from 'utils/bem-helper';
 import './style.scss';
 
@@ -30,6 +31,7 @@ class VideoItem extends Component {
       }
     } = this.props;
     const { viewCount = false } = statistics;
+    const views = getCountView(viewCount);
 
     const previewImage = thumbnails.medium.url;
 
@@ -50,7 +52,7 @@ class VideoItem extends Component {
             />
             <div {...cn('description-wrap')}>
               {statistics && (
-                <Views viewCount={viewCount} mix={cn('views').className} />
+                <Views viewCount={views} mix={cn('views').className} />
               )}
               {/* <p {...cn('date-published')}>2 days ago</p> */}
             </div>
