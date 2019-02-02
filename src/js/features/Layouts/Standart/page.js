@@ -4,7 +4,7 @@ import './style.scss';
 
 import Default from 'templates/Default';
 
-class Layout extends Component {
+class Standart extends Component {
   componentDidMount() {
     const { googleApi, initGoogleApi } = this.props;
     !googleApi && initGoogleApi();
@@ -25,14 +25,14 @@ class Layout extends Component {
   }
 }
 
-Layout.propTypes = {
+Standart.propTypes = {
   googleApi: T.object,
   initGoogleApi: T.func.isRequired,
   children: T.array.isRequired
 };
 
-Layout.defaultProps = {
+Standart.defaultProps = {
   googleApi: null
 };
 
-export default Layout;
+export default Standart;

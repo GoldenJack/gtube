@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { HashRouter, Switch, Route } from 'react-router-dom';
-import Layout from 'features/Layout';
+import Standart from 'features/Layouts/Standart';
 
 
 import Home from 'features/Home';
@@ -21,7 +21,7 @@ ReactDOM.render(
   <Provider store={store}>
     <HashRouter>
       <Switch>
-        <Layout>
+        <Standart>
           <Route exact path="/" component={Home} />
           <Route path="/trending" component={Trending} />
           <Route path="/search" component={SearchPage} />
@@ -31,7 +31,7 @@ ReactDOM.render(
 
           <Route path="/watch/:videoId" component={Video} />
           <Route path="/channel/:channelId" component={Channel} />
-        </Layout>
+        </Standart>
       </Switch>
     </HashRouter>
   </Provider>,

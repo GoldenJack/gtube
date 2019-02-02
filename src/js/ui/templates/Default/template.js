@@ -15,20 +15,12 @@ class Default extends Component {
     animation: ''
   }
 
-  // componentDidUpdate() {
-  //   this.setState({
-  //     animation: 'true'
-  //   });
-  // }
-
   render() {
     const {
       children,
       showMenu,
       isMobile,
       toggleShow,
-      searchQuery,
-      getSearchList,
       ...props
     } = this.props;
     const { animation } = this.state;
@@ -39,8 +31,6 @@ class Default extends Component {
         <Header
           mix={cn('header').className}
           toggleShow={toggleShow}
-          searchQuery={searchQuery}
-          getSearchList={getSearchList}
           {...props}
         />
         <div {...cn('wrap')}>
@@ -65,9 +55,7 @@ Default.propTypes = {
   children: T.array.isRequired,
   showMenu: T.bool.isRequired,
   isMobile: T.bool.isRequired,
-  toggleShow: T.func.isRequired,
-  searchQuery: T.string.isRequired,
-  getSearchList: T.func.isRequired
+  toggleShow: T.func.isRequired
 };
 
 export default withMenu(Default);
