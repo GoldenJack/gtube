@@ -1,11 +1,13 @@
 .progress {
   &__bar {
     position: absolute;
-    top: -10px;
+    bottom: 100%;
     left: 0;
-    height: 10px;
+    height: 3px;
     width: 100%;
     background: $main;
+    cursor: pointer;
+    transition: .2s;
   }
 
   &__line {

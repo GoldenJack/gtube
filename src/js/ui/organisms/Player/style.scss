@@ -14,6 +14,13 @@
     box-shadow: 0px -2px 6px 0px rgba(0, 0, 0, 0.18);
     background: #fff;
     z-index: 9999;
+
+    &:hover {
+      .progress__bar {
+        height: 10px;
+        transition: .2s;
+      }
+    }
   }
 
   &__icon-full {

@@ -7,7 +7,7 @@ import Icon from 'atoms/Icon';
 import Volume from 'atoms/Controls/Volume';
 import Progress from 'atoms/Progress';
 import ControlsPlay from 'atoms/Controls/ControlsPlay';
-import Link from 'react-router-dom';
+// import Link from 'react-router-dom';
 
 const cn = bemHelper('player');
 const { YT } = window;
@@ -28,6 +28,7 @@ class Player extends Component {
     this.setState({
       duration: this.player.getDuration()
     });
+    this.onSetVolume(20);
   }
 
   stateChange = infoChange => {
@@ -124,6 +125,7 @@ class Player extends Component {
         <div id="YTvideo" />
         <div {...cn('controls')}>
           <Progress
+            mix={cn('progress').className}
             play={play}
             pause={pause}
             duration={duration}

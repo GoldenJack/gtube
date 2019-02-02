@@ -39,7 +39,7 @@ class Progress extends Component {
 
   render() {
     const { progress } = this.state;
-    const { play, pause } = this.props;
+    const { play, pause, mix } = this.props;
 
     const progressWidth = {
       width: `${progress}%`
@@ -52,7 +52,7 @@ class Progress extends Component {
     }
 
     return (
-      <div {...cn()}>
+      <div {...cn('', '', mix)}>
         <div {...cn('bar')} onClick={this.setProgress} role="none">
           <div {...cn('line')} style={progressWidth} />
         </div>

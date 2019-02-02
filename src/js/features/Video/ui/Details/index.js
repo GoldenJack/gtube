@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import * as T from 'prop-types';
-import { getCountView } from 'utils/helper';
+import { getCountView, getTextHtml } from 'utils/helper';
 import bemHelper from 'utils/bem-helper';
 import './style.scss';
 
@@ -12,25 +12,20 @@ import { Link } from 'react-router-dom';
 const cn = bemHelper('details');
 
 class Details extends Component {
+  desc = React.createRef();
+
   setSubscribe = e => {
     e.preventDefault();
   }
 
   getDescription = () => {
     const { videoInfo: { description } } = this.props;
-    if (description.length === 0) {
-      return (
-        <p>Description not found</p>
-      );
-    // } else if (description.length > 600) {
-    //   return (
-    //     <p>{description.substr(0, 600)}</p>
-    //   );
-    } else {
-      return (
-        <p>{description}</p>
-      );
-    }
+    const content = getTextHtml(description);
+
+    return (
+      // eslint-disable-next-line react/no-danger
+      <p dangerouslySetInnerHTML={{ __html: content }} />
+    );
   }
 
   render() {

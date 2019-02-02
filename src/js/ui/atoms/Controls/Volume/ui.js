@@ -7,7 +7,7 @@ const cn = bemHelper('volume');
 
 class Volume extends Component {
   state = {
-    volume: 0
+    volume: 20
   }
 
   changeVolume = volume => {

@@ -6,6 +6,10 @@ export const getCountView = number => {
   return number && number.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1,');
 };
 
+export const getTextHtml = string => {
+  return string.replace(/\r\n|\r|\n/g, '</br>');
+};
+
 
 /**
  * special functions for all project
