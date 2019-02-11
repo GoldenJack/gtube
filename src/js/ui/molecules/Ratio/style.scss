@@ -1,0 +1,14 @@
+.ratio {
+  display: flex;
+  align-items: center;
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    img {
+      margin-right: 10px;
+      width: 36px;
+    }
+  }
+}

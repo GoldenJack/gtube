@@ -7,6 +7,7 @@ import './style.scss';
 import Views from 'atoms/Views';
 import Avatar from 'atoms/Avatar';
 import Button from 'atoms/Button';
+import Ratio from 'molecules/Ratio';
 import { Link } from 'react-router-dom';
 
 const cn = bemHelper('details');
@@ -35,7 +36,9 @@ class Details extends Component {
         name,
         viewCount,
         channelId,
-        channelTitle
+        channelTitle,
+        likeCount,
+        dislikeCount
       }
     } = this.props;
     const views = getCountView(viewCount);
@@ -47,6 +50,7 @@ class Details extends Component {
           </div>
           <div {...cn('statistics-data')}>
             <Views viewCount={views} mix={cn('views').className} />
+            {/* <Ratio likeCount={likeCount} dislikeCount={dislikeCount} /> */}
           </div>
           <div {...cn('info-channel')}>
             <div {...cn('author-channel')}>
