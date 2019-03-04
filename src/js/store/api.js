@@ -21,7 +21,7 @@ export const api = {
       return request
         .get(`${depoint}/channels`)
         .query({
-          part: 'snippet,contentDetails,statistics',
+          part: 'snippet,contentDetails,statistics,brandingSettings',
           id: channelId,
           key: API_KEY
         })

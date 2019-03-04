@@ -1,40 +1,39 @@
-import React, { Component, Fragment } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 
-const withMenu = WrappedComponent => class extends Component {
-  state = {
-    showMenu: true,
-    isMobile: false
+// TODO: Added PropTypes
+
+const withMenu = WrappedComponent => ({
+  location,
+  ...wrappedComponentProps
+}) => {
+  const [showMenu, setShowMenu] = useState(true);
+  const [oversea, setOversea] = useState(false);
+  const widthWindow = window.innerWidth;
+
+  useEffect(() => {
+    if (widthWindow <= 768 || location.pathname.indexOf('channel') !== -1) {
+      setShowMenu(false);
+      setOversea(true);
+    } else {
+      setShowMenu(true);
+      setOversea(false);
+    }
+  }, [location.pathname]);
+
+  const toggleShow = () => {
+    setShowMenu(!showMenu);
   };
 
-  componentDidMount() {
-    const widthWindow = window.innerWidth;
-    if (widthWindow <= 768) {
-      this.setState({
-        isMobile: true,
-        showMenu: false
-      });
-    }
-  }
-
-  toggleShow = () => {
-    const { showMenu } = this.state;
-    this.setState({
-      showMenu: !showMenu
-    });
-  }
-
-  render() {
-    const { ...wrappedComponentProps } = this.props;
-    return (
-      <Fragment>
-        <WrappedComponent
-          {...wrappedComponentProps}
-          {...this.state}
-          toggleShow={this.toggleShow}
-        />
-      </Fragment>
-    );
-  }
+  return (
+    <Fragment>
+      <WrappedComponent
+        {...wrappedComponentProps}
+        oversea={oversea}
+        showMenu={showMenu}
+        toggleShow={toggleShow}
+      />
+    </Fragment>
+  );
 };
 
 export default withMenu;

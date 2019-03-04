@@ -67,32 +67,27 @@ export const routes = {
       menu: [
         {
           name: 'Musik',
-          to: '/musik',
+          to: '/topic/music',
           icon: 'img/icons/not-found.svg'
         },
         {
-          name: 'Sport',
-          to: '/sport',
+          name: 'Sports',
+          to: '/topic/sports',
           icon: 'img/icons/not-found.svg'
         },
         {
-          name: 'Video Games',
-          to: '/video-games',
+          name: 'Gaming',
+          to: '/topic/gaming',
           icon: 'img/icons/not-found.svg'
         },
         {
-          name: 'Movies',
-          to: '/movies',
+          name: 'Lifestyle',
+          to: '/topic/lifestyle',
           icon: 'img/icons/not-found.svg'
         },
         {
-          name: 'News',
-          to: '/news',
-          icon: 'img/icons/not-found.svg'
-        },
-        {
-          name: 'TV shows',
-          to: '/tv-shows',
+          name: 'Entertainment',
+          to: '/topic/entertainment',
           icon: 'img/icons/not-found.svg'
         }
       ]

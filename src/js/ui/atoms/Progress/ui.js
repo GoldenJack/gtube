@@ -11,12 +11,12 @@ class Progress extends Component {
   }
 
   componentWillUnmount() {
-    clearTimeout(this.progress);
+    clearTimeout(this.progressTimeout);
   }
 
   getProgress = () => {
     const { getProgress } = this.props;
-    this.progress = setTimeout(() => {
+    this.progressTimeout = setTimeout(() => {
       this.setState({
         progress: getProgress()
       });

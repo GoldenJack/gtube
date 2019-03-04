@@ -10,7 +10,6 @@ import ControlsPlay from 'atoms/Controls/ControlsPlay';
 // import Link from 'react-router-dom';
 
 const cn = bemHelper('player');
-const { YT } = window;
 
 class Player extends Component {
   state = {
@@ -21,7 +20,11 @@ class Player extends Component {
   };
 
   componentDidMount() {
-    this.onYouTubeIframeAPIReady();
+    window.YT && this.onYouTubeIframeAPIReady();
+  }
+
+  componentDidUpdate() {
+    window.YT && !this.player && this.onYouTubeIframeAPIReady();
   }
 
   initPlayer = () => {
@@ -101,7 +104,7 @@ class Player extends Component {
   onYouTubeIframeAPIReady = () => {
     const { videoId, width } = this.props;
     const height = (width / 100) * 56;
-    this.player = new YT.Player('YTvideo', {
+    this.player = new window.YT.Player('YTvideo', {
       videoId,
       width,
       height,

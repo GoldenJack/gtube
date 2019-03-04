@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react';
 import * as T from 'prop-types';
+import { OK } from 'constants/httpStatusCode';
 
 import Preloader from 'atoms/Preloader';
 
-const WithPreloader = ({ readyContent, children }) => (
+const WithPreloader = ({ readyContent, children, ready }) => (
   <Fragment>
     {
-      readyContent
+      readyContent || ready === OK
         ? children
         : (
           <Preloader />
@@ -17,6 +18,7 @@ const WithPreloader = ({ readyContent, children }) => (
 
 WithPreloader.propTypes = {
   readyContent: T.bool.isRequired,
+  ready: T.string.isRequired,
   children: T.any.isRequired
 };
 

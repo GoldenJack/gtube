@@ -1,38 +1,42 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import * as T from 'prop-types';
-import bemHelper from 'utils/bem-helper';
 
+import Wrapper from 'atoms/Wrapper';
 import WithPreloader from 'molecules/WithPreloader';
 import Category from 'organisms/Category';
 
-const cn = bemHelper('trending');
-
-class Trending extends Component {
-  componentDidMount() {
-    const { getTrendingVideos, readyTrending } = this.props;
-    !readyTrending && getTrendingVideos();
-  }
-
-  render() {
-    const { readyTrending, trending: { items } } = this.props;
-    return (
-      <div {...cn()}>
-        <WithPreloader readyContent={readyTrending}>
-          <Category
-            title="Trending"
-            description="Most popular videos at the moment"
-            videos={items}
-          />
-        </WithPreloader>
-      </div>
-    );
-  }
-}
-
-Trending.propTypes = {
+const propTypes = {
   readyTrending: T.bool.isRequired,
   getTrendingVideos: T.func.isRequired,
-  trending: T.object.isRequired
+  trending: T.object
 };
+
+const defaultProps = {
+  trending: {}
+};
+
+const Trending = ({
+  getTrendingVideos,
+  readyTrending,
+  trending
+}) => {
+  useEffect(() => { !readyTrending && getTrendingVideos(); }, []);
+
+  const { items = [] } = trending;
+  return (
+    <Wrapper>
+      <WithPreloader readyContent={readyTrending}>
+        <Category
+          title="Trending"
+          description="Most popular videos at the moment"
+          videos={items}
+        />
+      </WithPreloader>
+    </Wrapper>
+  );
+};
+
+Trending.propTypes = propTypes;
+Trending.defaultProps = defaultProps;
 
 export default Trending;

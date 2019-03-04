@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import * as T from 'prop-types';
 import bemHelper from 'utils/bem-helper';
 import withMenu from 'HOC/withMenu';
@@ -6,55 +6,46 @@ import './style.scss';
 
 import Header from 'organisms/Header';
 import Sidebar from 'organisms/Sidebar';
-// import ErrorBoundary from 'organisms/ErrorBoundary';
 
 const cn = bemHelper('default-template');
 
-class Default extends Component {
-  state = {
-    animation: ''
-  }
-
-  render() {
-    const {
-      children,
-      showMenu,
-      isMobile,
-      toggleShow,
-      ...props
-    } = this.props;
-    const { animation } = this.state;
-    const toggleClass = showMenu && !isMobile ? 'with-menu' : 'full-width';
-    const toggleClassOverlay = showMenu ? 'open' : 'close';
-    return (
-      <div {...cn()}>
-        <Header
-          mix={cn('header').className}
-          toggleShow={toggleShow}
-          {...props}
-        />
-        <div {...cn('wrap')}>
-          {isMobile && (
-            <div
-              {...cn('overlay', toggleClassOverlay)}
-              role="none"
-              onClick={toggleShow}
-            />
-          )}
-          <Sidebar showMenu={showMenu} isMobile={isMobile} {...props} />
-          <div {...cn('content', `${!isMobile && toggleClass}`, animation)}>
-            {children}
-          </div>
+const Default = ({
+  children,
+  showMenu,
+  oversea,
+  toggleShow,
+  ...props
+}) => {
+  const toggleClass = showMenu && !oversea ? 'with-menu' : 'full-width';
+  const toggleClassOverlay = showMenu ? 'open' : 'close';
+  return (
+    <div {...cn()}>
+      <Header
+        mix={cn('header').className}
+        toggleShow={toggleShow}
+        {...props}
+      />
+      <div {...cn('wrap')}>
+        {oversea && (
+          <div
+            {...cn('overlay', toggleClassOverlay)}
+            role="none"
+            onClick={toggleShow}
+          />
+        )}
+        <Sidebar showMenu={showMenu} isMobile={oversea} {...props} />
+        <div {...cn('content', `${!oversea && toggleClass}`)}>
+          {children}
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 Default.propTypes = {
   children: T.array.isRequired,
   showMenu: T.bool.isRequired,
-  isMobile: T.bool.isRequired,
+  oversea: T.bool.isRequired,
   toggleShow: T.func.isRequired
 };
 

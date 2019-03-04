@@ -1,22 +1,19 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import * as T from 'prop-types';
-import bemHelper from 'utils/bem-helper';
 import { sortVideos } from 'utils/helper';
-import './style.scss';
 
+import Wrapper from 'atoms/Wrapper';
 import Category from 'organisms/Category';
 import WithPreloader from 'molecules/WithPreloader';
 
-const cn = bemHelper('home');
+const Home = ({
+  getHomeData,
+  readyHome,
+  home
+}) => {
+  useEffect(() => { !readyHome && getHomeData(); }, []);
 
-class Home extends Component {
-  componentDidMount() {
-    const { getHomeData, readyHome } = this.props;
-    !readyHome && getHomeData();
-  }
-
-  _renderContent = () => {
-    const { home } = this.props;
+  const _render = () => {
     return home.map(({ titleTopic, topic: { items } }) => {
       const videos = sortVideos(items);
       return (
@@ -28,19 +25,16 @@ class Home extends Component {
         />
       );
     });
-  }
+  };
 
-  render() {
-    const { readyHome } = this.props;
-    return (
-      <div {...cn()}>
-        <WithPreloader readyContent={readyHome}>
-          {readyHome && this._renderContent() }
-        </WithPreloader>
-      </div>
-    );
-  }
-}
+  return (
+    <Wrapper>
+      <WithPreloader readyContent={readyHome}>
+        { readyHome && _render() }
+      </WithPreloader>
+    </Wrapper>
+  );
+};
 
 Home.propTypes = {
   getHomeData: T.func.isRequired,

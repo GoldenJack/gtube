@@ -15,7 +15,8 @@
         "store/*": ["src/js/store/*"],
         "img/*": ["src/assets/img/*"],
         "HOC/*": ["src/js/HOC/*"],
-        "config": ["src/js/config"]
+        "config": ["src/js/config"],
+        "hooks": ["src/js/hooks"]
       }
     },
     "exclude": ["node_modules", "dist"]

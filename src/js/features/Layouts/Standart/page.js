@@ -1,34 +1,24 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import * as T from 'prop-types';
-import './style.scss';
 
 import Default from 'templates/Default';
 
-class Standart extends Component {
-  componentDidMount() {
-    const { googleApi, initGoogleApi } = this.props;
-    !googleApi && initGoogleApi();
-  }
+const Standart = ({
+  googleApi,
+  initGoogleApi,
+  ...props
+}) => {
+  useEffect(() => !googleApi && initGoogleApi(), []);
+  useEffect(() => initGoogleApi(), [googleApi]);
 
-  componentDidUpdate(prevProps) {
-    const { googleApi, initGoogleApi } = this.props;
-    if (prevProps.googleApi !== googleApi) {
-      initGoogleApi();
-    }
-  }
-
-  render() {
-    const { ...props } = this.props;
-    return (
-      <Default {...props} />
-    );
-  }
-}
+  return (
+    <Default {...props} />
+  );
+};
 
 Standart.propTypes = {
   googleApi: T.object,
-  initGoogleApi: T.func.isRequired,
-  children: T.array.isRequired
+  initGoogleApi: T.func.isRequired
 };
 
 Standart.defaultProps = {
