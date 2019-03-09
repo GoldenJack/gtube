@@ -21,14 +21,53 @@ export const api = {
       return request
         .get(`${depoint}/channels`)
         .query({
-          part: 'snippet,contentDetails,statistics,brandingSettings',
+          part: 'snippet,contentDetails',
           id: channelId,
           key: API_KEY
         })
         .then(res => res)
         .catch(err => err);
-    }
+    },
+    getItemByBranding: channelId => {
+      return request
+        .get(`${depoint}/channels`)
+        .query({
+          part: 'snippet,brandingSettings',
+          id: channelId,
+          key: API_KEY
+        })
+        .then(res => res)
+        .catch(err => err);
+    },
+    getItemByStats: channelId => {
+      return request
+        .get(`${depoint}/channels`)
+        .query({
+          part: 'snippet,brandingSettings,statistics',
+          id: channelId,
+          key: API_KEY
+        })
+        .then(res => res)
+        .catch(err => err);
+    },
   },
+  // channelSection: {
+  //   getChannelSection: channelId => {
+  //     return request
+  //       .get(`${depoint}/channelSections`)
+  //       .query({
+  //         part: 'contentDetails',
+  //         mine: 'true',
+  //         key: API_KEY
+  //       })
+  //       .set('Authorization', `Bearer ${accessToken}`)
+  //       .then(res => res)
+  //       .catch(err => err);
+  //   },
+  // },
+  // playlists: {
+
+  // },
   subscriptions: {
     getUserSubscriptions: (accessToken, channelId) => {
       return request

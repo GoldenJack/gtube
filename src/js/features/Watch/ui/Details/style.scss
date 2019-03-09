@@ -1,5 +1,6 @@
 .details {
   width: 100%;
+  padding: 0 20px;
 
   &__header {
     display: flex;
@@ -16,6 +17,33 @@
     font-weight: 300;
     color: $dark;
     margin-bottom: 24px;
+  }
+
+  &__video-description {
+    position: relative;
+    overflow: hidden;
+    max-height: 35px;
+  }
+
+  &__toggle-description {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    right: 0;
+    bottom: 0;
+  }
+
+  &__toggle-description-icon {
+    width: 12px;
+  }
+
+  &__toggle-description-text {
+    font-family: $ff;
+    font-size: 13px;
+    color: $main;
+    margin-right: 6px;
+    margin-bottom: 2px;
   }
 
   &__statistics-data {

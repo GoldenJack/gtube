@@ -46,7 +46,7 @@ class VideoItem extends Component {
               text={title}
             />
             <Link
-              to={`channel/${channelId}`}
+              to={`channel/${channelId}/home`}
               mix={cn('author-link').className}
               text={channelTitle}
             />
@@ -77,7 +77,7 @@ VideoItem.propTypes = {
 
 VideoItem.defaultProps = {
   viewCount: false
-}
+};
 
 VideoItem.defaultProps = {
   mix: '',

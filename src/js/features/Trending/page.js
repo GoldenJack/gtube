@@ -25,7 +25,7 @@ const Trending = ({
   const { items = [] } = trending;
   return (
     <Wrapper>
-      <WithPreloader readyContent={readyTrending}>
+      <WithPreloader ready={readyTrending && 200}>
         <Category
           title="Trending"
           description="Most popular videos at the moment"

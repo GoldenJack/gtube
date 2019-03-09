@@ -4,20 +4,16 @@ import { OK } from 'constants/httpStatusCode';
 
 import Preloader from 'atoms/Preloader';
 
-const WithPreloader = ({ readyContent, children, ready }) => (
-  <Fragment>
-    {
-      readyContent || ready === OK
-        ? children
-        : (
-          <Preloader />
-        )
-    }
-  </Fragment>
-);
+const WithPreloader = ({ children, ready }) => {
+  if (ready !== OK) return (<Preloader />);
+  return (
+    <Fragment>
+      {children}
+    </Fragment>
+  );
+};
 
 WithPreloader.propTypes = {
-  readyContent: T.bool.isRequired,
   ready: T.string.isRequired,
   children: T.any.isRequired
 };

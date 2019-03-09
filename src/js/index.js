@@ -6,7 +6,7 @@ import Standart from 'features/Layouts/Standart';
 
 import Home from 'features/Home';
 import Trending from 'features/Trending';
-import Video from 'features/Video';
+import Watch from 'features/Watch';
 import Channel from 'features/Channel';
 import Liked from 'features/Liked';
 import Subscriptions from 'features/Subscriptions';
@@ -24,7 +24,7 @@ ReactDOM.render(
           <Route path="/search" component={SearchPage} />
           <Route path="/liked" component={Liked} />
           <Route path="/subscriptions" component={Subscriptions} />
-          <Route path="/watch/:videoId" component={Video} />
+          <Route path="/watch/:videoId" component={Watch} />
           <Route path="/channel/:channelId" component={Channel} />
         </Standart>
       </Switch>

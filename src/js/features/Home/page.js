@@ -29,7 +29,7 @@ const Home = ({
 
   return (
     <Wrapper>
-      <WithPreloader readyContent={readyHome}>
+      <WithPreloader ready={readyHome && 200}>
         { readyHome && _render() }
       </WithPreloader>
     </Wrapper>

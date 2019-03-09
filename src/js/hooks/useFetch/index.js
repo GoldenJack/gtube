@@ -1,23 +1,23 @@
 import { useEffect, useState } from 'react';
 import { PENDING, CALM } from 'constants/httpStatusCode';
 
-export const useChannel = (apiRequest) => {
-  const [channelData, setChannelData] = useState([]);
+export const useFetch = (apiRequest) => {
+  const [data, setData] = useState([]);
   const [fetchStatus, setFetchStatus] = useState(CALM);
 
-  const fetchChannelData = () => {
+  const fetchData = () => {
     setFetchStatus(PENDING);
     apiRequest()
       .then(result => {
-        setChannelData(result.body);
+        setData(result.body);
         setFetchStatus(result.statusCode);
       });
   };
 
-  useEffect(fetchChannelData, []);
+  useEffect(fetchData, []);
 
   return {
-    channelData,
+    data,
     fetchStatus
   };
 };

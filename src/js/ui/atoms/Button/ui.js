@@ -5,11 +5,18 @@ import './style.scss';
 
 const cn = bemHelper('btn');
 
-const Button = ({ mix, type, effect, text }) => (
-  <a href="#" {...cn('', type, mix)} onClick={effect}>
-    {text}
-  </a>
-);
+const Button = ({ mix, type, effect, text }) => {
+  const runEffect = e => {
+    e.preventDefault();
+    effect();
+  };
+
+  return (
+    <a href="#" {...cn('', type, mix)} onClick={runEffect}>
+      {text}
+    </a>
+  );
+};
 
 Button.propTypes = {
   mix: T.string,

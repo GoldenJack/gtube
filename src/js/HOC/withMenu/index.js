@@ -3,7 +3,7 @@ import React, { useEffect, useState, Fragment } from 'react';
 // TODO: Added PropTypes
 
 const withMenu = WrappedComponent => ({
-  location,
+  location: { pathname },
   ...wrappedComponentProps
 }) => {
   const [showMenu, setShowMenu] = useState(true);
@@ -11,14 +11,14 @@ const withMenu = WrappedComponent => ({
   const widthWindow = window.innerWidth;
 
   useEffect(() => {
-    if (widthWindow <= 768 || location.pathname.indexOf('channel') !== -1) {
+    if (widthWindow <= 768 || pathname.indexOf('channel') !== -1 || pathname.indexOf('watch') !== -1) {
       setShowMenu(false);
       setOversea(true);
     } else {
       setShowMenu(true);
       setOversea(false);
     }
-  }, [location.pathname]);
+  }, [pathname]);
 
   const toggleShow = () => {
     setShowMenu(!showMenu);

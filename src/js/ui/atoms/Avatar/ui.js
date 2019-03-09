@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import * as T from 'prop-types';
 import bemHelper from 'utils/bem-helper';
 import './style.scss';

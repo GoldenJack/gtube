@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
     video,
     readyVideo,
     error
-  } = state.Video;
+  } = state.Watch;
   return {
     video,
     readyVideo,

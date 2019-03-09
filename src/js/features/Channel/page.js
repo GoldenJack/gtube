@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import * as T from 'prop-types';
-import { useChannel } from 'hooks/useChannel';
+import { useFetch } from 'hooks/useFetch';
 import { api } from 'store/api';
 import { OK } from 'constants/httpStatusCode';
 import bemHelper from 'utils/bem-helper';
@@ -24,7 +24,7 @@ const propTypes = {
 const Channel = ({
   match: { params: { channelId } }
 }) => {
-  const data = useChannel(() => api.channels.getItem(channelId));
+  const fetchData = useFetch(() => api.channels.getItemByBranding(channelId));
   const ROUTES = [
     {
       path: '/channel/:channelId/home',
@@ -64,11 +64,11 @@ const Channel = ({
   ];
 
   const _render = () => {
-    if (data.fetchStatus === OK) {
+    if (fetchData.fetchStatus === OK) {
       const {
         brandingSettings: { channel, image },
         snippet: { thumbnails }
-      } = data.channelData.items[0];
+      } = fetchData.data.items[0];
 
       const headStyle = { backgroundImage: `url(${image.bannerTvHighImageUrl})` };
 
@@ -93,7 +93,7 @@ const Channel = ({
   return (
     <Wrapper padding="0">
       <div {...cn()}>
-        <WithPreloader ready={data.fetchStatus}>
+        <WithPreloader ready={fetchData.fetchStatus}>
           { _render() }
         </WithPreloader>
       </div>
