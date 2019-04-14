@@ -16,7 +16,9 @@
         "img/*": ["src/assets/img/*"],
         "HOC/*": ["src/js/HOC/*"],
         "config": ["src/js/config"],
-        "hooks": ["src/js/hooks"]
+        "hooks": ["src/js/hooks"],
+        "src": ["src/js"],
+        "services": ["src/js/services"]
       }
     },
     "exclude": ["node_modules", "dist"]

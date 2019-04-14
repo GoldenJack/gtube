@@ -44,13 +44,25 @@ export const sortVideos = videos => {
  * for API query strings
  */
 
-export const getQueryString = (key, data) => {
-  const { category, params } = data;
-  const queryPage = `/${category}?`;
-  let queryParams = '';
+// export const getQueryString = (key, data) => {
+//   const { category, params } = data;
+//   const queryPage = `/${category}?`;
+//   let queryParams = '';
 
-  for (let i = 0; i < params.length; i++) {
-    queryParams += `${params[i].name}=${params[i].value}&`;
-  }
-  return `${queryPage}${queryParams}key=${key}`;
+//   for (let i = 0; i < params.length; i++) {
+//     queryParams += `${params[i].name}=${params[i].value}&`;
+//   }
+//   return `${queryPage}${queryParams}key=${key}`;
+// };
+
+export const getQueryString = (page, params, key) => {
+  const depoint = 'https://www.googleapis.com/youtube/v3';
+  const paramsKeys = Object.keys(params);
+  const url = `${depoint}/${page}`;
+
+  const queryString = paramsKeys.map(queryKey => {
+    return `${queryKey}=${params[queryKey]}&`;
+  }).join('');
+
+  return `${url}?${queryString}key=${key}`;
 };

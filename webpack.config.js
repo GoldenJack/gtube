@@ -107,7 +107,9 @@ module.exports = {
       img: path.resolve(__dirname, 'src/assets/img'),
       HOC: path.resolve(__dirname, 'src/js/HOC'),
       config: path.resolve(__dirname, 'src/js/config'),
-      hooks: path.resolve(__dirname, 'src/js/hooks')
+      hooks: path.resolve(__dirname, 'src/js/hooks'),
+      src: path.resolve(__dirname, 'src/js'),
+      services: path.resolve(__dirname, 'src/js/services'),
     }
   },
   devtool: 'source-map',

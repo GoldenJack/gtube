@@ -1,10 +1,4 @@
 /**
- * Default constant for fetchStatus
- */
-export const CALM = 'CALM';
-export const PENDING = 'PENDING';
-
-/**
  * The request was valid, but the server is refusing action.
  * The user might not have the necessary permissions for a resource.
  */

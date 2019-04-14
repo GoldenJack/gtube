@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import T from 'prop-types';
 import { useFetch } from 'hooks/useFetch';
-import { api } from 'store/api';
+import { api } from 'src/api';
 
 import WithPreloader from 'molecules/WithPreloader';
 

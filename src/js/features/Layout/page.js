@@ -8,14 +8,14 @@ const Layout = ({
   initGoogleApi,
   ...anyProps
 }) => {
-  // получаем children и вытаскиваем свойство floating, которое и пробрасываем далее
   const setFloating = () => {
     const widthWindow = window.innerWidth;
     const page = anyProps.location.pathname.indexOf('watch') !== -1;
 
     if (widthWindow <= 768 || page) return true;
     return false;
-  }
+  };
+
   const floating = setFloating();
 
   useEffect(() => !googleApi && initGoogleApi(), []);
