@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import * as T from 'prop-types';
 import { routes } from 'constants/routes';
 import bemHelper from 'utils/bem-helper';
@@ -8,17 +8,25 @@ import Docket from 'molecules/Docket';
 
 const cn = bemHelper('sidebar');
 
-class Sidebar extends Component {
-  componentDidMount() {
+const Sidebar = ({
+  visible,
+  floating,
+  onClose,
 
-  }
+  readyAuth
+}) => {
+  const { auth, guest } = routes;
+  const toggleClass = visible ? 'visible' : 'hidden';
 
-  render() {
-    const { showMenu, readyAuth } = this.props;
-    const { auth, guest } = routes;
-    const toggleClass = showMenu ? 'visible' : 'hidden';
-
-    return (
+  return (
+    <Fragment>
+      {floating && (
+        <div
+          {...cn('overlay', visible ? 'open' : 'close')}
+          role="none"
+          onClick={onClose}
+        />
+      )}
       <div {...cn('', toggleClass)}>
         {readyAuth ? (
           <Fragment>
@@ -44,9 +52,9 @@ class Sidebar extends Component {
           </Fragment>
         )}
       </div>
-    );
-  }
-}
+    </Fragment>
+  );
+};
 
 Sidebar.propTypes = {
   showMenu: T.bool.isRequired,

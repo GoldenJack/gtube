@@ -3,33 +3,44 @@ import T from 'prop-types';
 import bemHelper from 'utils/bem-helper';
 import './style.scss';
 
-const cn = bemHelper('wrapper');
+const cnWrapper = bemHelper('wrapper');
 
-const propTypes = {
-  padding: T.string,
-  children: T.object.isRequired
-};
-
-const defaultProps = {
-  padding: '40px'
-};
-
-const Wrapper = ({
-  padding,
-  children
-}) => {
-  const style = {
-    padding
-  };
-
+export const Wrapper = ({ padding, children }) => {
   return (
-    <div {...cn('')} style={style}>
+    <div {...cnWrapper('')} style={{ padding }}>
       { children }
     </div>
   );
 };
 
-Wrapper.propTypes = propTypes;
-Wrapper.defaultProps = defaultProps;
+Wrapper.propTypes = {
+  padding: T.string,
+  children: T.object.isRequired
+};
 
-export default Wrapper;
+Wrapper.defaultProps = {
+  padding: '40px'
+};
+
+const cnCommonWrapper = bemHelper('common-wrapper');
+
+export const CommonWrapper = ({ mix, visibleSidebar, floating, children }) => (
+  <div {...cnCommonWrapper('', {
+    'with-menu': visibleSidebar && !floating,
+    'full-width': !visibleSidebar && !floating,
+  }, mix)}
+  >
+    { children }
+  </div>
+);
+
+CommonWrapper.propTypes = {
+  mix: T.string,
+  floating: T.bool.isRequired,
+  children: T.object.isRequired,
+  visibleSidebar: T.bool.isRequired,
+};
+
+CommonWrapper.defaultProps = {
+  mix: ''
+};

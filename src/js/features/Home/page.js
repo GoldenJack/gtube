@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import * as T from 'prop-types';
 import { sortVideos } from 'utils/helper';
 
-import Wrapper from 'atoms/Wrapper';
+import { Wrapper } from 'atoms/Wrapper';
 import Category from 'organisms/Category';
 import WithPreloader from 'molecules/WithPreloader';
 

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import * as T from 'prop-types';
 
-import Wrapper from 'atoms/Wrapper';
+import { Wrapper } from 'atoms/Wrapper';
 import WithPreloader from 'molecules/WithPreloader';
 import Category from 'organisms/Category';
 

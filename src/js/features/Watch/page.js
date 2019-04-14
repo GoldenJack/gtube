@@ -12,9 +12,9 @@ const cn = bemHelper('video');
 
 const Watch = ({
   getVideo,
-  videoId,
   readyVideo,
-  video
+  video,
+  match: { params: { videoId } }
 }) => {
   const wrapper = useRef(null);
 

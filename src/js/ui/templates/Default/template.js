@@ -1,52 +1,52 @@
 import React from 'react';
 import * as T from 'prop-types';
+import { useSidebar } from 'hooks';
 import bemHelper from 'utils/bem-helper';
-import withMenu from 'HOC/withMenu';
 import './style.scss';
 
+import { CommonWrapper } from 'atoms/Wrapper';
 import Header from 'organisms/Header';
 import Sidebar from 'organisms/Sidebar';
 
 const cn = bemHelper('default-template');
 
+const propTypes = {
+  children: T.array.isRequired,
+  floating: T.bool.isRequired,
+};
+
 const Default = ({
   children,
-  showMenu,
-  oversea,
-  toggleShow,
+  floating,
   ...props
 }) => {
-  const toggleClass = showMenu && !oversea ? 'with-menu' : 'full-width';
-  const toggleClassOverlay = showMenu ? 'open' : 'close';
+  const { visibleSidebar, toggleVisibleSidebar, setVisibleSidebar } = useSidebar(floating);
   return (
     <div {...cn()}>
       <Header
         mix={cn('header').className}
-        toggleShow={toggleShow}
+        toggleShow={toggleVisibleSidebar}
         {...props}
       />
       <div {...cn('wrap')}>
-        {oversea && (
-          <div
-            {...cn('overlay', toggleClassOverlay)}
-            role="none"
-            onClick={toggleShow}
-          />
-        )}
-        <Sidebar showMenu={showMenu} isMobile={oversea} {...props} />
-        <div {...cn('content', `${!oversea && toggleClass}`)}>
+        <Sidebar
+          visible={visibleSidebar}
+          floating={floating}
+          onClose={() => setVisibleSidebar(false)}
+          {...props}
+        />
+        <CommonWrapper
+          mix={cn('content').className}
+          visibleSidebar={visibleSidebar}
+          floating={floating}
+        >
           {children}
-        </div>
+        </CommonWrapper>
       </div>
     </div>
   );
 };
 
-Default.propTypes = {
-  children: T.array.isRequired,
-  showMenu: T.bool.isRequired,
-  oversea: T.bool.isRequired,
-  toggleShow: T.func.isRequired
-};
+Default.propTypes = propTypes;
 
-export default withMenu(Default);
+export default Default;

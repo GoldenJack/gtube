@@ -25,14 +25,4 @@ const mapDispatchToProps = dispatch => {
   return { ...actions };
 };
 
-const mergeProps = (stateProps, dispatchProps, ownProps) => {
-  const { match: { params: { videoId } } } = ownProps;
-  return {
-    videoId,
-    ...stateProps,
-    ...dispatchProps,
-    ...ownProps
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(Page);
+export default connect(mapStateToProps, mapDispatchToProps)(Page);
