@@ -2,7 +2,6 @@ import ApiCall from 'services/ApiCall';
 import { getQueryString } from 'utils/helper';
 import { API_KEY } from 'config';
 
-
 export const api = {
   channels: {
     getItem: channelId => {
@@ -89,39 +88,31 @@ export const api = {
   //       .catch(err => err);
   //   }
   // },
-  // search: {
-  //   getList: queryString => {
-  //     return request
-  //       .get(`${depoint}/search`)
-  //       .query({
-  //         part: 'snippet',
-  //         maxResults: '25',
-  //         q: queryString,
-  //         key: API_KEY
-  //       })
-  //       .then(res => res)
-  //       .catch(err => err);
-  //   },
-  //   getTopic: (topicId, title) => {
-  //     return request
-  //       .get(`${depoint}/search`)
-  //       .query({
-  //         part: 'snippet',
-  //         maxResults: '10',
-  //         order: 'date',
-  //         topicId,
-  //         q: '',
-  //         key: API_KEY
-  //       })
-  //       .then(res => {
-  //         return {
-  //           res,
-  //           titleTopic: title
-  //         };
-  //       })
-  //       .catch(err => err);
-  //   }
-  // },
+  search: {
+    // getList: queryString => {
+    //   return request
+    //     .get(`${depoint}/search`)
+    //     .query({
+    //       part: 'snippet',
+    //       maxResults: '25',
+    //       q: queryString,
+    //       key: API_KEY
+    //     })
+    //     .then(res => res)
+    //     .catch(err => err);
+    // },
+    getTopic: topicId => {
+      const url = getQueryString('search', {
+        part: 'snippet',
+        maxResults: '10',
+        order: 'date',
+        topicId,
+        q: '',
+      }, API_KEY);
+      console.log('hi getTopic')
+      return ApiCall.get(url);
+    }
+  },
   // videos: {
   //   getVideo: videoId => {
   //     return request

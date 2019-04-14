@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useReducer } from 'react';
+import { useCallback, useReducer } from 'react';
 import { PRISTINE, PENDING, COMPLETE, ERROR } from 'constants/fetchStatus';
 import { FETCH, START, SUCCESS, FAIL } from 'constants/common';
 
@@ -15,7 +15,7 @@ const reducer = (state, { type, payload }) => {
     case FETCH + SUCCESS:
       return { data: payload.data, fetchStatus: COMPLETE };
     case FETCH + FAIL:
-      return { ...state, error: payload.error, fetchStatus: ERROR }
+      return { ...state, error: payload.error, fetchStatus: ERROR };
     default:
       throw new Error();
   }
@@ -24,21 +24,21 @@ const reducer = (state, { type, payload }) => {
 export const useFetch = (apiRequest) => {
   const [{ data, fetchStatus }, dispatch] = useReducer(reducer, initialState);
 
-  const fetchData = useCallback(() => {
-    dispatch({ type: FETCH + START });
-    apiRequest()
-      .then(result => {
-        dispatch({
-          type: FETCH + SUCCESS,
-          payload: {
-            data: { ...result.body, ...result.statusCode }
-          }
+  const fetchData = useCallback(
+    (...requestParams) => {
+      dispatch({ type: FETCH + START });
+      return apiRequest(...requestParams)
+        .then(res => {
+          dispatch({
+            type: FETCH + SUCCESS,
+            payload: { data: res }
+          });
+          return Promise.resolve(res);
+        })
+        .catch(err => {
+          dispatch({ type: FETCH + FAIL, payload: { error: err.body } });
         });
-      })
-      .catch(err => {
-        dispatch({ type: FETCH + FAIL, payload: { error: err.body } });
-      });
-  }, [apiRequest]);
+    }, [apiRequest]);
 
   return [data, fetchStatus, fetchData];
 };

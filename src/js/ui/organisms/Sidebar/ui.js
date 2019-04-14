@@ -12,7 +12,6 @@ const Sidebar = ({
   visible,
   floating,
   onClose,
-
   readyAuth
 }) => {
   const { auth, guest } = routes;
@@ -54,11 +53,6 @@ const Sidebar = ({
       </div>
     </Fragment>
   );
-};
-
-Sidebar.propTypes = {
-  showMenu: T.bool.isRequired,
-  isMobile: T.bool.isRequired
 };
 
 export default Sidebar;

@@ -1,6 +1,5 @@
 const _handleResponse = response => {
   if (response.ok) return Promise.resolve(response);
-  return Promise.reject(response);
 };
 
 const getAccessToken = () => localStorage.getItem('access-token');
@@ -37,7 +36,10 @@ class ApiCall {
     return (
       fetch(url, {
         method: 'GET',
-        headers: _getAuthHeader(withAuth),
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          ..._getAuthHeader(withAuth),
+        }
       }).then(_handleResponse)
         .then(res => res.json())
     );
