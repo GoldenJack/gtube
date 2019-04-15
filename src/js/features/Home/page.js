@@ -1,46 +1,38 @@
 import React, { useEffect, useMemo } from 'react';
-import * as T from 'prop-types';
 import { api } from 'src/api';
 import { topic } from 'constants/topic';
-import { getRandomTopic, sortVideos } from 'utils/helper';
+import {
+  // getRandomTopic,
+  sortVideos
+} from 'utils/helper';
 import { useFetch } from 'hooks';
-import { COMPLETE } from 'constants/fetchStatus';
 
 import { Wrapper } from 'atoms/Wrapper';
 import Category from 'organisms/Category';
 import WithPreloader from 'molecules/WithPreloader';
 
-const randomTopic = getRandomTopic(topic);
+// const randomTopic = getRandomTopic(topic);
 
 const Home = () => {
   const [data, fetchStatus, fetchData] = useFetch(api.search.getTopic);
-
-  console.log('fetchData', fetchData)
+  const { items = [] } = data;
 
   useEffect(() => {
     fetchData(topic['gaming'].parrentTopic);
   }, [fetchData]);
 
-  console.log(data)
-
-  const _render = () => {
-    const videos = sortVideos(data.items);
-    
-    return (
-      <Category
-        // key={titleTopic}
-        // title={titleTopic}
-        // description={titleTopic}
-        videos={videos}
-      />
-    );
-  };
+  const videos = useMemo(() => sortVideos(items), [items]);
 
   return (
     <Wrapper>
-      {/* <WithPreloader ready={fetchStatus}> */}
-        { fetchStatus === COMPLETE && _render() }
-      {/* </WithPreloader> */}
+      <WithPreloader fetchStatus={fetchStatus}>
+        <Category
+          // key={titleTopic}
+          // title={titleTopic}
+          // description={titleTopic}
+          videos={videos}
+        />
+      </WithPreloader>
     </Wrapper>
   );
 };

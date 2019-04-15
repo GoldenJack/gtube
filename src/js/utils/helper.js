@@ -30,8 +30,8 @@ export const getRandomTopic = obj => {
  * @param {array} videos
  * @returns array
  */
-
 export const sortVideos = videos => {
+  if (videos.length === 0) return [];
   return videos.map(item => {
     return {
       ...item,
@@ -41,20 +41,11 @@ export const sortVideos = videos => {
 };
 
 /**
- * for API query strings
+ * getQueryString
+ * @param {String} page - Channel/Search/Videos/etc
+ * @param {*} params - It's options for fetch data from api Youtube
+ * @param {*} key - API KEY developer
  */
-
-// export const getQueryString = (key, data) => {
-//   const { category, params } = data;
-//   const queryPage = `/${category}?`;
-//   let queryParams = '';
-
-//   for (let i = 0; i < params.length; i++) {
-//     queryParams += `${params[i].name}=${params[i].value}&`;
-//   }
-//   return `${queryPage}${queryParams}key=${key}`;
-// };
-
 export const getQueryString = (page, params, key) => {
   const depoint = 'https://www.googleapis.com/youtube/v3';
   const paramsKeys = Object.keys(params);

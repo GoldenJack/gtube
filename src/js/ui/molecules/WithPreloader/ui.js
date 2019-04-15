@@ -1,20 +1,17 @@
 import React, { Fragment } from 'react';
 import * as T from 'prop-types';
-import { OK } from 'constants/httpStatusCode';
+import { PENDING, COMPLETE } from 'constants/fetchStatus';
 
 import Preloader from 'atoms/Preloader';
 
-const WithPreloader = ({ children, ready }) => {
-  if (ready !== OK) return (<Preloader />);
-  return (
-    <Fragment>
-      {children}
-    </Fragment>
-  );
+const WithPreloader = ({ children, fetchStatus }) => {
+  if (fetchStatus === PENDING) return (<Preloader />);
+  if (fetchStatus === COMPLETE) return (<Fragment>{children}</Fragment>);
+  return null;
 };
 
 WithPreloader.propTypes = {
-  ready: T.string.isRequired,
+  fetchStatus: T.string.isRequired,
   children: T.any.isRequired
 };
 

@@ -109,11 +109,10 @@ export const api = {
         topicId,
         q: '',
       }, API_KEY);
-      console.log('hi getTopic')
       return ApiCall.get(url);
     }
   },
-  // videos: {
+  videos: {
   //   getVideo: videoId => {
   //     return request
   //       .get(`${depoint}/videos`)
@@ -125,19 +124,16 @@ export const api = {
   //       .then(res => res)
   //       .catch(err => err);
   //   },
-  //   getTrendingVideos: () => {
-  //     return request
-  //       .get(`${depoint}/videos`)
-  //       .query({
-  //         part: 'snippet,contentDetails,statistics',
-  //         chart: 'mostPopular',
-  //         regionCode: 'RU',
-  //         maxResults: '50',
-  //         key: API_KEY
-  //       })
-  //       .then(res => res)
-  //       .catch(err => err);
-  //   },
+    getTrendingVideos: () => {
+      const url = getQueryString('videos', {
+        part: 'snippet,contentDetails,statistics',
+        chart: 'mostPopular',
+        regionCode: 'RU',
+        maxResults: '50',
+        q: '',
+      }, API_KEY);
+      return ApiCall.get(url);
+    },
   //   getLikedVideos: accessToken => {
   //     return request
   //       .get(`${depoint}/videos`)
@@ -166,5 +162,5 @@ export const api = {
   //       .then(res => res)
   //       .catch(err => err);
   //   }
-  // }
+  }
 };

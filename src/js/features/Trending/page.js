@@ -1,31 +1,22 @@
 import React, { useEffect } from 'react';
-import * as T from 'prop-types';
+import { api } from 'src/api';
+import { useFetch } from 'hooks';
 
 import { Wrapper } from 'atoms/Wrapper';
 import WithPreloader from 'molecules/WithPreloader';
 import Category from 'organisms/Category';
 
-const propTypes = {
-  readyTrending: T.bool.isRequired,
-  getTrendingVideos: T.func.isRequired,
-  trending: T.object
-};
+const Trending = () => {
+  const [data, fetchStatus, fetchData] = useFetch(api.videos.getTrendingVideos);
+  const { items = [] } = data;
 
-const defaultProps = {
-  trending: {}
-};
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
-const Trending = ({
-  getTrendingVideos,
-  readyTrending,
-  trending
-}) => {
-  useEffect(() => { !readyTrending && getTrendingVideos(); }, []);
-
-  const { items = [] } = trending;
   return (
     <Wrapper>
-      <WithPreloader ready={readyTrending && 200}>
+      <WithPreloader fetchStatus={fetchStatus}>
         <Category
           title="Trending"
           description="Most popular videos at the moment"
@@ -35,8 +26,5 @@ const Trending = ({
     </Wrapper>
   );
 };
-
-Trending.propTypes = propTypes;
-Trending.defaultProps = defaultProps;
 
 export default Trending;
