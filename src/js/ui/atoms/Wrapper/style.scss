@@ -2,6 +2,7 @@
   position: relative;
   min-height: calc(100vh - 60px);
   height: 100%;
+  background-color: var(--main-bg-color);
 
   &--full-width {
     -webkit-animation: full-content .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;

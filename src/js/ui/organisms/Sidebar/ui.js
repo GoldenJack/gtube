@@ -12,7 +12,8 @@ const Sidebar = ({
   visible,
   floating,
   onClose,
-  readyAuth
+  readyAuth,
+  toggleTheme
 }) => {
   const { auth, guest } = routes;
   const toggleClass = visible ? 'visible' : 'hidden';
@@ -50,6 +51,7 @@ const Sidebar = ({
             />
           </Fragment>
         )}
+        <span onClick={toggleTheme} role="none">Swap theme</span>
       </div>
     </Fragment>
   );

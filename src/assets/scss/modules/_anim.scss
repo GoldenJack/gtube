@@ -14,8 +14,8 @@
             transform: translateX(0);
   }
   100% {
-    -webkit-transform: translateX(-300px);
-            transform: translateX(-300px);
+    -webkit-transform: translateX(-$width-sidebar);
+            transform: translateX(-$width-sidebar);
   }
 }
 @keyframes slide-hide-menu {
@@ -24,8 +24,8 @@
             transform: translateX(0);
   }
   100% {
-    -webkit-transform: translateX(-300px);
-            transform: translateX(-300px);
+    -webkit-transform: translateX(-$width-sidebar);
+            transform: translateX(-$width-sidebar);
   }
 }
 

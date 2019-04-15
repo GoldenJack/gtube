@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as T from 'prop-types';
 import { useSidebar } from 'hooks';
 import bemHelper from 'utils/bem-helper';
@@ -8,7 +8,7 @@ import { CommonWrapper } from 'atoms/Wrapper';
 import Header from 'organisms/Header';
 import Sidebar from 'organisms/Sidebar';
 
-const cn = bemHelper('default-template');
+const cn = bemHelper('theme');
 
 const propTypes = {
   children: T.array.isRequired,
@@ -20,9 +20,15 @@ const Default = ({
   floating,
   ...props
 }) => {
+  const [theme, setTheme] = useState('ligth');
   const { visibleSidebar, toggleVisibleSidebar, setVisibleSidebar } = useSidebar(floating);
+
+  const toggleTheme = () => {
+    setTheme(theme === 'ligth' ? 'dark' : 'ligth');
+  };
+
   return (
-    <div {...cn()}>
+    <div {...cn('', theme)}>
       <Header
         mix={cn('header').className}
         toggleShow={toggleVisibleSidebar}
@@ -33,6 +39,7 @@ const Default = ({
           visible={visibleSidebar}
           floating={floating}
           onClose={() => setVisibleSidebar(false)}
+          toggleTheme={toggleTheme}
           {...props}
         />
         <CommonWrapper

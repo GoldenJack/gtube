@@ -2,12 +2,10 @@
   position: fixed;
   bottom: 0;
   left: 0;
-  max-width: 300px;
+  max-width: $width-sidebar;
   width: 100%;
   height: calc(100vh - 60px);
-  padding: 40px 40px 40px 45px;
-  box-shadow: 2px 0px 6px 0px rgba(0, 0, 0, 0.08);
-  background: $white;
+  background-color: var(--main-bg-color);
   z-index: 9998;
 
   &--hidden {
