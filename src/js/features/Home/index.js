@@ -1,3 +1,3 @@
-import Page from './page';
+import Feature from './feature';
 
-export default Page;
+export default Feature;

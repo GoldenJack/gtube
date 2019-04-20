@@ -8,6 +8,11 @@ import Icon from 'atoms/Icon';
 
 const cn = bemHelper('docket');
 
+const propTypes = {
+  title: T.string.isRequired,
+  list: T.array.isRequired
+};
+
 const Docket = ({ title, list }) => (
   <div {...cn()}>
     <h4 {...cn('title')}>{ title }</h4>
@@ -22,9 +27,6 @@ const Docket = ({ title, list }) => (
   </div>
 );
 
-Docket.propTypes = {
-  title: T.string.isRequired,
-  list: T.array.isRequired
-};
+Docket.propTypes = propTypes;
 
 export default Docket;

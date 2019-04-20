@@ -5,9 +5,9 @@ import './style.scss';
 
 const cnWrapper = bemHelper('wrapper');
 
-export const Wrapper = ({ padding, children }) => {
+export const Wrapper = ({ padding, children, ...props }) => {
   return (
-    <div {...cnWrapper('')} style={{ padding }}>
+    <div {...cnWrapper('')} style={{ padding }} {...props}>
       { children }
     </div>
   );

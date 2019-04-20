@@ -12,6 +12,16 @@ export const getTextHtml = string => {
 
 
 /**
+ * @public
+ * @param {Object} obj: Check for the presence of something in the object
+ * Returns boolean
+ */
+export const isEmpty = obj => {
+  return Object.keys(obj).length === 0;
+};
+
+
+/**
  * special functions for all project
  * random topic for Home Page
  */

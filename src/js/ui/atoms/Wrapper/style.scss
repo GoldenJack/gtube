@@ -6,10 +6,16 @@
 
   &--full-width {
     -webkit-animation: full-content .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-        animation: full-content .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+            animation: full-content .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
   }
   &--with-menu {
     -webkit-animation: content-with-menu .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-        animation: content-with-menu .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+            animation: content-with-menu .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  }
+}
+
+.wrapper {
+  @media screen and (max-width: 540px) {
+    padding: 15px!important;
   }
 }

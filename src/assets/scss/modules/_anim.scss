@@ -36,8 +36,8 @@
  */
  @-webkit-keyframes slide-show-menu {
   0% {
-    -webkit-transform: translateX(-300px);
-            transform: translateX(-300px);
+    -webkit-transform: translateX(-$width-sidebar);
+            transform: translateX(-$width-sidebar);
   }
   100% {
     -webkit-transform: translateX(0);
@@ -46,8 +46,8 @@
 }
 @keyframes slide-show-menu {
   0% {
-    -webkit-transform: translateX(-300px);
-            transform: translateX(-300px);
+    -webkit-transform: translateX(-$width-sidebar);
+            transform: translateX(-$width-sidebar);
   }
   100% {
     -webkit-transform: translateX(0);
@@ -62,22 +62,22 @@
  */
  @-webkit-keyframes full-content {
   0% {
-    margin-left: 300px;
+    margin-left: $width-sidebar;
     marginr-right: 0px;
   }
   100% {
-    margin-left: 150px;
-    margin-right: 150px;
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 @keyframes full-content {
   0% {
-    margin-left: 300px;
+    margin-left: $width-sidebar;
     margin-right: 0px;
   }
   100% {
-    margin-left: 150px;
-    margin-right: 150px;
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 
@@ -88,22 +88,22 @@
  */
  @-webkit-keyframes content-with-menu {
   0% {
-    margin-left: 150px;
-    margin-right: 150px;
+    margin-left: 0;
+    margin-right: 0;
   }
   100% {
     margin-left: 0px;
-    margin-left: 300px;
+    margin-left: $width-sidebar;
   }
 }
 @keyframes content-with-menu {
   0% {
-    margin-left: 150px;
-    margin-right: 150px;
+    margin-left: 0;
+    margin-right: 0;
   }
   100% {
     margin-left: 0px;
-    margin-left: 300px;
+    margin-left: $width-sidebar;
   }
 }
 

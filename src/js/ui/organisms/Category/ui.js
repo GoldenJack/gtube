@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import * as T from 'prop-types';
 import bemHelper from 'utils/bem-helper';
 import './style.scss';
@@ -19,33 +19,10 @@ const _renderVideos = (videos) => {
   });
 };
 
-const _renderContent = (videos, children) => {
-  if (children) {
-    return (
-      <Fragment>
-        { children }
-      </Fragment>
-    );
-  } else {
-    return (
-      <Fragment>
-        {videos.length > 0
-          ? _renderVideos(videos)
-          : (
-            <p {...cn('not-found')}>Video not found </p>
-          )
-        }
-      </Fragment>
-    );
-  }
-};
-
-const Category = ({ mix, title, description, videos, children }) => (
+const Category = ({ mix, videos }) => (
   <div {...cn('', '', mix)}>
-    <h4 {...cn('title')}>{ title }</h4>
-    {description && <h6 {...cn('description')}>{ description }</h6>}
     <div {...cn('content')}>
-      { _renderContent(videos, children) }
+      {videos && _renderVideos(videos)}
     </div>
   </div>
 );
@@ -53,17 +30,14 @@ const Category = ({ mix, title, description, videos, children }) => (
 Category.propTypes = {
   mix: T.string,
   title: T.string.isRequired,
-  videos: T.array,
+  videos: T.array.isRequired,
   description: T.string,
-  withoutStat: T.bool,
   children: T.any
 };
 
 Category.defaultProps = {
   mix: '',
   description: '',
-  videos: [],
-  withoutStat: false,
   children: false
 };
 

@@ -1,25 +1,13 @@
 .category {
-
-  &__title {
-    color:  $dark;
-    font-size: 19px;
-    font-weight: 400;
-    margin-bottom: 12px;
-  }
-
-  &__description {
-    color: $main;
-    font-size: 13px;
-    font-weight: 400;
-    margin-bottom: 36px;
-  }
-
   &__content {
     display: flex;
     flex-wrap: wrap;
 
     margin-left: -7px;
     margin-right: -7px;
+    @media screen and (max-width: 540px) {
+      justify-content: center;
+    }
   }
 
   &__not-found {

@@ -8,21 +8,17 @@
     &:hover {
       box-shadow: 0px 8px 20px 5px rgba(0, 0, 0, 0.2)
     }
+    @media screen and (max-width: 540px) {
+      margin-bottom: 20px;
+    }
   }
 
   &--standart {
-    width: 20%;
-    @media screen and (max-width: 1240px) {
-      width: 25%;
-    }
-    @media screen and (max-width: 1040px) {
-      width: calc(100% / 3);
-    }
-    @media screen and (max-width: 992px) {
-      width: 50%;
-    }
-    @media screen and (max-width: 425px) {
-      width: 100%;
+    min-width: 320px;
+    width: 320px;
+    @media screen and (max-width: 540px) {
+      min-width: 290px;
+      width: 290px;
     }
   }
 
