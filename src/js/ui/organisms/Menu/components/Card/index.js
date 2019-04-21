@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 import bemHelper from 'utils/bem-helper';
 import './style.scss';
 
-import { Title } from 'atoms/Title';
-import Icon from 'atoms/Icon';
+import { Icon, Title } from 'atoms';
 
 const cn = bemHelper('card');
 

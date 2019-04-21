@@ -6,8 +6,7 @@ import { OK } from 'constants/httpStatusCode';
 import bemHelper from 'utils/bem-helper';
 import './style.scss';
 
-import { Wrapper } from 'atoms/Wrapper';
-import Button from 'atoms/Button';
+import { Button, Wrapper } from 'atoms';
 import WithPreloader from 'molecules/WithPreloader';
 import Tabs from './ui/Tabs';
 import HomeChannel from './pages/Home';

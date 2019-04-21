@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Button from 'atoms/Button';
+import { Button } from 'atoms';
 
 import bemHelper from 'utils/bem-helper';
 import './style.scss';

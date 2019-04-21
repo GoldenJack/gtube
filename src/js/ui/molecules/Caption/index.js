@@ -3,7 +3,7 @@ import T from 'prop-types';
 import bemHelper from 'utils/bem-helper';
 import './style.scss';
 
-import { Title } from 'atoms/Title';
+import { Title } from 'atoms';
 
 const cn = bemHelper('caption');
 

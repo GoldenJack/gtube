@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import * as T from 'prop-types';
 import { PENDING, COMPLETE } from 'constants/fetchStatus';
 
-import Preloader from 'atoms/Preloader';
+import { Preloader } from 'atoms';
 
 const WithPreloader = ({ children, fetchStatus }) => {
   if (fetchStatus === PENDING) return (<Preloader />);

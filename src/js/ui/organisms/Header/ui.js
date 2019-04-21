@@ -3,11 +3,13 @@ import * as T from 'prop-types';
 import bemHelper from 'utils/bem-helper';
 import './style.scss';
 
-import Logo from 'atoms/Logo';
-import Icon from 'atoms/Icon';
-import Avatar from 'atoms/Avatar';
-import Burger from 'atoms/Burger';
-import Button from 'atoms/Button';
+import {
+  Avatar,
+  Button,
+  Burger,
+  Icon,
+  Logo
+} from 'atoms';
 import Search from 'molecules/Search';
 import UserInfo from 'molecules/UserInfo/ui';
 
@@ -39,13 +41,14 @@ class Header extends Component {
       userInfo,
       searchQuery,
       getSearchList,
-      readyAuth
+      readyAuth,
+      visibleMenu
     } = this.props;
     const { showUserInfo } = this.state;
 
     return (
       <div {...cn('', '', mix)}>
-        <Burger mix={cn('icon-menu').className} toggleShow={toggleShow} />
+        <Burger mix={cn('icon-menu').className} toggleShow={toggleShow} visibleMenu={visibleMenu} />
         <Logo />
         <Search
           mix={cn('search').className}

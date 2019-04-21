@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import * as T from 'prop-types';
+import { Link } from 'react-router-dom';
 import { getCountView } from 'utils/helper';
 import bemHelper from 'utils/bem-helper';
 import './style.scss';
 
-import Preview from 'atoms/Preview';
-import Link from 'atoms/Link';
-import Views from 'atoms/Views';
+import { Preview, Views } from 'atoms';
 
 const cn = bemHelper('video-item');
 

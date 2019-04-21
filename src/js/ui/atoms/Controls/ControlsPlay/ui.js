@@ -3,7 +3,7 @@ import * as T from 'prop-types';
 import bemHelper from 'utils/bem-helper';
 import './style.scss';
 
-import Icon from 'atoms/Icon/ui';
+import { Icon } from 'atoms';
 
 const cn = bemHelper('controls-play');
 

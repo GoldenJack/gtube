@@ -3,7 +3,7 @@ import * as T from 'prop-types';
 import bemHelper from 'utils/bem-helper';
 import './style.scss';
 
-import Icon from 'atoms/Icon';
+import { Icon } from 'atoms';
 import Volume from 'atoms/Controls/Volume';
 import Progress from 'atoms/Progress';
 import ControlsPlay from 'atoms/Controls/ControlsPlay';

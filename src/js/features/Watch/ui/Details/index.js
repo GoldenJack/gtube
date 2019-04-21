@@ -4,10 +4,12 @@ import { getCountView, getTextHtml } from 'utils/helper';
 import bemHelper from 'utils/bem-helper';
 import './style.scss';
 
-import Icon from 'atoms/Icon';
-import Views from 'atoms/Views';
-import Avatar from 'atoms/Avatar';
-import Button from 'atoms/Button';
+import {
+  Avatar,
+  Button,
+  Icon,
+  Views
+} from 'atoms';
 // import Ratio from 'molecules/Ratio';
 import { Link } from 'react-router-dom';
 

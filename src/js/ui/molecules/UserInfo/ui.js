@@ -3,7 +3,7 @@ import * as T from 'prop-types';
 import bemHelper from 'utils/bem-helper';
 import './style.scss';
 
-import Button from 'atoms/Button/ui';
+import { Button } from 'atoms';
 
 const cn = bemHelper('user-info');
 

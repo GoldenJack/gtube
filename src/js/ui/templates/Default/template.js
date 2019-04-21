@@ -5,7 +5,7 @@ import { routes } from 'constants/routes';
 import bemHelper from 'utils/bem-helper';
 import './style.scss';
 
-import { CommonWrapper } from 'atoms/Wrapper';
+import { CommonWrapper } from 'atoms';
 import Header from 'organisms/Header';
 import { Menu } from 'organisms/Menu';
 
@@ -33,6 +33,7 @@ const Default = ({
       <Header
         mix={cn('header').className}
         toggleShow={toggleVisibleMenu}
+        visibleMenu={visibleMenu}
         {...props}
       />
       <div {...cn('wrap')}>

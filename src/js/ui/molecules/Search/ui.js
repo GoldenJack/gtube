@@ -3,8 +3,7 @@ import * as T from 'prop-types';
 import bemHelper from 'utils/bem-helper';
 import './style.scss';
 
-import Icon from 'atoms/Icon';
-import Input from 'atoms/Input';
+import { Icon, Input } from 'atoms';
 
 const cn = bemHelper('search');
 

@@ -1,7 +1,6 @@
 .burger {
-
   &__icon {
-    padding: 5px;
+    padding: $fold-size * 2;
     cursor: pointer;
   }
 }

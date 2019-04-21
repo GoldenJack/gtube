@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import T from 'prop-types';
 
-import { Wrapper } from 'atoms/Wrapper';
+import { Wrapper } from 'atoms';
 import Caption from 'molecules/Caption';
 import Category from 'organisms/Category';
 import WithPreloader from 'molecules/WithPreloader';

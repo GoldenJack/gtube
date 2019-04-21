@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import T from 'prop-types';
 import bemHelper from 'utils/bem-helper';
-import Icon from 'atoms/Icon';
+import { Icon } from 'atoms';
 import LikeSVG from './assets/like.svg';
 import DisikeSVG from './assets/dislike.svg';
 import './style.scss';
+
 
 const cn = bemHelper('ratio');
 

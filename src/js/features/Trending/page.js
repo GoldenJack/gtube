@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { api } from 'src/api';
 import { useFetch } from 'hooks';
 
-import { Wrapper } from 'atoms/Wrapper';
+import { Wrapper } from 'atoms';
 import WithPreloader from 'molecules/WithPreloader';
 import Category from 'organisms/Category';
 
