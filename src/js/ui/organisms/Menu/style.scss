@@ -1,0 +1,20 @@
+.menu {
+  display: none;
+  position: absolute;
+  top: 0;
+  height: calc(100vh - 60px);
+  width: 100%;
+  background: var(--main-bg-color);
+  overflow: auto;
+  padding: $fold-size * 5;
+  &--open {
+    display: block;
+  }
+  &__cards {
+    display: grid;
+    grid-template-columns: 200px 200px 200px 200px 200px;
+    grid-template-rows: 200px 200px 200px 200px 200px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+}

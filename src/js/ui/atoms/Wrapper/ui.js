@@ -24,21 +24,15 @@ Wrapper.defaultProps = {
 
 const cnCommonWrapper = bemHelper('common-wrapper');
 
-export const CommonWrapper = ({ mix, visibleSidebar, floating, children }) => (
-  <div {...cnCommonWrapper('', {
-    'with-menu': visibleSidebar && !floating,
-    'full-width': !visibleSidebar && !floating,
-  }, mix)}
-  >
+export const CommonWrapper = ({ mix, children }) => (
+  <div {...cnCommonWrapper('', '', mix)}>
     { children }
   </div>
 );
 
 CommonWrapper.propTypes = {
   mix: T.string,
-  floating: T.bool.isRequired,
   children: T.object.isRequired,
-  visibleSidebar: T.bool.isRequired,
 };
 
 CommonWrapper.defaultProps = {

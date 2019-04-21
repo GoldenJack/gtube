@@ -1,2 +1,2 @@
-export { useSidebar } from './useSidebar';
+export { useMenu } from './useMenu';
 export { useFetch } from './useFetch';

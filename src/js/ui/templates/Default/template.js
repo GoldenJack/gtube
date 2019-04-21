@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import * as T from 'prop-types';
-import { useSidebar } from 'hooks';
+import { useMenu } from 'hooks';
+import { routes } from 'constants/routes';
 import bemHelper from 'utils/bem-helper';
 import './style.scss';
 
 import { CommonWrapper } from 'atoms/Wrapper';
 import Header from 'organisms/Header';
-import Sidebar from 'organisms/Sidebar';
+import { Menu } from 'organisms/Menu';
 
 const cn = bemHelper('theme');
 
@@ -21,7 +22,7 @@ const Default = ({
   ...props
 }) => {
   const [theme, setTheme] = useState('ligth');
-  const { visibleSidebar, toggleVisibleSidebar, setVisibleSidebar } = useSidebar(floating);
+  const { visibleMenu, toggleVisibleMenu, setVisibleMenu } = useMenu();
 
   const toggleTheme = () => {
     setTheme(theme === 'ligth' ? 'dark' : 'ligth');
@@ -31,24 +32,14 @@ const Default = ({
     <div {...cn('', theme)}>
       <Header
         mix={cn('header').className}
-        toggleShow={toggleVisibleSidebar}
+        toggleShow={toggleVisibleMenu}
         {...props}
       />
       <div {...cn('wrap')}>
-        <Sidebar
-          visible={visibleSidebar}
-          floating={floating}
-          onClose={() => setVisibleSidebar(false)}
-          toggleTheme={toggleTheme}
-          {...props}
-        />
-        <CommonWrapper
-          mix={cn('content').className}
-          visibleSidebar={visibleSidebar}
-          floating={floating}
-        >
+        <CommonWrapper mix={cn('content').className}>
           {children}
         </CommonWrapper>
+        <Menu visible={visibleMenu} routes={routes} setVisibleMenu={setVisibleMenu} />
       </div>
     </div>
   );

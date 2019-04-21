@@ -14,11 +14,11 @@ import SearchPage from 'features/SearchPage';
 export const Routes = () => (
   <Fragment>
     <Route exact path="/" component={Home} />
-    <Route path="/trending" component={Trending} />
+    {/* <Route path="/trending" component={Trending} />
     <Route path="/search" component={SearchPage} />
     <Route path="/liked" component={Liked} />
     <Route path="/subscriptions" component={Subscriptions} />
     <Route path="/watch/:videoId" component={Watch} />
-    <Route path="/channel/:channelId" component={Channel} />
+    <Route path="/channel/:channelId" component={Channel} /> */}
   </Fragment>
 );

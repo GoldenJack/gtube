@@ -9,7 +9,7 @@ export const Title = ({ type, mix, children }) => {
   return (
     React.createElement(
       type,
-      { ...cn('title', { type, mix }) },
+      { ...cn('title', '', mix) },
       children
     )
   );
