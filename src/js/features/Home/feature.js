@@ -4,7 +4,7 @@ import { topic } from 'constants/topic';
 import { getRandomTopic } from 'utils/helper';
 import { useFetch } from 'hooks';
 
-import PageOfHome from 'pages/PageOfHome';
+import { PageOfHome } from 'pages';
 
 const randomTopic = getRandomTopic(topic);
 

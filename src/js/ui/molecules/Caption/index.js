@@ -7,7 +7,7 @@ import { Title } from 'atoms';
 
 const cn = bemHelper('caption');
 
-const Caption = ({ mix, type, title, subtitle }) => {
+export const Caption = ({ mix, type, title, subtitle }) => {
   return (
     <div {...cn('', '', mix)}>
       <Title type={type} mix={cn('title').className}>{title}</Title>
@@ -25,5 +25,3 @@ Caption.propTypes = {
 Caption.defaultProps = {
   mix: '',
 };
-
-export default Caption;

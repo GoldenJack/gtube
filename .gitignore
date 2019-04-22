@@ -1,3 +1,4 @@
+.idea
 # Logs
 logs
 *.log
@@ -60,7 +61,7 @@ typings/
 # next.js build output
 .next
 
-# public 
+# public
 public/
 server/config.js
 src/js/config/index.js

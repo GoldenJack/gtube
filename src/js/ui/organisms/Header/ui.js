@@ -10,8 +10,7 @@ import {
   Icon,
   Logo
 } from 'atoms';
-import Search from 'molecules/Search';
-import UserInfo from 'molecules/UserInfo/ui';
+import { Search, UserInfo } from 'molecules';
 
 const cn = bemHelper('header');
 

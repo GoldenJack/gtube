@@ -1,5 +1,5 @@
 import React from 'react';
-import * as T from 'prop-types';
+import T from 'prop-types';
 import bemHelper from 'utils/bem-helper';
 import { Link } from 'react-router-dom';
 import './style.scss';
@@ -7,11 +7,6 @@ import './style.scss';
 import { Icon } from 'atoms';
 
 const cn = bemHelper('docket');
-
-const propTypes = {
-  title: T.string.isRequired,
-  list: T.array.isRequired
-};
 
 export const Docket = ({ title, list }) => (
   <div {...cn()}>
@@ -27,4 +22,7 @@ export const Docket = ({ title, list }) => (
   </div>
 );
 
-Docket.propTypes = propTypes;
+Docket.propTypes = {
+  title: T.string.isRequired,
+  list: T.array.isRequired
+};

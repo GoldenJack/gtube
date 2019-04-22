@@ -1,3 +1,29 @@
-import ui from './ui';
+import React, { Component, Fragment } from 'react';
+import * as T from 'prop-types';
+import bemHelper from 'utils/bem-helper';
+import './style.scss';
 
-export default ui;
+import { VideoItem } from 'molecules';
+
+const cn = bemHelper('slider');
+
+const Slider = ({ videos }) => {
+
+};
+
+Slider.propTypes = {
+  title: T.string,
+  description: T.string,
+  videos: T.array,
+  typeSlider: T.oneOf([
+    'videos'
+  ]).isRequired
+};
+
+Slider.defaultProps = {
+  title: '',
+  description: '',
+  videos: []
+};
+
+export default Slider;
