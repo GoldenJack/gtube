@@ -110,6 +110,7 @@ module.exports = {
       hooks: path.resolve(__dirname, 'src/js/hooks'),
       src: path.resolve(__dirname, 'src/js'),
       services: path.resolve(__dirname, 'src/js/services'),
+      context: path.resolve(__dirname, 'src/js/context'),
     }
   },
   devtool: 'source-map',

@@ -41,7 +41,8 @@ class Header extends Component {
       searchQuery,
       getSearchList,
       readyAuth,
-      visibleMenu
+      visibleMenu,
+      authIn
     } = this.props;
     const { showUserInfo } = this.state;
 
@@ -70,7 +71,7 @@ class Header extends Component {
               <UserInfo userInfo={userInfo} showUserInfo={showUserInfo} logout={this.logout} />
             </Fragment>
           ) : (
-            <Button text="Sign in" effect={signIn} />
+            <Button text="Sign in" onClick={authIn} />
           )}
         </Fragment>
       </div>

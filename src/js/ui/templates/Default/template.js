@@ -12,8 +12,7 @@ import { Menu } from 'organisms/Menu';
 const cn = bemHelper('theme');
 
 const propTypes = {
-  children: T.array.isRequired,
-  floating: T.bool.isRequired,
+  children: T.array.isRequired
 };
 
 const Default = ({
