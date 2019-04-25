@@ -7,46 +7,32 @@ import { Icon, Input } from 'atoms';
 
 const cn = bemHelper('search');
 
-export class Search extends Component {
-  state = {
-    mobileSearchShow: false
-  }
+export const Search = ({
+  mix,
+  getSearchList,
+  searchQuery,
+  history,
 
-  searchFocus = () => {
-    // TODO: FIXED THAT
-    // const { history } = this.props;
-    window.location.href = '#/search';
-  }
+}) => {
+  const onFocus = () => {
+    history.push('/searching');
+  };
 
-  toggleShowSearch = () => {
-    const { mobileSearchShow } = this.state;
-    this.setState({
-      mobileSearchShow: !mobileSearchShow
-    });
-  }
-
-  render() {
-    const { mix, getSearchList, searchQuery } = this.props;
-    const { mobileSearchShow } = this.state;
-    const toggleClass = !mobileSearchShow ? 'close' : 'open';
-
-    return (
-      <div {...cn('', toggleClass, mix)}>
-        <Icon
-          mix={cn('icon').className}
-          icon="img/icons/search.svg"
-          effect={this.toggleShowSearch}
-        />
-        <Input
-          type="text"
-          mix={cn('input').className}
-          value={searchQuery}
-          onFieldChange={getSearchList}
-          onFocus={this.searchFocus}
-        />
-      </div>
-    );
-  }
+  return (
+    <div {...cn('', '', mix)}>
+      <Icon
+        mix={cn('icon').className}
+        icon="img/icons/search.svg"
+      />
+      <Input
+        type="text"
+        mix={cn('input').className}
+        value={searchQuery}
+        onChange={getSearchList}
+        onFocus={onFocus}
+      />
+    </div>
+  );
 }
 
 Search.propTypes = {

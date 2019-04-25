@@ -2,13 +2,13 @@ import React, { Fragment } from 'react';
 import { Route } from 'react-router-dom';
 
 import Home from 'features/Home';
-import Trending from 'features/Trending';
-import Watch from 'features/Watch';
-import Channel from 'features/Channel';
-import Liked from 'features/Liked';
-import Subscriptions from 'features/Subscriptions';
+// import Trending from 'features/Trending';
+// import Watch from 'features/Watch';
+// import Channel from 'features/Channel';
+// import Liked from 'features/Liked';
+// import Subscriptions from 'features/Subscriptions';
 // TODO: rename SearchPage to Searching
-import SearchPage from 'features/SearchPage';
+// import SearchPage from 'features/SearchPage';
 
 
 export const Routes = () => (

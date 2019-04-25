@@ -42,7 +42,8 @@ class Header extends Component {
       getSearchList,
       readyAuth,
       visibleMenu,
-      authIn
+      authIn,
+      history
     } = this.props;
     const { showUserInfo } = this.state;
 
@@ -54,6 +55,7 @@ class Header extends Component {
           mix={cn('search').className}
           getSearchList={getSearchList}
           searchQuery={searchQuery}
+          history={history}
         />
         {readyAuth && (
           <div {...cn('notification')}>
@@ -81,13 +83,14 @@ class Header extends Component {
 
 Header.propTypes = {
   mix: T.string,
+  history: T.object.isRequired,
   toggleShow: T.func.isRequired,
-  signIn: T.func.isRequired,
+  authIn: T.func.isRequired,
   userInfo: T.object,
-  logout: T.func.isRequired,
+  // logout: T.func.isRequired,
   searchQuery: T.string.isRequired,
   getSearchList: T.func.isRequired,
-  readyAuth: T.bool.isRequired
+  // readyAuth: T.bool.isRequired
 };
 
 Header.defaultProps = {

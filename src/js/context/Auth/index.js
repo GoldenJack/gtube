@@ -4,6 +4,7 @@
  */
 
 import React, { createContext, useCallback, useEffect, useState, useReducer } from 'react';
+import T from 'prop-types';
 import { parseJwt } from 'utils/parseJwt';
 import { setAccessToken, getAccessToken } from 'services/LocalStorage';
 import { FETCH, START, SUCCESS, FAIL } from 'constants/common';
@@ -97,15 +98,19 @@ export const AuthProvider = ({ children }) => {
   }, [googleApi, _loadApi]);
 
   return (
-    <AuthContext.Provider value={[
+    <AuthContext.Provider value={{
       fetchStatus,
       accessToken,
       userInfo,
       errorByAuth,
       authIn
-    ]}
+    }}
     >
       {children}
     </AuthContext.Provider>
   );
+};
+
+AuthProvider.propTypes = {
+  children: T.node.isRequired
 };
