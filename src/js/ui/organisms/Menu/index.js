@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import T from 'prop-types';
 import bemHelper from 'utils/bem-helper';
 import './style.scss';
@@ -16,7 +17,11 @@ export const Menu = ({
     <div {...cn('', { 'open': visible })}>
       <div {...cn('cards')}>
         {routes && routes.map(route => (
-          <Card key={route.title} {...route} setVisibleMenu={setVisibleMenu} />
+          <Card
+            {...route}
+            key={route.title}
+            setVisibleMenu={setVisibleMenu}
+          />
         ))}
       </div>
     </div>

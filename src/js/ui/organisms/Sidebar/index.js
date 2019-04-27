@@ -1,58 +1,37 @@
 import React, { Fragment } from 'react';
 import T from 'prop-types';
-import { routes } from 'constants/routes';
 import bemHelper from 'utils/bem-helper';
 import './style.scss';
-
-import { Docket } from 'molecules';
 
 const cn = bemHelper('sidebar');
 
 export const Sidebar = ({
-                          visible,
-                          floating,
-                          onClose,
-                          readyAuth,
-                          toggleTheme
-                        }) => {
-  const { auth, guest } = routes;
+  visible,
+  onClose,
+  children
+}) => {
   const toggleClass = visible ? 'visible' : 'hidden';
 
   return (
     <Fragment>
-      {floating && (
-        <div
-          {...cn('overlay', visible ? 'open' : 'close')}
-          role="none"
-          onClick={onClose}
-        />
-      )}
+      <div
+        {...cn('overlay', visible ? 'open' : 'close')}
+        role="none"
+        onClick={onClose}
+      />
       <div {...cn('', toggleClass)}>
-        {readyAuth ? (
-          <Fragment>
-            <Docket
-              title={auth.main.title}
-              list={auth.main.menu}
-            />
-            <Docket
-              title={auth.library.title}
-              list={auth.library.menu}
-            />
-          </Fragment>
-        ) : (
-          <Fragment>
-            <Docket
-              title={guest.main.title}
-              list={guest.main.menu}
-            />
-            <Docket
-              title={guest.library.title}
-              list={guest.library.menu}
-            />
-          </Fragment>
-        )}
-        <span onClick={toggleTheme} role="none">Swap theme</span>
+        {children}
       </div>
     </Fragment>
   );
+};
+
+Sidebar.propTypes = {
+  visible: T.bool,
+  onClose: T.func.isRequired,
+  children: T.node.isRequired
+};
+
+Sidebar.defaultProps = {
+  visible: false
 };

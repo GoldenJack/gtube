@@ -16,15 +16,10 @@ export const Default = withRouter(({
   children,
   ...props
 }) => {
-  const [theme, setTheme] = useState('ligth');
   const { visibleMenu, toggleVisibleMenu, setVisibleMenu } = useMenu();
 
-  const toggleTheme = () => {
-    setTheme(theme === 'ligth' ? 'dark' : 'ligth');
-  };
-
   return (
-    <div {...cn('', theme)}>
+    <div {...cn('')}>
       <Header
         mix={cn('header').className}
         toggleShow={toggleVisibleMenu}

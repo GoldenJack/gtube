@@ -18,11 +18,12 @@ const Home = () => {
   // const videos = useMemo(() => sortVideos(items), [items]);
 
   return (
-    <PageOfHome
+    <span>123</span>
+  );
+  {/* <PageOfHome
       fetchStatus={fetchStatus}
       data={data}
-    />
-  );
+    /> */}
 };
 
 export default Home;

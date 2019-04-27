@@ -1,14 +1,13 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import T from 'prop-types';
 
-import { Wrapper } from 'atoms';
-import { Caption, WithPreloader } from 'molecules';
+import { Title, Wrapper } from 'atoms';
+import { WithPreloader } from 'molecules';
 import { Category } from 'organisms';
 
 export const PageOfHome = ({
-  fetchStatus,
   data,
-  ...props
+  fetchStatus
 }) => {
   const renderCategories = () => {
     if (data.length === 0) return null;
@@ -22,7 +21,7 @@ export const PageOfHome = ({
   return (
     <Wrapper>
       <WithPreloader fetchStatus={fetchStatus}>
-        <Caption type="h4" title="Домашняя страница" />
+        <Title type="h4">Домашняя страница</Title>
         {renderCategories()}
       </WithPreloader>
     </Wrapper>
@@ -30,6 +29,6 @@ export const PageOfHome = ({
 };
 
 PageOfHome.propTypes = {
-  fetchStatus: T.string.isRequired,
-  categories: T.array.isRequired
+  data: T.array.isRequired,
+  fetchStatus: T.string.isRequired
 };

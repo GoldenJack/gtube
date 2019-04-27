@@ -29,14 +29,13 @@ export const Category = ({ mix, videos }) => (
 
 Category.propTypes = {
   mix: T.string,
-  title: T.string.isRequired,
   videos: T.array.isRequired,
   description: T.string,
-  children: T.any
+  children: T.node
 };
 
 Category.defaultProps = {
   mix: '',
   description: '',
-  children: false
+  children: null
 };
