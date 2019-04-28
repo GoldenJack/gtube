@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDom from 'react-dom';
 import T from 'prop-types';
 import { Link } from 'react-router-dom';
 import bemHelper from 'utils/bem-helper';
@@ -12,6 +11,7 @@ const cn = bemHelper('card');
 export const Card = ({ title, url, icon }) => {
   return (
     <Link to={url} {...cn()}>
+      <Icon mix={cn('icon').className} icon={icon} />
       <Title type="h6" mix={cn('title').className}>{title}</Title>
     </Link>
   );

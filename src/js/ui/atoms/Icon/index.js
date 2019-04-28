@@ -1,23 +1,15 @@
 import React from 'react';
 import * as T from 'prop-types';
-import SVGInline from "react-svg-inline"
+import SVGInline from 'react-svg-inline';
+import { icons } from 'constants/icons';
 import bemHelper from 'utils/bem-helper';
 
 const cn = bemHelper('icon');
 
-// export const Icon = ({ icon, mix, ...props }) => (
-//   <img
-//     {...cn('', '', mix)}
-//     src={icon}
-//     alt="icon"
-//     role="none"
-//     {...props}
-//   />
-// );
-
 export const Icon = ({ icon, mix, active, ...props }) => {
+  const activeCN = active ? mix : `${mix} ${mix}--active`;
   return (
-    <SVGInline {...cn('', '', (active ? mix : `${mix}--active`))} svg={icon} {...props} />
+    <SVGInline {...cn('', '', activeCN)} svg={icons[icon]} {...props} />
   );
 };
 

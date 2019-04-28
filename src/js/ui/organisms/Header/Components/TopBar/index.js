@@ -1,7 +1,6 @@
 import React from 'react';
 import bemHelper from 'utils/bem-helper';
 import { isEmpty } from 'utils/helper';
-import powerSVG from 'img/icons/power.svg';
 import './style.scss';
 
 import { Avatar, Button, Icon, Wrapper } from 'atoms';
@@ -20,7 +19,7 @@ export const TopBar = ({
           <Avatar avatar={userInfo.avatar} size="small" />
         )}
         <Button mix={cn('button').className} onClick={authIn}>
-          <Icon mix={cn('icon-power').className} active={!userAuth} icon={powerSVG} />
+          <Icon mix={cn('icon-power').className} active={!userAuth} icon="power" />
         </Button>
       </Wrapper>
     </div>

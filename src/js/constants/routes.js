@@ -2,13 +2,13 @@ export const routes = [
   {
     title: 'Popular on YouTube',
     url: '/popular-youtube',
-    icon: 'img/icons/not-found.svg'
+    icon: 'popular'
   },
-  {
-    title: 'Upload Video',
-    url: '/upload',
-    icon: 'img/icons/not-found.svg'
-  }
+  // {
+  //   title: 'Upload Video',
+  //   url: '/upload',
+  //   icon: 'img/icons/not-found.svg'
+  // }
   // {
   //   name: 'Home',
   //   to: '/',
@@ -22,7 +22,7 @@ export const routes = [
   // {
   //   name: 'Popular on YouTube',
   //   to: '/trending',
-  //   icon: 'img/icons/trending.svg'
+  //   icon: 'img/icons/popular.svg'
   // },
   // {
   //   name: 'Subscriptions',

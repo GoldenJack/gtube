@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import T from 'prop-types';
-import microphoneSVG from 'img/icons/microphone.svg';
 import bemHelper from 'utils/bem-helper';
 import './style.scss';
 
@@ -9,15 +8,12 @@ import { Field } from 'molecules';
 
 const cn = bemHelper('search');
 
-export const Search = ({
-  mix,
-  history,
-}) => {
+export const Search = ({ mix }) => {
   return (
     <div {...cn('', '', mix)}>
       <Field mix={cn('field').className} />
       <Button mix={cn('button').className} view="pink">
-        <Icon mix={cn('button-icon').className} icon={microphoneSVG} />
+        <Icon mix={cn('button-icon').className} icon="microphone" />
       </Button>
     </div>
   );
