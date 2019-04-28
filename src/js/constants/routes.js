@@ -1,10 +1,5 @@
 export const routes = [
   {
-    title: 'Home',
-    url: '/',
-    icon: 'img/icons/not-found.svg'
-  },
-  {
     title: 'Popular on YouTube',
     url: '/popular-youtube',
     icon: 'img/icons/not-found.svg'

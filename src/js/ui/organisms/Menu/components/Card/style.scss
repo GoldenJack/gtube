@@ -102,4 +102,15 @@
   &__title {
     color: $white;
   }
+
+  @media screen and (max-width: 830px) {
+    width: 200px;
+    height: 200px;
+  }
+  @media screen and (max-width: 665px) {
+    width: calc(100% / 2 - 6px);
+  }
+  @media screen and (max-width: 500px) {
+    width: 100%;
+  }
 }

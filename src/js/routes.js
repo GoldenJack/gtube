@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Route } from 'react-router-dom';
 
-import Home from 'features/Home';
+import { Home } from 'features';
 // import Trending from 'features/Trending';
 // import Watch from 'features/Watch';
 // import Channel from 'features/Channel';

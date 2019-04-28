@@ -1,0 +1,17 @@
+.body-bar {
+  padding-top: $medium;
+  padding-bottom: $medium;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 750px;
+    width: 100%;
+  }
+
+  &__logo {
+    height: $medium;
+    margin-right: $small;
+  }
+}

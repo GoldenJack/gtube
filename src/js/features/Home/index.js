@@ -1,3 +1,9 @@
-import Feature from './feature';
+import React from 'react';
 
-export default Feature;
+import { PageOfHome } from 'pages';
+
+export const Home = () => {
+  return (
+    <PageOfHome />
+  );
+};

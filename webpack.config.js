@@ -53,7 +53,7 @@ module.exports = {
 
       },
       {
-        test: /\.(png|jpg|gif|svg)$/,
+        test: /\.(png|jpg|gif)$/,
         use: {
           loader: 'file-loader',
           options: {
@@ -70,6 +70,10 @@ module.exports = {
           }
         }
       },
+      {
+        test: /\.svg$/,
+        loader: 'raw-loader'
+      }
     ]
   },
   plugins: [

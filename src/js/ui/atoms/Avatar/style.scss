@@ -3,9 +3,29 @@
   overflow: hidden;
   cursor: pointer;
 
+  &--tiny {
+    width: $tiny;
+    height:$tiny;
+  }
+
+  &--small {
+    width: $small;
+    height: $small;
+  }
+
   &--medium {
-    width: 40px;
-    height: 40px;
+    width: $medium;
+    height: $medium;
+  }
+
+  &--large {
+    width: $large;
+    height: $large;
+  }
+
+  &--extra-large {
+    width: $extra-large;
+    height: $extra-large;
   }
 
   &__image {

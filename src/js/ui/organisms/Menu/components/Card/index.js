@@ -9,12 +9,9 @@ import { Icon, Title } from 'atoms';
 
 const cn = bemHelper('card');
 
-export const Card = ({ title, url, icon, setVisibleMenu }) => {
-  const triggerClick = () => {
-    setVisibleMenu(false);
-  };
+export const Card = ({ title, url, icon }) => {
   return (
-    <Link to={url} {...cn()} onClick={triggerClick}>
+    <Link to={url} {...cn()}>
       <Title type="h6" mix={cn('title').className}>{title}</Title>
     </Link>
   );

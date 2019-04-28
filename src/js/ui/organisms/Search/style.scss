@@ -1,0 +1,22 @@
+.search {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  &__field {
+    height: $medium;
+    background: $white;
+    border-right: none;
+    border-top-left-radius: $fold-size;
+    border-bottom-left-radius: $fold-size;
+    width: 100%;
+  }
+
+  &__button {
+    width: $medium;
+    height: $medium;
+    padding: $fold-size;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}

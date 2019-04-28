@@ -43,9 +43,13 @@
     "react-addons-css-transition-group": "^15.6.2",
     "react-redux": "^5.1.1",
     "react-router-dom": "^4.3.1",
+    "react-svg-inline": "^2.1.1",
     "redux": "^4.0.1",
+    "redux-devtools": "^3.4.2",
     "redux-devtools-extension": "^2.13.8",
+    "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
+    "remote-redux-devtools": "^0.5.13",
     "resolve-url-loader": "^3.0.1",
     "sass-loader": "^7.1.0",
     "sass-resources-loader": "^2.0.0",
@@ -62,11 +66,10 @@
   },
   "homepage": "https://github.com/GoldenJack/gtube#readme",
   "devDependencies": {
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "raw-loader": "^2.0.0",
     "react": "^16.8.3",
-    "react-dom": "^16.8.3",
-    "redux-devtools": "^3.4.2",
-    "redux-logger": "^3.0.6",
-    "remote-redux-devtools": "^0.5.13"
+    "react-dom": "^16.8.3"
   },
   "proxy": "http://localhost:3000"
 }

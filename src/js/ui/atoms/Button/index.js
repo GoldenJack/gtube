@@ -5,21 +5,21 @@ import './style.scss';
 
 const cn = bemHelper('btn');
 
-export const Button = ({ mix, type, text, ...props }) => {
-  return (
-    <a href="#" {...cn('', type, mix)} {...props}>
-      {text}
-    </a>
-  );
-};
+export const Button = ({ mix, type, view, children, ...props }) => (
+  <button type={type} {...cn('', view, mix)} {...props}>
+    {children}
+  </button>
+);
 
 Button.propTypes = {
   mix: T.string,
-  text: T.string.isRequired,
-  type: T.string
+  children: T.node.isRequired,
+  type: T.string,
+  view: T.string
 };
 
 Button.defaultProps = {
   mix: '',
-  type: 'pink'
+  view: '',
+  type: 'button'
 };

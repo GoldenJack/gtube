@@ -61,7 +61,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const authIn = () => {
-    dispatch({ type: FETCH + LOGIN + START, fetchStatus: PENDING });
+    dispatch({ type: FETCH + LOGIN + START, payload: { fetchStatus: PENDING } });
     googleApi.signIn()
       .then(googleUser => {
         const tokenGoogle = googleUser.getAuthResponse().id_token;

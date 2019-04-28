@@ -2,13 +2,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: $fold-size;
-  padding: $fold-size * 3 $fold-size * 5;
-  color:  #ffffff;
-  font-size: $fold-size * 5;
-  font-weight: 500;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: transparent;
 
   &--pink {
+    max-width: 120px;
+    border-radius: $fold-size;
+    padding: $fold-size * 3 $fold-size * 5;
+    color:  #ffffff;
+    font-size: $fold-size * 5;
+    font-weight: 500;
     background: $bpink;
   }
 }

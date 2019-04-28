@@ -9,6 +9,7 @@ $blue: #6a93ff;
 
 //news
 $red: #FE0000;
+$pink: #fa2276;
 $ligthBlue: #4c8df6;
 $blue: #1c62c4;
 $darkBlue: #195cba;
@@ -24,24 +25,31 @@ $main-box-shadow: 0px 1px 4px rgba(0,0,0,0.11);
 $width-sidebar: 282px;
 
 .theme {
-  &--ligth {
-    --main-bg-color: #ffffff;
+  &--light {
+    --main-bg-color: #f3f3f3;
     --main-text-color: #171c22;
     --main-box-shadow: 0px 1px 4px rgba(0,0,0,0.11);
+    --main-top-bar-bg: #656f80;
   }
   &--dark {
     --main-bg-color: #171c22;
     --main-text-color: #ffffff;
     --main-box-shadow: 0px 1px 4px rgba(255,255,255,0.11);
+    --main-top-bar-bg: #656f80;
   }
 }
 
 // fonts
 $ff: 'HelveticaNeueCyr';
 
-// offset/padding/marign
+// offset/padding/margin/size
 
 $fold-size: 3px;
+$tiny: $fold-size * 5;
+$small: $fold-size * 7;
+$medium: $fold-size * 12;
+$large: $fold-size * 15;
+$extra-large: $fold-size * 20;
 
-// animation 
+// animation
 $animation: .4s ease;

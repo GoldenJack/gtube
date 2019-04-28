@@ -1,25 +1,26 @@
 import React from 'react';
 import * as T from 'prop-types';
 import { Link } from 'react-router-dom';
+import logoSVG from 'img/logo.svg';
 import bemHelper from 'utils/bem-helper';
 import './style.scss';
 
+import { Icon } from 'atoms';
+
 const cn = bemHelper('logo');
 
-export const Logo = ({ mix, logo }) => (
+export const Logo = ({ mix }) => (
   <div {...cn('', '', mix)}>
     <Link to="/">
-      <img src={logo} alt="GTUBE" />
+      <Icon icon={logoSVG} />
     </Link>
   </div>
 );
 
 Logo.propTypes = {
-  mix: T.string,
-  logo: T.string
+  mix: T.string
 };
 
 Logo.defaultProps = {
-  mix: '',
-  logo: 'img/logo.png'
+  mix: ''
 };

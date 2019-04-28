@@ -1,6 +1,6 @@
 export { Caption } from './Caption';
 export { Docket } from './Docket';
-export { Search } from './Search';
+export { Field } from './Field';
 export { UserInfo } from './UserInfo';
 export { VideoItem } from './VideoItem';
 export { WithPreloader } from './WithPreloader';

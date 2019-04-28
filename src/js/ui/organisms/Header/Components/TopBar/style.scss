@@ -1,0 +1,26 @@
+.top-bar {
+  background: var(--main-top-bar-bg);
+  &__wrapper {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: $fold-size * 2;
+    padding-bottom: $fold-size * 2;
+    background-color: transparent;
+  }
+
+  &__button {
+    margin-left: $fold-size * 5;
+  }
+
+  &__icon-power {
+    width: $small;
+    height: $small;
+    &--active {
+      width: $small;
+      height: $small;
+      path {
+        fill: $pink;
+      }
+    }
+  }
+}

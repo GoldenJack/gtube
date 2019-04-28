@@ -1,21 +1,16 @@
-.common-wrapper {
+.wrapper {
   position: relative;
-  min-height: calc(100vh - 60px);
-  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
   background-color: var(--main-bg-color);
 
-  &--full-width {
-    -webkit-animation: full-content .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-            animation: full-content .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  &--default {
+    max-width: 1000px;
   }
-  &--with-menu {
-    -webkit-animation: content-with-menu .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-            animation: content-with-menu .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-  }
-}
 
-.wrapper {
-  @media screen and (max-width: 540px) {
-    padding: 15px!important;
+  &--fluid {
+    max-width: 100%;
   }
 }
