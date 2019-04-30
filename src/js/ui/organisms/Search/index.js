@@ -8,10 +8,14 @@ import { Field } from 'molecules';
 
 const cn = bemHelper('search');
 
-export const Search = ({ mix }) => {
+export const Search = ({
+  mix,
+  onChange,
+  value
+}) => {
   return (
     <div {...cn('', '', mix)}>
-      <Field mix={cn('field').className} />
+      <Field mix={cn('field').className} onChange={onChange} value={value} />
       <Button mix={cn('button').className} view="pink">
         <Icon mix={cn('button-icon').className} icon="microphone" />
       </Button>
@@ -21,8 +25,11 @@ export const Search = ({ mix }) => {
 
 Search.propTypes = {
   mix: T.string,
+  onChange: T.func.isRequired,
+  value: T.string
 };
 
 Search.defaultProps = {
-  mix: ''
+  mix: '',
+  value: ''
 };

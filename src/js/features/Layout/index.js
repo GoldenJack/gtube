@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { AuthContext } from 'context';
+import { AuthContext, SearchProvider } from 'context';
 import * as T from 'prop-types';
 
 import { Default } from 'templates';
@@ -7,9 +7,11 @@ import { Default } from 'templates';
 export const Layout = ({ children }) => {
   const { ...props } = useContext(AuthContext);
   return (
-    <Default {...props}>
-      {children}
-    </Default>
+    <SearchProvider>
+      <Default {...props}>
+        {children}
+      </Default>
+    </SearchProvider>
   );
 };
 

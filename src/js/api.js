@@ -89,18 +89,14 @@ export const api = {
   //   }
   // },
   search: {
-    // getList: queryString => {
-    //   return request
-    //     .get(`${depoint}/search`)
-    //     .query({
-    //       part: 'snippet',
-    //       maxResults: '25',
-    //       q: queryString,
-    //       key: API_KEY
-    //     })
-    //     .then(res => res)
-    //     .catch(err => err);
-    // },
+    getList: queryString => {
+      const url = getQueryString('search', {
+        part: 'snippet',
+        maxResults: '25',
+        q: queryString
+      }, API_KEY);
+      return ApiCall.get(url);
+    },
     getTopic: topicId => {
       const url = getQueryString('search', {
         part: 'snippet',

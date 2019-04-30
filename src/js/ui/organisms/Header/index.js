@@ -12,12 +12,14 @@ const cn = bemHelper('header');
 export const Header = ({
   mix,
   authIn,
-  userInfo
+  userInfo,
+  searchString,
+  onSearchChange
 }) => {
   return (
     <Wrapper mix={cn('wrapper').className} type="fluid" style={{ padding: 0 }}>
       <TopBar userInfo={userInfo} authIn={authIn} />
-      <BodyBar />
+      <BodyBar onSearchChange={onSearchChange} searchString={searchString} />
     </Wrapper>
   );
 };

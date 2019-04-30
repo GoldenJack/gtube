@@ -1,8 +1,3 @@
-/**
- * Global context
- * Here save data for all App
- */
-
 import React, { createContext, useCallback, useEffect, useState, useReducer } from 'react';
 import T from 'prop-types';
 import { parseJwt } from 'utils/parseJwt';

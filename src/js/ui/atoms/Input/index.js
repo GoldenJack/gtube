@@ -12,12 +12,13 @@ export const Input = ({
   onChange,
   ...props
 }) => {
+  const triggerChange = e => onChange(e.currentTarget.value);
   return (
     <input
       {...cn('', '', mix)}
       type={type}
       value={value}
-      onChange={onChange}
+      onChange={triggerChange}
       {...props}
     />
   );
