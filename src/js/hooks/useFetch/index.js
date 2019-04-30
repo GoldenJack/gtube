@@ -1,11 +1,9 @@
-import { useCallback, useReducer } from 'react';
+import { useCallback, useEffect, useReducer } from 'react';
 import { PRISTINE, PENDING, COMPLETE, ERROR } from 'constants/fetchStatus';
 import { FETCH, START, SUCCESS, FAIL } from 'constants/common';
 
-const MULTI = 'MULTI';
-
 const initialState = {
-  data: [],
+  data: {},
   fetchStatus: PRISTINE,
   error: []
 };
@@ -14,12 +12,8 @@ const reducer = (state, { type, payload }) => {
   switch (type) {
     case FETCH + START:
       return { ...state, fetchStatus: PENDING };
-    case FETCH + SUCCESS: {
-      // const { data } = payload;
-      // const savesData = state.data;
-      // savesData.push(data);
-      return { data: [...state.data, payload.data], fetchStatus: COMPLETE };
-    }
+    case FETCH + SUCCESS:
+      return { data: payload.data, fetchStatus: COMPLETE };
     case FETCH + FAIL:
       return { ...state, error: payload.error, fetchStatus: ERROR };
     default:
@@ -28,7 +22,7 @@ const reducer = (state, { type, payload }) => {
 };
 
 export const useFetch = (apiRequest) => {
-  const [{ data, fetchStatus }, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const fetchData = useCallback(
     (...requestParams) => {
@@ -46,5 +40,9 @@ export const useFetch = (apiRequest) => {
         });
     }, [apiRequest]);
 
-  return [data, fetchStatus, fetchData];
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  return { ...state };
 };

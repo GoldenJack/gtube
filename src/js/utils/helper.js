@@ -67,3 +67,46 @@ export const getQueryString = (page, params, key) => {
 
   return `${url}?${queryString}key=${key}`;
 };
+
+// TODO: fixed that
+export const getDataByVideo = (items) => {
+  return items.map(item => {
+    const {
+      id: videoId,
+      contentDetails: { duration },
+      snippet: {
+        channelId,
+        channelTitle,
+        description,
+        publishedAt,
+        title: videoTitle,
+        thumbnails: { medium: { url: videoImage } }
+      },
+      statistics: {
+        commentCount,
+        dislikeCount,
+        favoriteCount,
+        likeCount,
+        viewCount
+      }
+    } = item;
+
+    const viewsCount = getCountView(viewCount);
+
+    return {
+      videoId,
+      duration,
+      channelId,
+      channelTitle,
+      description,
+      publishedAt,
+      videoTitle,
+      videoImage,
+      commentCount,
+      dislikeCount,
+      favoriteCount,
+      likeCount,
+      viewsCount
+    };
+  });
+};

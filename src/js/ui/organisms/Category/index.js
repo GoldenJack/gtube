@@ -7,22 +7,12 @@ import { VideoItem } from 'molecules';
 
 const cn = bemHelper('category');
 
-const _renderVideos = (videos) => {
-  return videos.map(video => {
-    return (
-      <VideoItem
-        mix={cn('video-item').className}
-        key={video.id}
-        video={video}
-      />
-    );
-  });
-};
-
 export const Category = ({ mix, videos }) => (
   <div {...cn('', '', mix)}>
     <div {...cn('content')}>
-      {videos && _renderVideos(videos)}
+      {videos && videos.map(video => (
+        <VideoItem key={video.videoId} {...video} />
+      ))}
     </div>
   </div>
 );

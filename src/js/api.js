@@ -11,6 +11,17 @@ export const api = {
       }, API_KEY);
       return ApiCall.get(url);
     }
+    // getItemByBranding: channelId => {
+    //   return request
+    //     .get(`${depoint}/channels`)
+    //     .query({
+    //       part: 'snippet,brandingSettings',
+    //       id: channelId,
+    //       key: API_KEY
+    //     })
+    //     .then(res => res)
+    //     .catch(err => err);
+    // },
     // getUserChannel: accessToken => {
     //   return request
     //     .get(`${depoint}/channels`)
@@ -28,17 +39,6 @@ export const api = {
     //     .get(`${depoint}/channels`)
     //     .query({
     //       part: 'snippet,contentDetails',
-    //       id: channelId,
-    //       key: API_KEY
-    //     })
-    //     .then(res => res)
-    //     .catch(err => err);
-    // },
-    // getItemByBranding: channelId => {
-    //   return request
-    //     .get(`${depoint}/channels`)
-    //     .query({
-    //       part: 'snippet,brandingSettings',
     //       id: channelId,
     //       key: API_KEY
     //     })

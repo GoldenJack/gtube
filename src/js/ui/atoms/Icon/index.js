@@ -3,6 +3,7 @@ import * as T from 'prop-types';
 import SVGInline from 'react-svg-inline';
 import { icons } from 'constants/icons';
 import bemHelper from 'utils/bem-helper';
+import './style.scss';
 
 const cn = bemHelper('icon');
 

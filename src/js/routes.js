@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Route } from 'react-router-dom';
 
-import { Home } from 'features';
+import { Home, Popular } from 'features';
 // import Trending from 'features/Trending';
 // import Watch from 'features/Watch';
 // import Channel from 'features/Channel';
@@ -14,6 +14,7 @@ import { Home } from 'features';
 export const Routes = () => (
   <Fragment>
     <Route exact path="/" component={Home} />
+    <Route path="/popular-youtube" component={Popular} />
     {/* <Route path="/trending" component={Trending} />
     <Route path="/search" component={SearchPage} />
     <Route path="/liked" component={Liked} />
