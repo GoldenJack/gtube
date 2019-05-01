@@ -1,11 +1,21 @@
 .progress {
+  width: 100%;
+  &--line {
+    .progress__bar {
+      height: $fold-size;
+    }
+  }
+
+  &--full {
+    .progress__bar {
+      height: 100%;
+    }
+  }
+
   &__bar {
-    position: absolute;
-    bottom: 100%;
-    left: 0;
-    height: $fold-size;
+    height: 100%;
     width: 100%;
-    background: $main;
+    background: rgba(0,0,0, .2);
     cursor: pointer;
     transition: .2s;
   }

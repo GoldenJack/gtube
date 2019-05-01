@@ -19,7 +19,7 @@ export const TopBar = ({
           <Avatar avatar={userInfo.avatar} size="small" />
         )}
         <Button mix={cn('button').className} onClick={authIn}>
-          <Icon mix={cn('icon-power').className} active={!userAuth} icon="power" />
+          <Icon mix={cn('icon-power').className} active={!userAuth} icon="power" size="small" />
         </Button>
       </Wrapper>
     </div>

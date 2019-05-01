@@ -7,20 +7,22 @@ import './style.scss';
 
 const cn = bemHelper('icon');
 
-export const Icon = ({ icon, mix, active, ...props }) => {
+export const Icon = ({ icon, size, mix, active, ...props }) => {
   const activeCN = active ? mix : `${mix} ${mix}--active`;
   return (
-    <SVGInline {...cn('', '', activeCN)} svg={icons[icon]} {...props} />
+    <SVGInline {...cn('', size, activeCN)} svg={icons[icon]} {...props} />
   );
 };
 
 Icon.propTypes = {
+  mix: T.string,
   active: T.bool,
   icon: T.string.isRequired,
-  mix: T.string
+  size: T.string
 };
 
 Icon.defaultProps = {
+  mix: '',
   active: false,
-  mix: ''
+  size: ''
 };

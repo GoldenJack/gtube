@@ -3,13 +3,14 @@ import { routes } from 'constants/routes';
 import T from 'prop-types';
 
 import { Wrapper } from 'atoms';
-import { Menu } from 'organisms';
+import { Menu, Player } from 'organisms';
 
 export const PageOfHome = () => {
 
   return (
     <Wrapper>
-      <Menu routes={routes} />
+      <Player videoId="-xjd6PfS1o8" />
+      {/*<Menu routes={routes} />*/}
     </Wrapper>
   );
 };

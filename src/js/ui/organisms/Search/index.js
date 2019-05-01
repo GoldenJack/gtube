@@ -17,7 +17,7 @@ export const Search = ({
     <div {...cn('', '', mix)}>
       <Field mix={cn('field').className} onChange={onChange} value={value} />
       <Button mix={cn('button').className} view="pink">
-        <Icon mix={cn('button-icon').className} icon="microphone" />
+        <Icon mix={cn('button-icon').className} icon="microphone" size="small" />
       </Button>
     </div>
   );

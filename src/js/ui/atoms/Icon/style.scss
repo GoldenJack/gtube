@@ -1,3 +1,29 @@
 .icon {
   display: block;
+
+  &--tiny {
+    width: $tiny;
+    height: $tiny;
+  }
+
+  &--small {
+    width: $small;
+    height: $small;
+  }
+
+  &--medium {
+    width: $medium;
+    height: $medium;
+  }
+
+  &--large {
+    width: $large;
+    height: $large;
+  }
+
+  &--extra-large {
+    width: $extra-large;
+    height: $extra-large;
+  }
+
 }
