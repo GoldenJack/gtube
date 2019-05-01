@@ -9,6 +9,7 @@ import popular from 'img/icons/menu/popular.svg';
 
 // player icons
 import play from 'img/icons/player/play.svg';
+import pause from 'img/icons/player/pause.svg';
 
 export const icons = {
   eyes,
@@ -16,5 +17,6 @@ export const icons = {
   microphone,
   power,
   popular,
+  pause,
   play
 };

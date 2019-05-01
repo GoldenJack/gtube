@@ -1,0 +1,15 @@
+.controls {
+  display: flex;
+  align-items: center;
+  background: rgba(0,0,0, .8);
+
+  &__play {
+    padding: $fold-size;
+  }
+
+  &__progress {
+    height: $medium;
+    margin-top: -$fold-size;
+    margin-bottom: -$fold-size;
+  }
+}

@@ -1,20 +1,24 @@
 import React from 'react';
 import T from 'prop-types';
 import { Link } from 'react-router-dom';
+import { usePlayer } from 'hooks';
 import bemHelper from 'utils/bem-helper';
 import './style.scss';
 
-import { Icon, Preview, Title } from 'atoms';
+import { Button, Icon, Preview, Title } from 'atoms';
+import { Player } from 'organisms';
 
 const cn = bemHelper('video-item');
 
 export const VideoItem = ({
+  videoId,
   videoImage,
   videoTitle,
   channelId,
   channelTitle,
   viewsCount
 }) => {
+  const { activePlayer, openPlayer, closePlayer } = usePlayer(videoId);
   return (
     <div {...cn('')}>
       <div {...cn('wrap')}>
@@ -27,7 +31,9 @@ export const VideoItem = ({
             </Link>
           </div>
           <div {...cn('buttons')}>
-            <Icon mix={cn('play-icon').className} icon="play" />
+            <Button onClick={openPlayer}>
+              <Icon mix={cn('play-icon').className} icon="play" />
+            </Button>
           </div>
           <div {...cn('statistics')}>
             <div {...cn('views')}>
@@ -50,12 +56,16 @@ export const VideoItem = ({
           </div>
         </div> */}
       </div>
+      {activePlayer && (
+        <Player videoId={videoId} activePlayer={activePlayer} closePlayer={closePlayer} />
+      )}
     </div>
   );
 };
 
 VideoItem.propTypes = {
   mix: T.string,
+  videoId: T.string.isRequired,
   videoImage: T.string,
   videoTitle: T.string,
   channelId: T.string,

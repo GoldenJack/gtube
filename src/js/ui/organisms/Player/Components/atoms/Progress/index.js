@@ -26,6 +26,6 @@ export const Progress = ({
 
 Progress.propTypes = {
   type: T.string.isRequired,
-  progress: T.string.isRequired,
+  progress: T.number.isRequired,
   onChooseTime: T.func.isRequired
 };

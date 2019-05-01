@@ -9,8 +9,7 @@ export const PageOfHome = () => {
 
   return (
     <Wrapper>
-      <Player videoId="-xjd6PfS1o8" />
-      {/*<Menu routes={routes} />*/}
+      <Menu routes={routes} />
     </Wrapper>
   );
 };

@@ -1,34 +1,29 @@
-#watch {
+.watch {
   position: fixed;
   top: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,.6);
-}
-
-.player {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  width: fit-content;
-  height: fit-content;
-
-  &__controls {
-    display: flex;
-    align-items: center;
-    background: rgba(0,0,0, .8);
+  transition: $animation background;
+  &__overlay {
+    width: 100%;
+    height: 100%;
+    background: $black;
+    opacity: 0;
+    transition: $animation opacity;
+    &--open {
+      transition: $animation opacity;
+      opacity: .6;
+    }
   }
 
-  &__play {
-    padding: $fold-size;
-  }
-
-  &__progress {
-    height: $medium;
-    margin-top: -$fold-size;
-    margin-bottom: -$fold-size;
+  &__player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: fit-content;
+    height: fit-content;
   }
 }
