@@ -1,4 +1,4 @@
-import React, { Component, useCallback, useEffect, useReducer, useMemo } from 'react';
+import React, { useCallback, useEffect, useReducer, useMemo } from 'react';
 import ReactDOM from 'react-dom';
 import * as T from 'prop-types';
 import bemHelper from 'utils/bem-helper';
@@ -13,14 +13,13 @@ const PLAY = 'PLAY';
 const PAUSE = 'PAUSE';
 const STOP = 'STOP';
 const DURATION = 'DURATION';
-const PROGRESS = 'PROGRESS';
+const DESTROY = 'DESTROY';
 
 const initialState = {
   play: false,
   pause: false,
   stop: true,
-  duration: 0,
-  progress: 0
+  duration: 0
 };
 
 const reducer = (state, { type, payload }) => {
@@ -33,8 +32,8 @@ const reducer = (state, { type, payload }) => {
       return { ...state, play: false, pause: false, stop: true };
     case DURATION:
       return { ...state, duration: payload.duration };
-    case PROGRESS:
-      return { ...state, progress: payload.progress };
+    case DESTROY:
+      return initialState;
     default:
       throw new Error();
   }
@@ -47,6 +46,7 @@ export const Player = ({ videoId, closePlayer, activePlayer }) => {
 
   const initPlayer = () => {
     const duration = window.player.getDuration();
+    window.player.setVolume(0);
     dispatch({ type: DURATION, payload: { duration } });
   };
 
@@ -74,72 +74,53 @@ export const Player = ({ videoId, closePlayer, activePlayer }) => {
     });
   }, [YT]);
 
-  const onPlayPlayer = () => {
-    window.player.playVideo();
-  };
-
-  const onPausePlayer = () => {
-    window.player.pauseVideo();
-  };
-
-  const onSetVolume = volume => {
-    window.player.setVolume(volume);
-  };
-
-  const onSetProgress = time => {
-    window.player.seekTo(time);
-  };
+  const onPlayPlayer = () => window.player.playVideo();
+  const onPausePlayer = () => window.player.pauseVideo();
+  const onSetVolume = volume => window.player.setVolume(volume);
+  const onGetProgress = () => window.player.getCurrentTime();
+  const onSetProgress = time => window.player.seekTo(time);
 
   // const onSetSize = (width, height) => {
   //   window.player.setSize(width, height);
   // };
 
-  // const onFullScreen = () => {
-  //   const player = document.getElementById('player');
-  //   if (!document.mozFullScreen && !document.webkitFullScreen) {
-  //     if (player.mozRequestFullScreen) {
-  //       player.mozRequestFullScreen();
-  //     } else {
-  //       player.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
-  //     }
-  //   } else if (document.mozCancelFullScreen) {
-  //     document.mozCancelFullScreen();
-  //   } else {
-  //     document.webkitCancelFullScreen();
-  //   }
-  // };
+  const onFullScreen = () => {
+    const player = document.getElementById('player');
+    if (!document.mozFullScreen && !document.webkitFullScreen) {
+      if (player.mozRequestFullScreen) {
+        player.mozRequestFullScreen();
+      } else {
+        player.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+      }
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else {
+      document.webkitCancelFullScreen();
+    }
+  };
 
-  const onProgressPlayer = useCallback(duration => {
-    const timeNow = window.player.getCurrentTime();
-    const percent = duration / 100;
-    return timeNow / percent;
-  }, []);
+  const onClosePlayer = () => {
+    dispatch({ type: DESTROY });
+    closePlayer();
+  };
 
   useEffect(() => {
     YT && onYouTubeIframeAPIReady(videoId);
   }, [onYouTubeIframeAPIReady, YT, videoId]);
 
-  useEffect(() => {
-    if (state.play) {
-      window.progressPlayer = setInterval(() => {
-        const progressPlayer = onProgressPlayer(state.duration);
-        dispatch({ type: PROGRESS, payload: { progress: progressPlayer } });
-      }, 100);
-    }
-
-    if (state.pause || state.stop) clearInterval(window.progressPlayer);
-  }, [state.play, state.pause, state.stop, state.duration, onProgressPlayer]);
-
   const markup = (
     <div {...cn()}>
-      <div {...cn('overlay', { 'open': activePlayer })} role="none" onClick={closePlayer} />
+      <div {...cn('overlay', { 'open': activePlayer })} role="none" onClick={onClosePlayer} />
       <div {...cn('player')}>
         <div id="player" />
         <Controls
           playing={playing}
           onPlayPlayer={onPlayPlayer}
           onPausePlayer={onPausePlayer}
-          progress={state.progress}
+          duration={state.duration}
+          onGetProgress={onGetProgress}
+          onSetProgress={onSetProgress}
+          onFullScreen={onFullScreen}
         />
       </div>
     </div>

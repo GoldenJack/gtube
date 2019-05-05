@@ -9,7 +9,9 @@
 
   &__progress {
     height: $medium;
-    margin-top: -$fold-size;
-    margin-bottom: -$fold-size;
+  }
+
+  &__maximize {
+    padding: $fold-size;
   }
 }

@@ -5,15 +5,18 @@ import './style.scss';
 
 import { Play } from 'organisms/Player/Components/atoms/Play';
 import { Progress } from 'organisms/Player/Components/atoms/Progress';
+import { Maximize } from 'organisms/Player/Components/atoms/Maximize';
 
 const cn = bemHelper('controls');
 
 export const Controls = ({
-  mix,
   playing,
   onPlayPlayer,
   onPausePlayer,
-  progress
+  duration,
+  onFullScreen,
+  onSetProgress,
+  onGetProgress
 }) => {
   const togglePlayPause = () => playing ? onPausePlayer() : onPlayPlayer();
 
@@ -22,22 +25,23 @@ export const Controls = ({
       <Play mix={cn('play').className} togglePlayPause={togglePlayPause} playing={playing} />
       <Progress
         mix={cn('progress').className}
-        onChooseTime={(e) => {console.log(e)}}
-        progress={progress}
+        playing={playing}
+        onSetProgress={onSetProgress}
+        onGetProgress={onGetProgress}
+        duration={duration}
         type="full"
       />
+      <Maximize mix={cn('maximize').className} onFullScreen={onFullScreen} />
     </div>
   );
 };
 
 Controls.propTypes = {
-  mix: T.string,
   playing: T.bool.isRequired,
   onPlayPlayer: T.func.isRequired,
   onPausePlayer: T.func.isRequired,
-  progress: T.number.isRequired
-};
-
-Controls.defaultProps = {
-  mix: '',
+  duration: T.number.isRequired,
+  onFullScreen: T.func.isRequired,
+  onSetProgress: T.func.isRequired,
+  onGetProgress: T.func.isRequired
 };
