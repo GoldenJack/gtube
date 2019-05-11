@@ -6,13 +6,11 @@ import {
   Popular,
   Searching
 } from 'features';
-// import Trending from 'features/Trending';
 // import Watch from 'features/Watch';
 // import Channel from 'features/Channel';
 // import Liked from 'features/Liked';
 // import Subscriptions from 'features/Subscriptions';
 // TODO: rename SearchPage to Searching
-// import SearchPage from 'features/SearchPage';
 
 
 export const Routes = () => (
