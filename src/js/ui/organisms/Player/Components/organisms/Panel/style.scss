@@ -1,0 +1,10 @@
+.panel {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: $fold-size * 5;
+
+  &__close {
+    margin-left: $fold-size * 5;
+  }
+}

@@ -4,6 +4,21 @@
   width: 100%;
   height: 100%;
   transition: $animation background;
+
+  &--minimize {
+    position: relative;
+    .watch__overlay {
+      // TODO: fixed and added animation
+      display: none;
+    }
+    .watch__player {
+      position: fixed;
+      margin: 0;
+      left: auto;
+      top: auto;
+    }
+  }
+
   &__overlay {
     width: 100%;
     height: 100%;

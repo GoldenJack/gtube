@@ -4,7 +4,8 @@ import * as T from 'prop-types';
 import bemHelper from 'utils/bem-helper';
 import './style.scss';
 
-import { Controls } from './Components/organisms/Controls';
+import { Controls } from 'organisms/Player/Components/organisms/Controls';
+import { Panel } from 'organisms/Player/Components/organisms/Panel';
 
 const cn = bemHelper('watch');
 const playerRoot = document.getElementById('watch');
@@ -14,13 +15,15 @@ const PLAY = 'PLAY';
 const PAUSE = 'PAUSE';
 const STOP = 'STOP';
 const DESTROY = 'DESTROY';
+const MINIMIZE = 'MINIMIZE';
 
 const initialState = {
   play: false,
   pause: false,
   stop: true,
   duration: 0,
-  volume: 0
+  volume: 0,
+  minimize: false
 };
 
 const reducer = (state, { type, payload }) => {
@@ -33,6 +36,8 @@ const reducer = (state, { type, payload }) => {
       return { ...state, play: false, pause: true, stop: false };
     case STOP:
       return { ...state, play: false, pause: false, stop: true };
+    case MINIMIZE:
+      return { ...state, minimize: payload.minimize };
     case DESTROY:
       return initialState;
     default:
@@ -80,10 +85,7 @@ export const Player = ({ videoId, closePlayer, activePlayer }) => {
   const onSetVolume = volume => window.player.setVolume(volume);
   const onGetProgress = () => window.player.getCurrentTime();
   const onSetProgress = time => window.player.seekTo(time);
-
-  // const onSetSize = (width, height) => {
-  //   window.player.setSize(width, height);
-  // };
+  const onSetSize = (width, height) => window.player.setSize(width, height);
 
   const onFullScreen = () => {
     const player = document.getElementById('player');
@@ -100,6 +102,11 @@ export const Player = ({ videoId, closePlayer, activePlayer }) => {
     }
   };
 
+  const onMinimizePlayer = minimize => {
+    dispatch({ type: MINIMIZE, payload: { minimize } });
+    minimize ? onSetSize(320, 180) : onSetSize(640, 360);
+  };
+
   const onClosePlayer = () => {
     dispatch({ type: DESTROY });
     closePlayer();
@@ -110,9 +117,14 @@ export const Player = ({ videoId, closePlayer, activePlayer }) => {
   }, [onYouTubeIframeAPIReady, YT, videoId]);
 
   const markup = (
-    <div {...cn()}>
+    <div {...cn('', { 'minimize': state.minimize })}>
       <div {...cn('overlay', { 'open': activePlayer })} role="none" onClick={onClosePlayer} />
       <div {...cn('player')}>
+        <Panel
+          minimize={state.minimize}
+          onClose={onClosePlayer}
+          onMinimizePlayer={onMinimizePlayer}
+        />
         <div id="player" />
         <Controls
           playing={playing}
