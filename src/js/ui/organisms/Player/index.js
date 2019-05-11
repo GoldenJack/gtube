@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useReducer, useMemo } from 'react';
+import React, { useCallback, useEffect, useReducer, useMemo, useState } from 'react';
 import ReactDOM from 'react-dom';
 import * as T from 'prop-types';
 import bemHelper from 'utils/bem-helper';
@@ -45,8 +45,9 @@ const reducer = (state, { type, payload }) => {
   }
 };
 
-export const Player = ({ videoId, closePlayer, activePlayer }) => {
+export const Player = ({ videoId, closePlayer, activePlayer, isUpdated }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [player, setPlayer] = useState(null);
   const playing = useMemo(() => !!state.play, [state.play]);
   const { YT } = window;
 
@@ -66,6 +67,11 @@ export const Player = ({ videoId, closePlayer, activePlayer }) => {
     }
   };
 
+  const apiChange = api => {
+    // console.log(api.target)
+    setPlayer(api.target);
+  };
+
   const onYouTubeIframeAPIReady = useCallback(id => {
     window.player = new YT.Player('player', {
       videoId: id,
@@ -75,7 +81,8 @@ export const Player = ({ videoId, closePlayer, activePlayer }) => {
       },
       events: {
         onReady: initPlayer,
-        onStateChange: statePlayerChange
+        onStateChange: statePlayerChange,
+        onApiChange: apiChange
       }
     });
   }, [YT]);
@@ -151,7 +158,8 @@ Player.propTypes = {
   mix: T.string,
   videoId: T.string.isRequired,
   closePlayer: T.func.isRequired,
-  activePlayer: T.bool.isRequired
+  activePlayer: T.bool.isRequired,
+  isUpdated: T.bool.isRequired,
 };
 
 Player.defaultProps = {

@@ -21,7 +21,7 @@ const reducer = (state, { type, payload }) => {
   }
 };
 
-export const useFetch = (apiRequest) => {
+export const useSearch = (apiRequest) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const fetchData = useCallback(

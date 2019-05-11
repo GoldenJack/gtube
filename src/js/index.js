@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { AuthProvider } from 'context';
+import { AuthProvider, PlayerProvider } from 'context';
 import { HashRouter, Switch } from 'react-router-dom';
 import { Layout } from 'features';
 import { Routes } from './routes';
@@ -13,9 +13,11 @@ ReactDOM.render(
     <HashRouter>
       <Switch>
         <AuthProvider>
-          <Layout>
-            <Routes />
-          </Layout>
+          <PlayerProvider>
+            <Layout>
+              <Routes />
+            </Layout>
+          </PlayerProvider>
         </AuthProvider>
       </Switch>
     </HashRouter>
