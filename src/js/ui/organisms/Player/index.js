@@ -9,29 +9,30 @@ import { Controls } from './Components/organisms/Controls';
 const cn = bemHelper('watch');
 const playerRoot = document.getElementById('watch');
 
+const INIT = 'INIT';
 const PLAY = 'PLAY';
 const PAUSE = 'PAUSE';
 const STOP = 'STOP';
-const DURATION = 'DURATION';
 const DESTROY = 'DESTROY';
 
 const initialState = {
   play: false,
   pause: false,
   stop: true,
-  duration: 0
+  duration: 0,
+  volume: 0
 };
 
 const reducer = (state, { type, payload }) => {
   switch (type) {
+    case INIT:
+      return { ...state, ...payload };
     case PLAY:
       return { ...state, play: true, pause: false, stop: false };
     case PAUSE:
       return { ...state, play: false, pause: true, stop: false };
     case STOP:
       return { ...state, play: false, pause: false, stop: true };
-    case DURATION:
-      return { ...state, duration: payload.duration };
     case DESTROY:
       return initialState;
     default:
@@ -46,8 +47,8 @@ export const Player = ({ videoId, closePlayer, activePlayer }) => {
 
   const initPlayer = () => {
     const duration = window.player.getDuration();
-    window.player.setVolume(0);
-    dispatch({ type: DURATION, payload: { duration } });
+    window.player.setVolume(state.volume);
+    dispatch({ type: INIT, payload: { duration } });
   };
 
   const statePlayerChange = statePlayer => {
@@ -121,6 +122,8 @@ export const Player = ({ videoId, closePlayer, activePlayer }) => {
           onGetProgress={onGetProgress}
           onSetProgress={onSetProgress}
           onFullScreen={onFullScreen}
+          volume={state.volume}
+          onSetVolume={onSetVolume}
         />
       </div>
     </div>

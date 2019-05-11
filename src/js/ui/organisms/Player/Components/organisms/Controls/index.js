@@ -6,6 +6,7 @@ import './style.scss';
 import { Play } from 'organisms/Player/Components/atoms/Play';
 import { Progress } from 'organisms/Player/Components/atoms/Progress';
 import { Maximize } from 'organisms/Player/Components/atoms/Maximize';
+import { Volume } from 'organisms/Player/Components/atoms/Volume';
 
 const cn = bemHelper('controls');
 
@@ -16,7 +17,9 @@ export const Controls = ({
   duration,
   onFullScreen,
   onSetProgress,
-  onGetProgress
+  onGetProgress,
+  volume,
+  onSetVolume
 }) => {
   const togglePlayPause = () => playing ? onPausePlayer() : onPlayPlayer();
 
@@ -31,6 +34,7 @@ export const Controls = ({
         duration={duration}
         type="full"
       />
+      <Volume onSetVolume={onSetVolume} volume={volume} />
       <Maximize mix={cn('maximize').className} onFullScreen={onFullScreen} />
     </div>
   );
@@ -43,5 +47,7 @@ Controls.propTypes = {
   duration: T.number.isRequired,
   onFullScreen: T.func.isRequired,
   onSetProgress: T.func.isRequired,
-  onGetProgress: T.func.isRequired
+  onGetProgress: T.func.isRequired,
+  volume: T.number.isRequired,
+  onSetVolume: T.string.isRequired
 };

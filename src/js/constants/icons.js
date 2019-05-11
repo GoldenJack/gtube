@@ -11,6 +11,7 @@ import popular from 'img/icons/menu/popular.svg';
 import play from 'img/icons/player/play.svg';
 import pause from 'img/icons/player/pause.svg';
 import maximize from 'img/icons/player/maximize.svg';
+import volume from 'img/icons/player/volume.svg';
 
 export const icons = {
   eyes,
@@ -20,5 +21,6 @@ export const icons = {
   power,
   popular,
   pause,
-  play
+  play,
+  volume
 };
