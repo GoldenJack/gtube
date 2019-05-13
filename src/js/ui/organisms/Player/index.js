@@ -120,8 +120,12 @@ export const Player = ({ videoId, closePlayer, activePlayer, isUpdated }) => {
   };
 
   useEffect(() => {
-    YT && onYouTubeIframeAPIReady(videoId);
-  }, [onYouTubeIframeAPIReady, YT, videoId]);
+    isUpdated && window.player.loadVideoById(videoId);
+  }, [isUpdated, videoId]);
+
+  useEffect(() => {
+    !isUpdated && YT && onYouTubeIframeAPIReady(videoId);
+  }, [onYouTubeIframeAPIReady, YT, videoId, isUpdated]);
 
   const markup = (
     <div {...cn('', { 'minimize': state.minimize })}>
