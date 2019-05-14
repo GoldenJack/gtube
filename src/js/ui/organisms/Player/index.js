@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useReducer, useMemo, useState } from 'react';
-import ReactDOM from 'react-dom';
 import * as T from 'prop-types';
 import bemHelper from 'utils/bem-helper';
 import './style.scss';
@@ -7,23 +6,20 @@ import './style.scss';
 import { Controls } from 'organisms/Player/Components/organisms/Controls';
 import { Panel } from 'organisms/Player/Components/organisms/Panel';
 
-const cn = bemHelper('watch');
-const playerRoot = document.getElementById('watch');
+const cn = bemHelper('player');
 
 const INIT = 'INIT';
 const PLAY = 'PLAY';
 const PAUSE = 'PAUSE';
 const STOP = 'STOP';
 const DESTROY = 'DESTROY';
-const MINIMIZE = 'MINIMIZE';
 
 const initialState = {
   play: false,
   pause: false,
   stop: true,
   duration: 0,
-  volume: 0,
-  minimize: false
+  volume: 0
 };
 
 const reducer = (state, { type, payload }) => {
@@ -36,8 +32,6 @@ const reducer = (state, { type, payload }) => {
       return { ...state, play: false, pause: true, stop: false };
     case STOP:
       return { ...state, play: false, pause: false, stop: true };
-    case MINIMIZE:
-      return { ...state, minimize: payload.minimize };
     case DESTROY:
       return initialState;
     default:
@@ -45,9 +39,16 @@ const reducer = (state, { type, payload }) => {
   }
 };
 
-export const Player = ({ videoId, closePlayer, activePlayer, isUpdated }) => {
+export const Player = ({
+  mix,
+  videoId,
+  closePlayer,
+  activePlayer,
+  isUpdated,
+  minimize,
+  onMinimizePlayer
+}) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [player, setPlayer] = useState(null);
   const playing = useMemo(() => !!state.play, [state.play]);
   const { YT } = window;
 
@@ -68,8 +69,7 @@ export const Player = ({ videoId, closePlayer, activePlayer, isUpdated }) => {
   };
 
   const apiChange = api => {
-    // console.log(api.target)
-    setPlayer(api.target);
+    console.log(api.target)
   };
 
   const onYouTubeIframeAPIReady = useCallback(id => {
@@ -109,9 +109,9 @@ export const Player = ({ videoId, closePlayer, activePlayer, isUpdated }) => {
     }
   };
 
-  const onMinimizePlayer = minimize => {
-    dispatch({ type: MINIMIZE, payload: { minimize } });
-    minimize ? onSetSize(320, 180) : onSetSize(640, 360);
+  const onMinimize = () => {
+    onMinimizePlayer();
+    !minimize ? onSetSize(320, 180) : onSetSize(640, 360);
   };
 
   const onClosePlayer = () => {
@@ -120,41 +120,33 @@ export const Player = ({ videoId, closePlayer, activePlayer, isUpdated }) => {
   };
 
   useEffect(() => {
-    isUpdated && window.player.loadVideoById(videoId);
-  }, [isUpdated, videoId]);
-
-  useEffect(() => {
-    !isUpdated && YT && onYouTubeIframeAPIReady(videoId);
+    if (YT) {
+      isUpdated
+        ? window.player.loadVideoById(videoId)
+        : onYouTubeIframeAPIReady(videoId);
+    }
   }, [onYouTubeIframeAPIReady, YT, videoId, isUpdated]);
 
-  const markup = (
-    <div {...cn('', { 'minimize': state.minimize })}>
-      <div {...cn('overlay', { 'open': activePlayer })} role="none" onClick={onClosePlayer} />
-      <div {...cn('player')}>
-        <Panel
-          minimize={state.minimize}
-          onClose={onClosePlayer}
-          onMinimizePlayer={onMinimizePlayer}
-        />
-        <div id="player" />
-        <Controls
-          playing={playing}
-          onPlayPlayer={onPlayPlayer}
-          onPausePlayer={onPausePlayer}
-          duration={state.duration}
-          onGetProgress={onGetProgress}
-          onSetProgress={onSetProgress}
-          onFullScreen={onFullScreen}
-          volume={state.volume}
-          onSetVolume={onSetVolume}
-        />
-      </div>
+  return (
+    <div {...cn('', '', mix)}>
+      <Panel
+        minimize={minimize}
+        onClose={onClosePlayer}
+        onMinimizePlayer={onMinimize}
+      />
+      <div id="player" />
+      <Controls
+        playing={playing}
+        onPlayPlayer={onPlayPlayer}
+        onPausePlayer={onPausePlayer}
+        duration={state.duration}
+        onGetProgress={onGetProgress}
+        onSetProgress={onSetProgress}
+        onFullScreen={onFullScreen}
+        volume={state.volume}
+        onSetVolume={onSetVolume}
+      />
     </div>
-  );
-
-  return ReactDOM.createPortal(
-    markup,
-    playerRoot
   );
 };
 
@@ -164,8 +156,10 @@ Player.propTypes = {
   closePlayer: T.func.isRequired,
   activePlayer: T.bool.isRequired,
   isUpdated: T.bool.isRequired,
+  minimize: T.bool
 };
 
 Player.defaultProps = {
-  mix: ''
+  mix: '',
+  minimize: false
 };

@@ -4,3 +4,4 @@ export { Menu } from './Menu';
 export { Player } from './Player';
 export { Search } from './Search';
 export { Sidebar } from './Sidebar';
+export { Watch } from './Watch';
