@@ -11,7 +11,7 @@ const cn = bemHelper('card');
 export const Card = ({ title, url, icon }) => {
   return (
     <Link to={url} {...cn()}>
-      <Icon mix={cn('icon').className} icon={icon} />
+      <Icon size="large" mix={cn('icon').className} icon={icon} fill="white" />
       <Title type="h6" mix={cn('title').className}>{title}</Title>
     </Link>
   );

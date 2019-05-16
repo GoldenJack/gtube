@@ -1,7 +1,6 @@
 import React from 'react';
 import * as T from 'prop-types';
-import SVGInline from 'react-svg-inline';
-import { icons } from 'constants/icons';
+import { getIcon } from './icons';
 import bemHelper from 'utils/bem-helper';
 import './style.scss';
 
@@ -10,7 +9,9 @@ const cn = bemHelper('icon');
 export const Icon = ({ icon, size, mix, active, ...props }) => {
   const activeCN = active ? mix : `${mix} ${mix}--active`;
   return (
-    <SVGInline {...cn('', size, activeCN)} svg={icons[icon]} {...props} />
+    <div {...cn('', size, activeCN)}>
+      {getIcon({ icon, ...{ ...props } })}
+    </div>
   );
 };
 

@@ -67,6 +67,7 @@
   "homepage": "https://github.com/GoldenJack/gtube#readme",
   "devDependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@svgr/webpack": "^4.2.0",
     "raw-loader": "^2.0.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3"
