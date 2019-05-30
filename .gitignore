@@ -5,6 +5,7 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+package-lock.json
 
 # Runtime data
 pids
@@ -64,4 +65,4 @@ typings/
 # public
 public/
 server/config.js
-src/js/config/index.js
+src/js/config/Description.js

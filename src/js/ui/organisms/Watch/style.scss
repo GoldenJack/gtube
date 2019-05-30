@@ -26,4 +26,24 @@
     -webkit-animation: fade-in-overlay 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
     animation: fade-in-overlay 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
   }
+
+  &__content {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+  }
+
+  &__player {
+    margin: auto;
+  }
+
+  &__information {
+    margin-left: auto;
+  }
 }

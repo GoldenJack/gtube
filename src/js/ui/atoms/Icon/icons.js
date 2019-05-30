@@ -1,9 +1,12 @@
 import React from 'react';
 // common icons
+import Comments from 'img/icons/comments.svg';
 import Eyes from 'img/icons/eyes.svg';
+import Information from 'img/icons/information.svg'
 import Logo from 'img/logo.svg';
 import Microphone from 'img/icons/microphone.svg';
 import Power from 'img/icons/power.svg';
+import Suggested from 'img/icons/suggested.svg';
 import Close from 'img/icons/close.svg';
 import Minimize from 'img/icons/minimize.svg';
 import Fullsize from 'img/icons/fullsize.svg';
@@ -22,8 +25,12 @@ export const getIcon = ({ icon, size, ...props }) => {
   switch (icon) {
     case 'close':
       return (<Close className={size} {...props} />);
+    case 'comments':
+      return (<Comments {...props} />);
     case 'eyes':
-      return (<Logo {...props} />);
+      return (<Eyes {...props} />);
+    case 'information':
+      return (<Information {...props} />);
     case 'fullsize':
       return (<Fullsize {...props} />);
     case 'logo':
@@ -42,6 +49,8 @@ export const getIcon = ({ icon, size, ...props }) => {
       return (<Pause {...props} />);
     case 'play':
       return (<Play {...props} />);
+    case 'suggested':
+      return (<Suggested {...props} />);
     case 'volume':
       return (<Volume {...props} />);
     default: return (<NotFound />);

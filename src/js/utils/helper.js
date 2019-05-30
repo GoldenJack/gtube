@@ -52,7 +52,7 @@ export const sortVideos = videos => {
 
 /**
  * getQueryString
- * @param {String} page - Channel/Search/Videos/etc
+ * @param {String} page - Channel/Search/Suggested/etc
  * @param {*} params - It's options for fetch data from api Youtube
  * @param {*} key - API KEY developer
  */

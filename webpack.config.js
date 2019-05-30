@@ -15,9 +15,20 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: '/node_modules/',
-        loader: 'babel-loader'
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            rootMode: 'upward-optional',
+          }
+        }
+      },
+      {
+        test: /\.m?js$/,
+        enforce: 'pre',
+        exclude: /node_modules/,
+        use: [{ loader: 'eslint-loader', options: { emitWarning: true } }]
       },
       {
         test: /\.(sass|scss)$/,
@@ -98,6 +109,7 @@ module.exports = {
     })
   ],
   resolve: {
+    extensions: ['.js', '.jsx', '.less'],
     alias: {
       atoms: path.resolve(__dirname, 'src/js/ui/atoms'),
       molecules: path.resolve(__dirname, 'src/js/ui/molecules'),

@@ -49,7 +49,7 @@ const Channel = ({
       url: `/channel/${channelId}/home`
     },
     {
-      name: 'Videos',
+      name: 'Suggested',
       url: `/channel/${channelId}/videos`
     },
     {

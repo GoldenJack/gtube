@@ -1,5 +1,5 @@
 /**
- * Rename this file to index.js and replace the value of the variables with your own values.
+ * Rename this file to Description.js and replace the value of the variables with your own values.
  */
 
 export const API_KEY = 'you api key';
